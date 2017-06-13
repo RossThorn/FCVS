@@ -1,0 +1,325 @@
+{
+   "type": "FeatureCollection",
+   "features": [
+      {
+         "type": "Feature",
+         "geometry": {
+            "type": "Point",
+            "coordinates": [
+               45,
+               -89
+            ]
+         },
+         "properties": {
+            "cartodb_id": 1,
+            "id": 1,
+            "idt": 1,
+            "times": 4,
+            "arr": 0,
+            "value": 10,
+            "category": "a",
+            "degrees": 360
+         }
+      },
+      {
+         "type": "Feature",
+         "geometry": {
+            "type": "Point",
+            "coordinates": [
+              45,
+              -89
+            ]
+         },
+         "properties": {
+            "cartodb_id": 2,
+            "id": 1,
+            "idt": 1,
+            "times": 4,
+            "arr": 0,
+            "value": 5,
+            "category": "b",
+            "degrees": 90
+         }
+      },
+      {
+         "type": "Feature",
+         "geometry": {
+            "type": "Point",
+            "coordinates": [
+              45,
+              -89
+            ]
+         },
+         "properties": {
+            "cartodb_id": 3,
+            "id": 1,
+            "idt": 1,
+            "times": 4,
+            "arr": 0,
+            "value": 15,
+            "category": "c",
+            "degrees": 180
+         }
+      },
+      {
+         "type": "Feature",
+         "geometry": {
+            "type": "Point",
+            "coordinates": [
+              45,
+              -89
+            ]
+         },
+         "properties": {
+            "cartodb_id": 4,
+            "id": 1,
+            "idt": 1,
+            "times": 4,
+            "arr": 0,
+            "value": 20,
+            "category": "d",
+            "degrees": 270
+         }
+      },
+      {
+         "type": "Feature",
+         "geometry": {
+            "type": "Point",
+            "coordinates": [
+               43.3,
+               -89
+            ]
+         },
+         "properties": {
+            "cartodb_id": 5,
+            "id": 2,
+            "idt": 2,
+            "times": 4,
+            "arr": 0,
+            "value": 20,
+            "category": "a",
+            "degrees": 360
+         }
+      },
+      {
+         "type": "Feature",
+         "geometry": {
+            "type": "Point",
+            "coordinates": [
+              43.3,
+              -89
+            ]
+         },
+         "properties": {
+            "cartodb_id": 6,
+            "id": 2,
+            "idt": 2,
+            "times": 4,
+            "arr": 0,
+            "value": 5,
+            "category": "b",
+            "degrees": 90
+         }
+      },
+      {
+         "type": "Feature",
+         "geometry": {
+            "type": "Point",
+            "coordinates": [
+              43.3,
+              -89
+            ]
+         },
+         "properties": {
+            "cartodb_id": 7,
+            "id": 2,
+            "idt": 2,
+            "times": 4,
+            "arr": 0,
+            "value": 10,
+            "category": "c",
+            "degrees": 180
+         }
+      },
+      {
+         "type": "Feature",
+         "geometry": {
+            "type": "Point",
+            "coordinates": [
+              43.3,
+              -89
+            ]
+         },
+         "properties": {
+            "cartodb_id": 8,
+            "id": 2,
+            "idt": 2,
+            "times": 4,
+            "arr": 0,
+            "value": 15,
+            "category": "d",
+            "degrees": 270
+         }
+      },
+      {
+         "type": "Feature",
+         "geometry": {
+            "type": "Point",
+            "coordinates": [
+               44.5,
+               -88
+            ]
+         },
+         "properties": {
+            "cartodb_id": 9,
+            "id": 3,
+            "idt": 3,
+            "times": 4,
+            "arr": 0,
+            "value": 5,
+            "category": "a",
+            "degrees": 360
+         }
+      },
+      {
+         "type": "Feature",
+         "geometry": {
+            "type": "Point",
+            "coordinates": [
+              44.5,
+              -88
+            ]
+         },
+         "properties": {
+            "cartodb_id": 10,
+            "id": 3,
+            "idt": 3,
+            "times": 4,
+            "arr": 0,
+            "value": 15,
+            "category": "b",
+            "degrees": 90
+         }
+      },
+      {
+         "type": "Feature",
+         "geometry": {
+            "type": "Point",
+            "coordinates": [
+              44.5,
+              -88
+            ]
+         },
+         "properties": {
+            "cartodb_id": 11,
+            "id": 3,
+            "idt": 3,
+            "times": 4,
+            "arr": 0,
+            "value": 20,
+            "category": "c",
+            "degrees": 180
+         }
+      },
+      {
+         "type": "Feature",
+         "geometry": {
+            "type": "Point",
+            "coordinates": [
+              44.5,
+              -88
+            ]
+         },
+         "properties": {
+            "cartodb_id": 12,
+            "id": 3,
+            "idt": 3,
+            "times": 4,
+            "arr": 0,
+            "value": 10,
+            "category": "d",
+            "degrees": 270
+         }
+      },
+      {
+         "type": "Feature",
+         "geometry": {
+            "type": "Point",
+            "coordinates": [
+              45.79,
+              -89.4
+            ]
+         },
+         "properties": {
+            "cartodb_id": 13,
+            "id": 4,
+            "idt": 4,
+            "times": 4,
+            "arr": 0,
+            "value": 15,
+            "category": "a",
+            "degrees": 360
+         }
+      },
+      {
+         "type": "Feature",
+         "geometry": {
+            "type": "Point",
+            "coordinates": [
+               45.79,
+               -89.4
+            ]
+         },
+         "properties": {
+            "cartodb_id": 14,
+            "id": 4,
+            "idt": 4,
+            "times": 4,
+            "arr": 0,
+            "value": 20,
+            "category": "b",
+            "degrees": 90
+         }
+      },
+      {
+         "type": "Feature",
+         "geometry": {
+            "type": "Point",
+            "coordinates": [
+              45.79,
+              -89.4
+            ]
+         },
+         "properties": {
+            "cartodb_id": 15,
+            "id": 4,
+            "idt": 4,
+            "times": 4,
+            "arr": 0,
+            "value": 10,
+            "category": "c",
+            "degrees": 180
+         }
+      },
+      {
+         "type": "Feature",
+         "geometry": {
+            "type": "Point",
+            "coordinates": [
+              45.79,
+              -89.4
+            ]
+         },
+         "properties": {
+            "cartodb_id": 16,
+            "id": 4,
+            "idt": 4,
+            "times": 4,
+            "arr": 0,
+            "value": 5,
+            "category": "d",
+            "degrees": 270
+         }
+      }
+   ]
+}

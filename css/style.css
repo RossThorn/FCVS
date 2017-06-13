@@ -1,0 +1,31 @@
+#mapid {
+    width: 65%;
+    min-width: 800px;
+    display: inline-block;
+    float: left;
+}
+
+.header{
+  height: 50px;
+  width: 100%;
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.7;
+  background-color: #447BDC;
+}
+
+#page-title{
+  font-size: 30px;
+  font-family: sans-serif;
+  color: white;
+  margin-left:20px;
+
+}
+
+.leaflet-control{
+  opacity:0.3;
+}
+
+.leaflet-marker-icon{
+  transform:rotate(90);
+}

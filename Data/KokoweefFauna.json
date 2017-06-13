@@ -1,0 +1,2225 @@
+{
+   "success":1,
+   "data":[
+      {
+         "CollUnitType":null,
+         "DatasetName":null,
+         "DatabaseName":"FAUNMAP",
+         "Samples":[
+            {
+               "SampleName":null,
+               "AnalysisUnitDepth":null,
+               "AnalysisUnitName":"Assemblage",
+               "SampleID":105613,
+               "SampleData":[
+                  {
+                     "TaxonName":"Hemiauchenia sp.",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"ARTI"
+                  },
+                  {
+                     "TaxonName":"Reithrodontomys megalotis",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Microtus californicus",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Sylvilagus audubonii",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"LAGO"
+                  },
+                  {
+                     "TaxonName":"Notiosorex crawfordi",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"SORI"
+                  },
+                  {
+                     "TaxonName":"Cetacea",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"CETA"
+                  },
+                  {
+                     "TaxonName":"Marmota flaviventris",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Mustela frenata",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"CARN"
+                  },
+                  {
+                     "TaxonName":"Taxidea taxus",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"CARN"
+                  },
+                  {
+                     "TaxonName":"Neotoma stephensi",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Peromyscus sp.",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias minimus",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Reptilia",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth/shell",
+                     "VariableContext":null,
+                     "TaxaGroup":"Reptiles and amphibians",
+                     "Value":1.0,
+                     "EcolGroupID":"HERP"
+                  },
+                  {
+                     "TaxonName":"Canis latrans",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"CARN"
+                  },
+                  {
+                     "TaxonName":"Ovis canadensis",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"ARTI"
+                  },
+                  {
+                     "TaxonName":"Urocyon cinereoargenteus",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"CARN"
+                  },
+                  {
+                     "TaxonName":"cf. Ammospermophilus leucurus",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Neotoma albigula",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Antilocapra americana",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"ARTI"
+                  },
+                  {
+                     "TaxonName":"Thomomys bottae",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Antrozous pallidus",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"CHIR"
+                  },
+                  {
+                     "TaxonName":"Bassariscus astutus",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"CARN"
+                  },
+                  {
+                     "TaxonName":"Spermophilus lateralis",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Aves",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/bill",
+                     "VariableContext":null,
+                     "TaxaGroup":"Birds",
+                     "Value":1.0,
+                     "EcolGroupID":"AVES"
+                  },
+                  {
+                     "TaxonName":"Osteichthyes",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth/scale",
+                     "VariableContext":null,
+                     "TaxaGroup":"Fish",
+                     "Value":1.0,
+                     "EcolGroupID":"FISH"
+                  },
+                  {
+                     "TaxonName":"cf. Camelops hesternus",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"ARTI"
+                  },
+                  {
+                     "TaxonName":"Neotoma lepida",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Lynx rufus",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"CARN"
+                  },
+                  {
+                     "TaxonName":"cf. Corynorhinus townsendii",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"CHIR"
+                  },
+                  {
+                     "TaxonName":"cf. Spermophilus mohavensis",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Spermophilus variegatus",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus townsendii",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Sorex tenellus",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"SORI"
+                  },
+                  {
+                     "TaxonName":"Equus conversidens",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"PRSS"
+                  },
+                  {
+                     "TaxonName":"Ochotona princeps",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"LAGO"
+                  },
+                  {
+                     "TaxonName":"Spilogale putorius",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"CARN"
+                  },
+                  {
+                     "TaxonName":"Tamias sp.",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Thomomys sp.",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Odocoileus sp.",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"ARTI"
+                  },
+                  {
+                     "TaxonName":"Lemmiscus curtatus",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Myotis leibii",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"CHIR"
+                  },
+                  {
+                     "TaxonName":"Lepus californicus",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"LAGO"
+                  },
+                  {
+                     "TaxonName":"Vulpes macrotis",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"CARN"
+                  },
+                  {
+                     "TaxonName":"Dipodomys sp.",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Neotoma cinerea",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Perognathus sp.",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Amphibia",
+                     "VariableUnits":"present/absent",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Reptiles and amphibians",
+                     "Value":1.0,
+                     "EcolGroupID":"HERP"
+                  }
+               ],
+               "SampleAges":[
+                  {
+                     "AgeOlder":20000.0,
+                     "Age":null,
+                     "AgeYounger":10000.0,
+                     "ChronologyName":"FAUNMAP 1.1",
+                     "AgeType":"Radiocarbon years BP",
+                     "ChronologyID":3558
+                  }
+               ],
+               "AnalysisUnitThickness":null
+            },
+            {
+               "SampleName":null,
+               "AnalysisUnitDepth":null,
+               "AnalysisUnitName":"Level 11-16",
+               "SampleID":105614,
+               "SampleData":[
+                  {
+                     "TaxonName":"Marmota flaviventris",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":4.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Marmota flaviventris",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Ammospermophilus leucurus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":7.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Ammospermophilus leucurus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":3.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus lateralis",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus lateralis",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus townsendii",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus townsendii",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias sp.",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias sp.",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  }
+               ],
+               "SampleAges":[
+                  {
+                     "AgeOlder":10000.0,
+                     "Age":null,
+                     "AgeYounger":8000.0,
+                     "ChronologyName":"FAUNMAP 1.1",
+                     "AgeType":"Radiocarbon years BP",
+                     "ChronologyID":3558
+                  }
+               ],
+               "AnalysisUnitThickness":null
+            },
+            {
+               "SampleName":null,
+               "AnalysisUnitDepth":null,
+               "AnalysisUnitName":"Level 16-22",
+               "SampleID":105615,
+               "SampleData":[
+                  {
+                     "TaxonName":"Marmota flaviventris",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":6.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Marmota flaviventris",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":2.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias minimus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias minimus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Ammospermophilus leucurus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Ammospermophilus leucurus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus lateralis",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus lateralis",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":3.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus sp.",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus sp.",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus townsendii",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus townsendii",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias sp.",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":2.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias sp.",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":2.0,
+                     "EcolGroupID":"RODE"
+                  }
+               ],
+               "SampleAges":[
+                  {
+                     "AgeOlder":20000.0,
+                     "Age":null,
+                     "AgeYounger":8000.0,
+                     "ChronologyName":"FAUNMAP 1.1",
+                     "AgeType":"Radiocarbon years BP",
+                     "ChronologyID":3558
+                  }
+               ],
+               "AnalysisUnitThickness":null
+            },
+            {
+               "SampleName":null,
+               "AnalysisUnitDepth":null,
+               "AnalysisUnitName":"Level 22-23",
+               "SampleID":105616,
+               "SampleData":[
+                  {
+                     "TaxonName":"Marmota flaviventris",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":32.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Marmota flaviventris",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":5.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias minimus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":2.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias minimus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":14.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Ammospermophilus leucurus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":2.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Ammospermophilus leucurus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus lateralis",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":7.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus lateralis",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":48.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus sp.",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":32.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Spermophilus variegatus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Spermophilus variegatus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":2.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus townsendii",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":46.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus townsendii",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":5.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias sp.",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":27.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias sp.",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":3.0,
+                     "EcolGroupID":"RODE"
+                  }
+               ],
+               "SampleAges":[
+                  {
+                     "AgeOlder":20000.0,
+                     "Age":null,
+                     "AgeYounger":10000.0,
+                     "ChronologyName":"FAUNMAP 1.1",
+                     "AgeType":"Radiocarbon years BP",
+                     "ChronologyID":3558
+                  }
+               ],
+               "AnalysisUnitThickness":null
+            },
+            {
+               "SampleName":null,
+               "AnalysisUnitDepth":null,
+               "AnalysisUnitName":"Level 23-24",
+               "SampleID":105617,
+               "SampleData":[
+                  {
+                     "TaxonName":"Marmota flaviventris",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":68.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Marmota flaviventris",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":10.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias minimus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":3.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias minimus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":22.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Ammospermophilus leucurus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":3.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Ammospermophilus leucurus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":2.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus lateralis",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":9.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus lateralis",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":71.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus sp.",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":64.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Spermophilus variegatus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Spermophilus variegatus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus townsendii",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":121.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus townsendii",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":12.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias sp.",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":32.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias sp.",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":4.0,
+                     "EcolGroupID":"RODE"
+                  }
+               ],
+               "SampleAges":[
+                  {
+                     "AgeOlder":20000.0,
+                     "Age":null,
+                     "AgeYounger":10000.0,
+                     "ChronologyName":"FAUNMAP 1.1",
+                     "AgeType":"Radiocarbon years BP",
+                     "ChronologyID":3558
+                  }
+               ],
+               "AnalysisUnitThickness":null
+            },
+            {
+               "SampleName":null,
+               "AnalysisUnitDepth":null,
+               "AnalysisUnitName":"Level 24-25",
+               "SampleID":105618,
+               "SampleData":[
+                  {
+                     "TaxonName":"Marmota flaviventris",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":29.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Marmota flaviventris",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":4.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias minimus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":2.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias minimus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":5.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Ammospermophilus leucurus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":3.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Ammospermophilus leucurus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus lateralis",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":2.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus lateralis",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":11.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus sp.",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":17.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Spermophilus variegatus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Spermophilus variegatus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":2.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus townsendii",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":41.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus townsendii",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":4.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias sp.",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":14.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias sp.",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":3.0,
+                     "EcolGroupID":"RODE"
+                  }
+               ],
+               "SampleAges":[
+                  {
+                     "AgeOlder":20000.0,
+                     "Age":null,
+                     "AgeYounger":10000.0,
+                     "ChronologyName":"FAUNMAP 1.1",
+                     "AgeType":"Radiocarbon years BP",
+                     "ChronologyID":3558
+                  }
+               ],
+               "AnalysisUnitThickness":null
+            },
+            {
+               "SampleName":null,
+               "AnalysisUnitDepth":null,
+               "AnalysisUnitName":"Level 25-26",
+               "SampleID":105619,
+               "SampleData":[
+                  {
+                     "TaxonName":"Marmota flaviventris",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":41.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Marmota flaviventris",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":4.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias minimus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias minimus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":3.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Ammospermophilus leucurus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":2.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Ammospermophilus leucurus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus lateralis",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus lateralis",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":10.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus sp.",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":27.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus townsendii",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":34.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus townsendii",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":6.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias sp.",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":14.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias sp.",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":3.0,
+                     "EcolGroupID":"RODE"
+                  }
+               ],
+               "SampleAges":[
+                  {
+                     "AgeOlder":20000.0,
+                     "Age":null,
+                     "AgeYounger":10000.0,
+                     "ChronologyName":"FAUNMAP 1.1",
+                     "AgeType":"Radiocarbon years BP",
+                     "ChronologyID":3558
+                  }
+               ],
+               "AnalysisUnitThickness":null
+            },
+            {
+               "SampleName":null,
+               "AnalysisUnitDepth":null,
+               "AnalysisUnitName":"Level 26-28",
+               "SampleID":105620,
+               "SampleData":[
+                  {
+                     "TaxonName":"Marmota flaviventris",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":28.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Marmota flaviventris",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":3.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias minimus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias minimus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":5.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Ammospermophilus leucurus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":8.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Ammospermophilus leucurus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":2.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus lateralis",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus lateralis",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":4.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus sp.",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus sp.",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":15.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Spermophilus variegatus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Spermophilus variegatus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":5.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus townsendii",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":37.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus townsendii",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":5.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias sp.",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":27.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias sp.",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":2.0,
+                     "EcolGroupID":"RODE"
+                  }
+               ],
+               "SampleAges":[
+                  {
+                     "AgeOlder":20000.0,
+                     "Age":null,
+                     "AgeYounger":10000.0,
+                     "ChronologyName":"FAUNMAP 1.1",
+                     "AgeType":"Radiocarbon years BP",
+                     "ChronologyID":3558
+                  }
+               ],
+               "AnalysisUnitThickness":null
+            },
+            {
+               "SampleName":null,
+               "AnalysisUnitDepth":null,
+               "AnalysisUnitName":"Level 28-29",
+               "SampleID":105621,
+               "SampleData":[
+                  {
+                     "TaxonName":"Marmota flaviventris",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":46.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Marmota flaviventris",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":4.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias minimus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":7.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias minimus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":3.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Ammospermophilus leucurus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":2.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Ammospermophilus leucurus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus lateralis",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":3.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus lateralis",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":20.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus sp.",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":11.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Spermophilus variegatus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":2.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Spermophilus variegatus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":4.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus townsendii",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":37.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus townsendii",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":5.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias sp.",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":15.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias sp.",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":2.0,
+                     "EcolGroupID":"RODE"
+                  }
+               ],
+               "SampleAges":[
+                  {
+                     "AgeOlder":20000.0,
+                     "Age":null,
+                     "AgeYounger":10000.0,
+                     "ChronologyName":"FAUNMAP 1.1",
+                     "AgeType":"Radiocarbon years BP",
+                     "ChronologyID":3558
+                  }
+               ],
+               "AnalysisUnitThickness":null
+            },
+            {
+               "SampleName":null,
+               "AnalysisUnitDepth":null,
+               "AnalysisUnitName":"Level 29-30",
+               "SampleID":105622,
+               "SampleData":[
+                  {
+                     "TaxonName":"Marmota flaviventris",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":38.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Marmota flaviventris",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":5.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias minimus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias minimus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":2.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Ammospermophilus leucurus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":2.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Ammospermophilus leucurus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":2.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus lateralis",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":2.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus lateralis",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":10.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus sp.",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":22.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Spermophilus variegatus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Spermophilus variegatus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus townsendii",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":18.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus townsendii",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":3.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias sp.",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":15.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias sp.",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":2.0,
+                     "EcolGroupID":"RODE"
+                  }
+               ],
+               "SampleAges":[
+                  {
+                     "AgeOlder":20000.0,
+                     "Age":null,
+                     "AgeYounger":10000.0,
+                     "ChronologyName":"FAUNMAP 1.1",
+                     "AgeType":"Radiocarbon years BP",
+                     "ChronologyID":3558
+                  }
+               ],
+               "AnalysisUnitThickness":null
+            },
+            {
+               "SampleName":null,
+               "AnalysisUnitDepth":null,
+               "AnalysisUnitName":"Level 30-32",
+               "SampleID":105623,
+               "SampleData":[
+                  {
+                     "TaxonName":"Marmota flaviventris",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":20.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Marmota flaviventris",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":3.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias minimus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":2.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias minimus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":3.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Ammospermophilus leucurus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Ammospermophilus leucurus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus lateralis",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":3.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus lateralis",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":8.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus sp.",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":21.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Spermophilus variegatus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Spermophilus variegatus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":3.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus townsendii",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":35.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus townsendii",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":4.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias sp.",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":4.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias sp.",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":3.0,
+                     "EcolGroupID":"RODE"
+                  }
+               ],
+               "SampleAges":[
+                  {
+                     "AgeOlder":20000.0,
+                     "Age":null,
+                     "AgeYounger":10000.0,
+                     "ChronologyName":"FAUNMAP 1.1",
+                     "AgeType":"Radiocarbon years BP",
+                     "ChronologyID":3558
+                  }
+               ],
+               "AnalysisUnitThickness":null
+            },
+            {
+               "SampleName":null,
+               "AnalysisUnitDepth":null,
+               "AnalysisUnitName":"Level 32-36",
+               "SampleID":105624,
+               "SampleData":[
+                  {
+                     "TaxonName":"Marmota flaviventris",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":36.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Marmota flaviventris",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":3.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Ammospermophilus leucurus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Ammospermophilus leucurus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus lateralis",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus lateralis",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":3.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus sp.",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":4.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Spermophilus variegatus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Spermophilus variegatus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus townsendii",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":22.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus townsendii",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":3.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias sp.",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":12.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias sp.",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  }
+               ],
+               "SampleAges":[
+                  {
+                     "AgeOlder":20000.0,
+                     "Age":null,
+                     "AgeYounger":10000.0,
+                     "ChronologyName":"FAUNMAP 1.1",
+                     "AgeType":"Radiocarbon years BP",
+                     "ChronologyID":3558
+                  }
+               ],
+               "AnalysisUnitThickness":null
+            },
+            {
+               "SampleName":null,
+               "AnalysisUnitDepth":null,
+               "AnalysisUnitName":"Level 36-40",
+               "SampleID":105625,
+               "SampleData":[
+                  {
+                     "TaxonName":"Marmota flaviventris",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":8.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Marmota flaviventris",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias minimus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias minimus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":3.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus lateralis",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus lateralis",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus sp.",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Spermophilus variegatus",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":1.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"cf. Spermophilus variegatus",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":2.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus townsendii",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":11.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Spermophilus townsendii",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":2.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias sp.",
+                     "VariableUnits":"NISP",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":5.0,
+                     "EcolGroupID":"RODE"
+                  },
+                  {
+                     "TaxonName":"Tamias sp.",
+                     "VariableUnits":"MNI",
+                     "VariableElement":"bone/tooth",
+                     "VariableContext":null,
+                     "TaxaGroup":"Mammals",
+                     "Value":2.0,
+                     "EcolGroupID":"RODE"
+                  }
+               ],
+               "SampleAges":[
+                  {
+                     "AgeOlder":20000.0,
+                     "Age":null,
+                     "AgeYounger":10000.0,
+                     "ChronologyName":"FAUNMAP 1.1",
+                     "AgeType":"Radiocarbon years BP",
+                     "ChronologyID":3558
+                  }
+               ],
+               "AnalysisUnitThickness":null
+            }
+         ],
+         "CollUnitHandle":"KOKOWEEF",
+         "DatasetPIs":[
+
+         ],
+         "DatasetType":"vertebrate fauna",
+         "NeotomaLastSub":"11/24/2007",
+         "DOI":null,
+         "DefChronologyID":3558,
+         "Site":{
+            "LongitudeWest":-115.5,
+            "SiteID":4886,
+            "SiteName":"Kokoweef Cave [SBC1.11.13]",
+            "Altitude":1770.0,
+            "SiteNotes":"",
+            "LongitudeEast":-115.5,
+            "SiteDescription":null,
+            "LatitudeNorth":35.416666666666664,
+            "LatitudeSouth":35.416666666666664,
+            "Longitude":-115.5,
+            "Latitude":35.416666666666664
+         },
+         "DatasetID":6088
+      }
+   ]
+}
