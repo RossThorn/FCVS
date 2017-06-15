@@ -9,16 +9,16 @@ function createMap(){
     //create the map
     var map = L.map('mapid', {
         center: [45, -90],
-        zoom: 6,
+        zoom: 7,
         maxBounds: bounds,
         maxBoundsViscosity:.7,
         minZoom: 6
     });
 
 
-    //add OSM base tilelayer
-    L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
-      	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+    //add base tilelayer
+    L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+      	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">Carto</a>',
       	subdomains: 'abcd',
         minZoom:2
     }).addTo(map);
@@ -32,7 +32,7 @@ function createMap(){
 //     //call getData function
 //         getCountryShapeData(map);
         getData(map);
-        $(window).on("resize", function () { $("#mapid").height($(window).height()-50); map.invalidateSize(); }).trigger("resize");
+        $(window).on("resize", function () { $("#mapid").height($(window).height()); map.invalidateSize(); }).trigger("resize");
         $(document).ready(function() {$(window).resize(function() {
         var bodyheight = $(this).height();
         $("#page-content").height(bodyheight-70);
@@ -72,29 +72,41 @@ function getData(map){
 //Add circle markers for point features to the map
 function createSymbols(data, map){
   var points = data.features
-  console.log(data.features);
-  console.log(data.features[0].properties.degrees)
+  // console.log(data.features);
+  // console.log(data.features[0].properties.degrees)
   for (var i = 0, l = points.length; i < l; i++){
-    console.log("fired");
+    // console.log("fired");
     var obj = data.features[i];
     var lon = obj.geometry.coordinates[1];
     var lat = obj.geometry.coordinates[0];
     var degrees = obj.properties.degrees;
     var value = obj.properties.value;
 
-    console.log(obj);
-    console.log(degrees);
-    console.log(lon);
-    console.log(lat);
-    console.log(value);
-    L.Icon.Default.prototype.options = {
-    iconSize: [(6*value),(10*value)]
-    // ...etc, with all the L.Icon desired/needed options.
-}
-    L.marker([lat,lon], {
-      rotationAngle: degrees,
-    //  iconSize: [(0.6*value),value]
-    }).addTo(map);
+    // console.log(obj);
+    // console.log(degrees);
+    // console.log(lon);
+    // console.log(lat);
+    // console.log(value);
+    // L.Icon.Default.prototype.options = {
+    // iconSize: [(6*value),(10*value)]
+    // };
+
+
+    var myIcon = L.icon({
+      iconUrl:'lib/leaflet/images/marker-icon-2x.png',
+  		iconSize: [(2*value),(3*value)],
+  		iconAnchor:  [value,(3*value)],
+  		popupAnchor: [1, -34],
+  		tooltipAnchor: [16, -28],
+      });
+    //console.log("blam");
+    //if (degrees == 360){
+      L.marker([lat,lon], {
+        rotationAngle: degrees,
+        icon: myIcon
+      }).addTo(map);
+    //}
+
   };
 
 //   L.marker([45, -89], {

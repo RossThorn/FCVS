@@ -1,8 +1,14 @@
+body {
+  margin: 0px;
+  padding: 0px;
+}
 #mapid {
-    width: 65%;
+    width: 100%;
     min-width: 800px;
     display: inline-block;
     float: left;
+    padding: 0px;
+    margin: 0px;
 }
 
 .header{
