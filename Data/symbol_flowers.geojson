@@ -17,7 +17,7 @@
             "times": 4,
             "arr": 0,
             "value": 10,
-            "category": "a",
+            "category": "Hemlock",
             "degrees": 360
          }
       },
@@ -37,7 +37,7 @@
             "times": 4,
             "arr": 0,
             "value": 5,
-            "category": "b",
+            "category": "Spruce",
             "degrees": 90
          }
       },
@@ -57,7 +57,7 @@
             "times": 4,
             "arr": 0,
             "value": 15,
-            "category": "c",
+            "category": "Oak",
             "degrees": 180
          }
       },
@@ -77,7 +77,7 @@
             "times": 4,
             "arr": 0,
             "value": 20,
-            "category": "d",
+            "category": "Maple",
             "degrees": 270
          }
       },
@@ -97,7 +97,7 @@
             "times": 4,
             "arr": 0,
             "value": 20,
-            "category": "a",
+            "category": "Hemlock",
             "degrees": 360
          }
       },
@@ -117,7 +117,7 @@
             "times": 4,
             "arr": 0,
             "value": 5,
-            "category": "b",
+            "category": "Spruce",
             "degrees": 90
          }
       },
@@ -137,7 +137,7 @@
             "times": 4,
             "arr": 0,
             "value": 10,
-            "category": "c",
+            "category": "Oak",
             "degrees": 180
          }
       },
@@ -157,7 +157,7 @@
             "times": 4,
             "arr": 0,
             "value": 15,
-            "category": "d",
+            "category": "Maple",
             "degrees": 270
          }
       },
@@ -177,7 +177,7 @@
             "times": 4,
             "arr": 0,
             "value": 5,
-            "category": "a",
+            "category": "Hemlock",
             "degrees": 360
          }
       },
@@ -197,7 +197,7 @@
             "times": 4,
             "arr": 0,
             "value": 15,
-            "category": "b",
+            "category": "Spruce",
             "degrees": 90
          }
       },
@@ -217,7 +217,7 @@
             "times": 4,
             "arr": 0,
             "value": 20,
-            "category": "c",
+            "category": "Oak",
             "degrees": 180
          }
       },
@@ -237,7 +237,7 @@
             "times": 4,
             "arr": 0,
             "value": 10,
-            "category": "d",
+            "category": "Maple",
             "degrees": 270
          }
       },
@@ -257,7 +257,7 @@
             "times": 4,
             "arr": 0,
             "value": 15,
-            "category": "a",
+            "category": "Hemlock",
             "degrees": 360
          }
       },
@@ -277,7 +277,7 @@
             "times": 4,
             "arr": 0,
             "value": 20,
-            "category": "b",
+            "category": "Spruce",
             "degrees": 90
          }
       },
@@ -297,7 +297,7 @@
             "times": 4,
             "arr": 0,
             "value": 10,
-            "category": "c",
+            "category": "Oak",
             "degrees": 180
          }
       },
@@ -317,7 +317,7 @@
             "times": 4,
             "arr": 0,
             "value": 5,
-            "category": "d",
+            "category": "Maple",
             "degrees": 270
          }
       }

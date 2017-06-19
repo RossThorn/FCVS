@@ -29,9 +29,14 @@ body {
 }
 
 .leaflet-control{
-  opacity:0.3;
+  opacity:0.7;
 }
 
 .leaflet-marker-icon{
   transform:rotate(90);
+}
+
+
+#default {
+  color: #bebebe;
 }

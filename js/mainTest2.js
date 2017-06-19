@@ -8,19 +8,18 @@ function createMap(){
 
     //create the map
     var map = L.map('mapid', {
-        center: [45, -90],
-        zoom: 7,
-        maxBounds: bounds,
+        center: [46, -91],
+        zoom: 6,
+        //maxBounds: bounds,
         maxBoundsViscosity:.7,
-        minZoom: 6
+        minZoom: 4
     });
 
 
     //add base tilelayer
     L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
       	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">Carto</a>',
-      	subdomains: 'abcd',
-        minZoom:2
+      	subdomains: 'abcd'
     }).addTo(map);
 
 
@@ -56,7 +55,7 @@ function getData(map){
             //L.geoJSON(response).addTo(map);
 
             //call function to create symbols
-            createSymbols(response, map);
+            //createSymbols(response, map);
 
             // //call function to create sequence controls
             // createSequenceControls(map, attributes);
@@ -69,7 +68,7 @@ function getData(map){
         }
     });
 
-    $.ajax("http://apidev.neotomadb.org/v1/data/pollen?taxonname=sequoia", {
+    $.ajax("http://apidev.neotomadb.org/v1/data/pollen?taxonname=picea", {
         dataType: "json",
         success: function(response){
           console.log(response);
@@ -83,68 +82,74 @@ function getData(map){
 
 //Add proportional markers for each point in data
 function createSymbols(data, map){
-  var points = data.features
+  //console.log(data.data);
+  var points = data.data
+  //console.log(points[0].LatitudeNorth);
   // console.log(data.features);
   // console.log(data.features[0].properties.degrees)
+  var counter = 0;
   for (var i = 0, l = points.length; i < l; i++){
     // console.log("fired");
-    var obj = data.features[i];
-    var lon = obj.geometry.coordinates[1];
-    var lat = obj.geometry.coordinates[0];
-    var degrees = obj.properties.degrees;
-    var value = obj.properties.value;
+    var obj = points[i];
+    var lon = ((obj.LongitudeEast) + (obj.LongitudeWest))/2;
+    var lat = ((obj.LatitudeNorth) + (obj.LatitudeSouth))/2;
+    // console.log(lon);
+    // console.log(lat);
+    //redo this for Sequoia
+    //var degrees = obj.properties.degrees;
+    var value = obj.Value;
 
 
     var myIcon = L.icon({
       iconUrl:'lib/leaflet/images/LeafIcon.png',
-  		iconSize: [(2*value),(3*value)],
-  		iconAnchor:  [(value),(3*value)],
+  		iconSize: [(0.2*value),(0.3*value)],
+  		iconAnchor:  [(0.1*value),(0.3*value)],
   		popupAnchor: [1, -34],
   		tooltipAnchor: [16, -28],
       });
     //console.log("blam");
-    //if (degrees == 360){
+    -89.8022,43.0458,-89.228,45.7484
+    if (lat < 45.7484 && lat > 43.0458 && lon < -89.228 && lon > -89.8022){
+      console.log(obj);
     var marker = L.marker([lat,lon], {
-        rotationAngle: degrees,
+        //rotationAngle: degrees,
         icon: myIcon
       }).addTo(map);
-    //}
+      counter++;
 
-    var popupContent = "<p><b>Taxon:</b> " + obj.properties.category + "</p>";
+      //original popupContent changed to popupContent variable
+         var popupContent = "<p><b>Taxon:</b> " + obj.TaxonName + "</p>";
 
-    //add formatted attribute to popup content string
-    //var year = attribute.split("_")[1];
-    popupContent += "<p><b>% abundance:</b> <br>" + (value) + "%</p>";
-    //console.log("yep");
+         //add formatted attribute to popup content string
+         //var year = attribute.split("_")[1];
+         popupContent += "<p><b>% abundance:</b> <br>" + Math.round(value/(obj.UPHE+obj.VACR)) + "</p>";
+         console.log("yep");
 
-    marker.bindPopup(popupContent)
+         marker.bindPopup(popupContent)
 
-      // //original popupContent changed to popupContent variable
-      //
-      // if (obj.properties)
-      //    var popupContent = "<p><b>Taxon:</b> " + feature.properties.Country + "</p>";
-      //
-      //    //add formatted attribute to popup content string
-      //    var year = attribute.split("_")[1];
-      //    popupContent += "<p><b>CO2 emissions in " + year + " (kt):</b> <br>" + Math.round(feature.properties[attribute]) + "</p>";
-      //
-      //    //bind the popup to the circle marker
-      //    layer.bindPopup(popupContent, {
-      //        offset: new L.Point(0,-options.radius),
-      //        closeButton: false
-      //    });
-      //    //event listeners to open popup on hover
-      //    layer.on({
-      //        mouseover: function(){
-      //            this.openPopup();
-      //        },
-      //        mouseout: function(){
-      //            this.closePopup();
-      //        },
-      //    });
+        //  //bind the popup to the circle marker
+        //  marker.bindPopup(popupContent, {
+        //      offset: new L.Point(0,-options.radius),
+        //      closeButton: false
+        //  });
+        //  console.log("uh")
+        //  //event listeners to open popup on hover
+        //  marker.on({
+        //      mouseover: function(){
+        //          this.openPopup();
+        //      },
+        //      mouseout: function(){
+        //          this.closePopup();
+        //      },
+        //  });
+    }
+
+
+
 
 
   };
+  console.log(counter);
 };
 
 ////////////////////////////////////////////////////////////////////////////////
