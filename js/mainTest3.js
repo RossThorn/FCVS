@@ -1,3 +1,7 @@
+(function(){
+
+var ageBin = [];
+var ageCounter = 0;
 
 function createMap(){
 
@@ -8,8 +12,8 @@ function createMap(){
 
     //create the map
     var map = L.map('mapid', {
-        center: [46, -91],
-        zoom: 6,
+        center: [46, -94],
+        zoom: 7,
         //maxBounds: bounds,
         maxBoundsViscosity:.7,
         minZoom: 4
@@ -69,7 +73,7 @@ function createMap(){
 var legend1 = L.control({position: 'topright'});
 legend1.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend');
-    div.innerHTML = '<select><option selected="selected">Spruce</option><option>Oak</option><option>Maple</option><option>Pine</option><option>Hemlock</option><option>Birch</option></select>';
+    div.innerHTML = '<select id="legend1" onchange="selectTaxon(this)"><option selected="selected" value="Spruce">Spruce</option><option value="Oak">Oak</option><option value="Maple">Maple</option><option value="Pine">Pine</option><option value="Hemlock">Hemlock</option><option value="Birch">Birch</option></select>';
     div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
     return div;
 };
@@ -79,7 +83,7 @@ legend1.addTo(map);
 var legend2 = L.control({position: 'topright'});
 legend2.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend');
-    div.innerHTML = '<select><option>Spruce</option><option selected="selected">Oak</option><option>Maple</option><option>Pine</option><option>Hemlock</option><option>Birch</option></select>';
+    div.innerHTML = '<select id="legend2" onchange="selectTaxon(this)"><option value="Spruce">Spruce</option><option selected="selected" value="Oak">Oak</option><option value="Maple">Maple</option><option value="Pine">Pine</option><option value="Hemlock">Hemlock</option><option value="Birch">Birch</option></select>';
     div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
     return div;
 };
@@ -88,7 +92,7 @@ legend2.addTo(map);
 var legend3 = L.control({position: 'topright'});
 legend3.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend');
-    div.innerHTML = '<select><option>Spruce</option><option>Oak</option><option selected="selected">Maple</option><option>Pine</option><option>Hemlock</option><option>Birch</option></select>';
+    div.innerHTML = '<select id="legend3" onchange="selectTaxon(this)"><option value="Spruce">Spruce</option><option value="Oak">Oak</option><option selected="selected" value="Maple">Maple</option><option value="Pine">Pine</option><option value="Hemlock">Hemlock</option><option value="Birch">Birch</option></select>';
     div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
     return div;
 };
@@ -97,7 +101,7 @@ legend3.addTo(map);
 var legend4 = L.control({position: 'topright'});
 legend4.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend');
-    div.innerHTML = '<select><option>Spruce</option><option>Oak</option><option>Maple</option><option selected="selected">Pine</option><option>Hemlock</option><option>Birch</option></select>';
+    div.innerHTML = '<select id="legend4" onchange="selectTaxon(this)"><option value="Spruce">Spruce</option><option value="Oak">Oak</option><option value="Maple">Maple</option><option selected="selected" value="Pine">Pine</option><option value="Hemlock">Hemlock</option><option value="Birch">Birch</option></select>';
     div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
     return div;
 };
@@ -106,13 +110,19 @@ legend4.addTo(map);
 
 ////////////////////////////////////////////////////////////////////////////////
 
+function selectTaxon(legend){
+  var taxon = document.getElementById(legend.id).value;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
 //calls data to be used in petal plots
 function getDatasets(map){
     //load the data
-    
+
     //ajax call that retrieves data based on taxon name
     //$.ajax("http://apidev.neotomadb.org/v1/data/pollen?taxonname=picea", {
-      $.ajax("http://api.neotomadb.org/v1/data/datasets?datasettype=pollen", {
+      $.ajax("data/MinnesotaPollenSites.json", {
         dataType: "json",
         success: function(response){
           //console.log(response);
@@ -126,21 +136,94 @@ function getDatasets(map){
 ////////////////////////////////////////////////////////////////////////////////
 
 function getSites(datasets,map){
-  console.log(datasets.data);
-  var datasetArray = datasets.data;
+console.log(datasets);
+  var datasetArray = datasets.sites;
+
+
   console.log(datasetArray);
+  //console.log(datasetArray.length);
+  // looping through to find every dataset in each site
   for (var i = 0, l = datasetArray.length; i < l; i++){
-    console.log(datasetArray[i]);
-    // $.ajax("http://api.neotomadb.org/v1/data/datasets?datasettype=pollen", {
-    //   dataType: "json",
-    //   success: function(response){
-    //     //console.log(response);
-    //     getSites(response,map);
-    //     //createSymbols(response,map);
-    //     }
-    //     });
-    //console.log("meow");
-  };
+    //console.log(datasetArray[i].Datasets);
+    var datasets = datasetArray[i].Datasets;
+    // looping through each individual dataset
+
+    //a for loop to make an ajax call for each dataset based on the dataset ID (54 total in this example)
+    for (var set = 0, len = datasets.length; set < len; set++){
+        var obj = datasets[set];
+        //console.log(obj);
+        var dataID = obj.DatasetID;
+        //rconsole.log(dataID);
+
+        $.ajax("http://api.neotomadb.org/v1/data/downloads/"+dataID, {
+         dataType: "json",
+         success: function(response){
+           //console.log(response);
+           getSamples(response,map);
+           //createSymbols(response,map);
+           }
+           });
+
+    }
+
+
+          };
+
+    //console.log(ageBin);
+  //console.log("done");
+  //console.log(counter2);
+
+};
+
+
+////////////////////////////////////////////////////////////////////////////////
+
+function getSamples(dataset, map){
+    //console.log(dataset);
+
+    var datasetData = dataset.data;
+    //console.log(datasetData);
+    var count = 0;
+    //console.log(datasetData);
+    for (var i = 0, l = datasetData.length; i < l; i++){
+
+      // variable for array of all samples in a particular dataset
+      var core = datasetData[i].Samples;
+      console.log(core);
+
+      for (var level = 0, len = core.length; level < len; level++){
+        ageCounter++;
+        var obj = core[level];
+        var depth = obj.AnalysisUnitDepth;
+        var samples = obj.SampleData;
+        var sampleAge = obj.SampleAges[0].Age
+
+        //pushes all ages of samples into the bin. Total of 2511 instances.
+        ageBin.push(sampleAge);
+        if (ageCounter > 2510){
+
+          var date = new Date();
+          var currentYear = date.getFullYear();
+
+          console.log(ageBin);
+          //ages all measured relative to 1950. Thus negative numbers are younger than 1950.
+          var min = Math.min.apply(null, ageBin),
+              max = Math.max.apply(null, ageBin);
+
+          //numbers corrected for current year. Unsure if this will work right now. Probably not as I need to call things based on their cataloged year.
+          var diffCorrect = currentYear - 1950;
+          var range = max - min;
+          var maxCorrect = max + diffCorrect;
+          var minCorrect = min + diffCorrect;
+
+        };
+        //console.log(ageBin);
+        //console.log(depth);
+        //console.log(samples);
+      };
+
+    };
+
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -188,7 +271,7 @@ function createSymbols(data, map){
          //add formatted attribute to popup content string
          //var year = attribute.split("_")[1];
          popupContent += "<p><b>% abundance:</b> <br>" + Math.round(value/(obj.UPHE+obj.VACR)) + "</p>";
-         console.log("yep");
+         //console.log("yep");
 
          marker.bindPopup(popupContent)
 
@@ -214,7 +297,7 @@ function createSymbols(data, map){
 
 
   };
-  console.log(counter);
+  //console.log(counter);
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -243,6 +326,5 @@ function createSymbols(data, map){
 //  };
 
  ////////////////////////////////////////////////////////////////////////////////
-
-
 $(document).ready(createMap);
+})();
