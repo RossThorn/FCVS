@@ -200,6 +200,9 @@ function getSamples(dataset, map){
 
         //pushes all ages of samples into the bin. Total of 2511 instances.
         ageBin.push(sampleAge);
+
+        // if statement triggers once all ages are accounted for. Need a way of doing this without knowing the call since 2510 is used
+        // with the knowledge of how many separate ages are being drawn.
         if (ageCounter > 2510){
 
           var date = new Date();
@@ -211,10 +214,19 @@ function getSamples(dataset, map){
               max = Math.max.apply(null, ageBin);
 
           //numbers corrected for current year. Unsure if this will work right now. Probably not as I need to call things based on their cataloged year.
-          var diffCorrect = currentYear - 1950;
+          // will need to do this sort of correction for temporal filter, but not for searching data.
+
+          //var diffCorrect = currentYear - 1950;
           var range = max - min;
-          var maxCorrect = max + diffCorrect;
-          var minCorrect = min + diffCorrect;
+          //console.log(range);
+
+          //define the number of classes based on each class width being 1000 years.
+          //rounded up to get everything. Equal interval classifications to bin by year
+          var classNum = Math.ceil(range/1000);
+
+          //console.log(classNum);
+          // var maxCorrect = max + diffCorrect;
+          // var minCorrect = min + diffCorrect;
 
         };
         //console.log(ageBin);
@@ -326,5 +338,9 @@ function createSymbols(data, map){
 //  };
 
  ////////////////////////////////////////////////////////////////////////////////
+
+ function updateSymbols(){
+   
+ };
 $(document).ready(createMap);
 })();
