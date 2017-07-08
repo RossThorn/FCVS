@@ -3,6 +3,14 @@
 var ageBin = [];
 var ageCounter = 0;
 
+var myIcon = L.icon({
+  iconUrl:'lib/leaflet/images/LeafIcon.png',
+  iconSize: [20,30],
+  iconAnchor:  [10,30],
+  popupAnchor: [1, -34],
+  tooltipAnchor: [16, -28],
+  });
+
 function createMap(){
 
     // set map bounds
@@ -33,7 +41,9 @@ function createMap(){
 
         //call getData function
 //         getCountryShapeData(map);
+
         getDatasets(map);
+        createControls(map);
 
         //window resize function so map takes up entirety of screen on resize
         $(window).on("resize", function () { $("#mapid").height($(window).height()); map.invalidateSize(); }).trigger("resize");
@@ -43,82 +53,132 @@ function createMap(){
     }).resize();
 });
 
+};
 
-////////////////////Sample Taxa Input checkboxes////////////////////////////////
-
-// // create the control
-// var command = L.control({position: 'topright'});
-//
-// command.onAdd = function (map) {
-//     var div = L.DomUtil.create('div', 'command');
-//
-//     div.innerHTML = '<form><input id="taxa" type="checkbox"/>Spruce</form><form><input id="taxa" type="checkbox"/>Oak</form>';
-//     return div;
-// };
-//
-// command.addTo(map);
-//
-//
-// // add the event handler
-// function handleCommand() {
-//    alert("Clicked, checked = " + this.checked);
-// }
-//
-// document.getElementById ("command").addEventListener ("click", handleCommand, false);
-//
 
 
 /////////////////////////Taxa Dropdown Menu////////////////////////////////////
 
-var legend1 = L.control({position: 'topright'});
-legend1.onAdd = function (map) {
+// creates taxa dropdown to change taxa that is being displayed. Need to add option for more
+// and less taxa and a cap for the maximum amount you can have (probably around 6).
+
+function createControls(map){
+
+var taxon1 = L.control({position: 'topright'});
+taxon1.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend');
-    div.innerHTML = '<select id="legend1" onchange="selectTaxon(this)"><option selected="selected" value="Spruce">Spruce</option><option value="Oak">Oak</option><option value="Maple">Maple</option><option value="Pine">Pine</option><option value="Hemlock">Hemlock</option><option value="Birch">Birch</option></select>';
+    div.innerHTML = '<select id="taxon1" onchange="selectTaxon(this)">'+
+    '<option selected="selected" value="Spruce">Spruce</option>'+
+    '<option value="Oak">Oak</option>'+
+    '<option value="Maple">Maple</option>'+
+    '<option value="Pine">Pine</option>'+
+    '<option value="Hemlock">Hemlock</option>'+
+    '<option value="Birch">Birch</option></select>';
     div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
     return div;
 };
 
-legend1.addTo(map);
+taxon1.addTo(map);
 
-var legend2 = L.control({position: 'topright'});
-legend2.onAdd = function (map) {
+var taxon2 = L.control({position: 'topright'});
+taxon2.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend');
-    div.innerHTML = '<select id="legend2" onchange="selectTaxon(this)"><option value="Spruce">Spruce</option><option selected="selected" value="Oak">Oak</option><option value="Maple">Maple</option><option value="Pine">Pine</option><option value="Hemlock">Hemlock</option><option value="Birch">Birch</option></select>';
+    div.innerHTML = '<select id="taxon2" onchange="selectTaxon(this)">'+
+    '<option value="Spruce">Spruce</option>'+
+    '<option selected="selected" value="Oak">Oak</option>'+
+    '<option value="Maple">Maple</option>'+
+    '<option value="Pine">Pine</option>'+
+    '<option value="Hemlock">Hemlock</option>'+
+    '<option value="Birch">Birch</option></select>';
     div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
     return div;
 };
-legend2.addTo(map);
+taxon2.addTo(map);
 
-var legend3 = L.control({position: 'topright'});
-legend3.onAdd = function (map) {
+var taxon3 = L.control({position: 'topright'});
+taxon3.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend');
-    div.innerHTML = '<select id="legend3" onchange="selectTaxon(this)"><option value="Spruce">Spruce</option><option value="Oak">Oak</option><option selected="selected" value="Maple">Maple</option><option value="Pine">Pine</option><option value="Hemlock">Hemlock</option><option value="Birch">Birch</option></select>';
+    div.innerHTML = '<select id="taxon3" onchange="selectTaxon(this)">'+
+    '<option value="Spruce">Spruce</option>'+
+    '<option value="Oak">Oak</option>'+
+    '<option selected="selected" value="Maple">Maple</option>'+
+    '<option value="Pine">Pine</option>'+
+    '<option value="Hemlock">Hemlock</option>'+
+    '<option value="Birch">Birch</option></select>';
     div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
     return div;
 };
-legend3.addTo(map);
+taxon3.addTo(map);
 
-var legend4 = L.control({position: 'topright'});
-legend4.onAdd = function (map) {
+var taxon4 = L.control({position: 'topright'});
+taxon4.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend');
-    div.innerHTML = '<select id="legend4" onchange="selectTaxon(this)"><option value="Spruce">Spruce</option><option value="Oak">Oak</option><option value="Maple">Maple</option><option selected="selected" value="Pine">Pine</option><option value="Hemlock">Hemlock</option><option value="Birch">Birch</option></select>';
+    div.innerHTML = '<select id="taxon4" onchange="selectTaxon(this)">'+
+    '<option value="Spruce">Spruce</option>'+
+    '<option value="Oak">Oak</option>'+
+    '<option value="Maple">Maple</option>'+
+    '<option selected="selected" value="Pine">Pine</option>'+
+    '<option value="Hemlock">Hemlock</option>'+
+    '<option value="Birch">Birch</option></select>';
     div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
     return div;
 };
-legend4.addTo(map);
- };
+taxon4.addTo(map);
+
+
+// create the temporal selector. Eventually will be a slider
+var tempLegend = L.control({position: 'topleft'});
+
+tempLegend.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'leaflet-control-layers-selector');
+
+    div.innerHTML = '<form><input id="ybp1000" type="radio" checked="true" name="temporal"/>0-1000 YBP</input>'+
+    '<br><input id="ybp2000" type="radio" name="temporal"/>1001-2000 YBP</input></form>';
+    return div;
+};
+
+tempLegend.addTo(map);
+
+
+document.getElementById ("ybp1000").addEventListener ("click", tempChange, false);
+document.getElementById ("ybp2000").addEventListener ("click", tempChange, false);
+
+};
+
+
 
 ////////////////////////////////////////////////////////////////////////////////
 
+// function for changing and retrieving the value of the inner taxa to be used in
+// changing the representation.
 function selectTaxon(legend){
-  var taxon = document.getElementById(legend.id).value;
-}
+  //var taxon = document.getElementById(legend.id).value;
+  console.log("yo");
+};
 
+
+////////////////////////////////////////////////////////////////////////////////
+
+
+// add the event handler
+function tempChange() {
+   //alert("Clicked, checked = " + this.checked);
+   var id = this.id;
+   if (id == "ybp1000"){
+     updateSymbols(id);
+
+
+   }
+   else if (id == "ybp2000"){
+     updateSymbols(id);
+
+   };
+};
 ////////////////////////////////////////////////////////////////////////////////
 
 //calls data to be used in petal plots
 function getDatasets(map){
-    //load the data
+
 
     //ajax call that retrieves data based on taxon name
     //$.ajax("http://apidev.neotomadb.org/v1/data/pollen?taxonname=picea", {
@@ -136,25 +196,27 @@ function getDatasets(map){
 ////////////////////////////////////////////////////////////////////////////////
 
 function getSites(datasets,map){
-console.log(datasets);
+//console.log(datasets);
   var datasetArray = datasets.sites;
 
 
   console.log(datasetArray);
   //console.log(datasetArray.length);
+
   // looping through to find every dataset in each site
   for (var i = 0, l = datasetArray.length; i < l; i++){
     //console.log(datasetArray[i].Datasets);
     var datasets = datasetArray[i].Datasets;
-    // looping through each individual dataset
 
     //a for loop to make an ajax call for each dataset based on the dataset ID (54 total in this example)
     for (var set = 0, len = datasets.length; set < len; set++){
         var obj = datasets[set];
         //console.log(obj);
         var dataID = obj.DatasetID;
-        //rconsole.log(dataID);
+        //console.log(dataID);
 
+        // ajax call based on datasetID that calls getSamples to retrieve data from each site
+        // downloads are heavy and slow.
         $.ajax("http://api.neotomadb.org/v1/data/downloads/"+dataID, {
          dataType: "json",
          success: function(response){
@@ -164,12 +226,18 @@ console.log(datasets);
            }
            });
 
+        // attempt a d3 queue in the future to load them all at the same time then use a loading icon.
+        // the queue may be defined outside of the for loop. (see https://github.com/d3/d3-queue)
+
+        // d3.queue()
+        // .defer(d3.json, function())
+
     }
 
 
           };
 
-    //console.log(ageBin);
+  //console.log(ageBin);
   //console.log("done");
   //console.log(counter2);
 
@@ -181,30 +249,57 @@ console.log(datasets);
 function getSamples(dataset, map){
     //console.log(dataset);
 
+    // variable assigned to dataset (which contains site location, core, sample, and age data)
     var datasetData = dataset.data;
     //console.log(datasetData);
+    // a counter
     var count = 0;
     //console.log(datasetData);
+    // a loop to go through each object in the dataset array (which should only be one)
     for (var i = 0, l = datasetData.length; i < l; i++){
 
       // variable for array of all samples in a particular dataset
       var core = datasetData[i].Samples;
-      console.log(core);
+      // variable to access site location data
+      var site = datasetData[i].Site;
+      // variables for the site's coordinates
+      var siteLat = site.Latitude;
+      var siteLon = site.Longitude;
 
+      // temporary icons placed in the site locations. Need to do custom markers here
+      // consider offering checkboxes with two years only rather than trying to do slider for now.
+      var siteLoc = L.marker([siteLat,siteLon], {icon:myIcon}).addTo(map);
+      //console.log(core);
+
+      // loop to go through each level record in the core.
       for (var level = 0, len = core.length; level < len; level++){
+        // incrementing the age counter.
         ageCounter++;
+        // variable for each level in the core
         var obj = core[level];
+        // variable for the depth of each level
         var depth = obj.AnalysisUnitDepth;
+        // variable for array containing all samples found at a particular level in the core
         var samples = obj.SampleData;
-        var sampleAge = obj.SampleAges[0].Age
+
+        // variable for the age of level. 0 is used as sometimes there are multiple ages, and this is quick.
+        // need to, however, ensure we are using the same aging for all (if possible)
+        //gets the most recent addition in age of the sample (think about calibrated vs non-calibrated radiocarbon dates)
+        var sampleAge = obj.SampleAges[obj.SampleAges.length-1].Age
+
+
+      //  if sampleAge
 
         //pushes all ages of samples into the bin. Total of 2511 instances.
+        //round each year to the
         ageBin.push(sampleAge);
 
         // if statement triggers once all ages are accounted for. Need a way of doing this without knowing the call since 2510 is used
         // with the knowledge of how many separate ages are being drawn.
+        // postponing slider for now on age.
         if (ageCounter > 2510){
 
+          // date for current year. just wanted the option in case I want to do YBP with an accurate present date.
           var date = new Date();
           var currentYear = date.getFullYear();
 
@@ -240,7 +335,9 @@ function getSamples(dataset, map){
 
 ////////////////////////////////////////////////////////////////////////////////
 
-//Add proportional markers for each point in data
+// ONLY WORKS WITH THE OLD JSON DATA NOT THE CURRENT DATA CALLS. NEEDS TO BE REDONE.
+
+//Add proportional markers for each point in data.
 function createSymbols(data, map){
   //console.log(data.data);
   var points = data.data
@@ -251,6 +348,8 @@ function createSymbols(data, map){
   for (var i = 0, l = points.length; i < l; i++){
     // console.log("fired");
     var obj = points[i];
+
+    //can be omitted due to access to each site's lon and lat values
     var lon = ((obj.LongitudeEast) + (obj.LongitudeWest))/2;
     var lat = ((obj.LatitudeNorth) + (obj.LatitudeSouth))/2;
     // console.log(lon);
@@ -339,8 +438,9 @@ function createSymbols(data, map){
 
  ////////////////////////////////////////////////////////////////////////////////
 
- function updateSymbols(){
-   
+ function updateSymbols(id){
+   console.log(id);
  };
+
 $(document).ready(createMap);
 })();
