@@ -10,11 +10,10 @@ var ageBin = [];
 var markers = new Array();
 var ageCounter = 0;
 var map;
-var boxArr;
 
 var myIcon = L.icon({
-  iconUrl:'lib/leaflet/images/LeafIcon_dkblu_lg.png',
-  iconSize: [20,40],
+  iconUrl:'lib/leaflet/images/LeafIcon.png',
+  iconSize: [20,30],
   iconAnchor:  [10,30],
   popupAnchor: [1, -34],
   tooltipAnchor: [16, -28],
@@ -36,7 +35,7 @@ function createMap(){
         minZoom: 7
     });
 
-    //console.log(map);
+    console.log(map);
 
     //add base tilelayer
     L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
@@ -148,7 +147,7 @@ var box1 = document.getElementById("taxon1").id;
 var box2 = document.getElementById("taxon2").id;
 var box3 = document.getElementById("taxon3").id;
 var box4 = document.getElementById("taxon4").id;
-boxArr = [box1,box2,box3,box4];
+var boxArr = [box1,box2,box3,box4];
 
 // function to retrieve datasets is here so box IDs can be passed
 // getDatasets(map,boxArr);
@@ -162,7 +161,7 @@ boxArr = [box1,box2,box3,box4];
 // temporal change used to call updateSymbols need to correct parameters
 function tempChange() {
    var id = this.id;
-   //console.log(map);
+   console.log(map);
    if (id == "ybp1000"){
      meow();
      //updateSymbols(id);
@@ -177,21 +176,29 @@ function tempChange() {
 ////////////////////////////////////////////////////////////////////////////////
 
 //calls data to be used in petal plots
+// function getDatasets(map,boxArr){
+//
+//
+//     // ajax call that retrieves data based on taxon name. Represents a json call based
+//     // on Flyover Country's polygon json calls defined by user path.
+//     //$.ajax("http://apidev.neotomadb.org/v1/data/pollen?taxonname=picea", {
+//       $.ajax("data/MinnesotaPollenSites.json", {
+//         dataType: "json",
+//         success: function(response){
+//           //console.log(response);
+//           getSites(response,map,boxArr);
+//           //createSymbols(response,map);
+//           }
+//           });
+//
+// };
 
-function getDatasets(map,boxArr){
-
-
-     // ajax call that retrieves data based on taxon name. Represents a json call based
-     // on Flyover Country's polygon json calls defined by user path.
-  var taxonIds = ["Pinus","Picea"];
-  var ageChunks = [[0,1000],[1000,2000]];
+var taxonIds = ["Pinus","Picea"];
+var ageChunks = [[0,1000],[1000,2000]];
   for (var i = 0; i < taxonIds.length; i++) {
     for (var j = 0; j < ageChunks.length; j++) {
       console.log(taxonIds[i]);
-      var urlBaseMN = 'http://apidev.neotomadb.org/v1/data/pollen?wkt=POLYGON'+'
-      ((-97.294921875%2048.93964118139728,-96.6357421875%2043.3601336603352,-91.20849609375%2043.53560718808973,'+
-      '-93.09814453125%2045.10745410539934,-92.17529296875%2046.69749299744142,-88.79150390625%2047.874907453605935,'+
-      '-93.53759765625%2048.910767192107755,-97.294921875%2048.93964118139728))';
+      var urlBaseMN = 'http://apidev.neotomadb.org/v1/data/pollen?wkt=POLYGON((-97.294921875%2048.93964118139728,-96.6357421875%2043.3601336603352,-91.20849609375%2043.53560718808973,-93.09814453125%2045.10745410539934,-92.17529296875%2046.69749299744142,-88.79150390625%2047.874907453605935,-93.53759765625%2048.910767192107755,-97.294921875%2048.93964118139728))';
       var url = [urlBaseMN, '&taxonname=', taxonIds[i], '&ageold=', ageChunks[j][1], '&ageyoung=', ageChunks[j][0]].join('')
       $.ajax(url, {
         dataType: "json",
@@ -203,11 +210,6 @@ function getDatasets(map,boxArr){
     }
   }
 
-
- };
-
-
-
 ////////////////////////////////////////////////////////////////////////////////
 
 function getSites(datasets,map,boxArr){
@@ -215,7 +217,7 @@ function getSites(datasets,map,boxArr){
   var datasetArray = datasets.sites;
 
 
-  //console.log(boxArr);
+  console.log(boxArr);
   //console.log(datasetArray.length);
 
   // looping through to find every dataset in each site
@@ -297,7 +299,31 @@ function getSamples(dataset, map){
       });
         map.addLayer(marker);
         markers[marker._leaflet_id] = marker;
+      //console.log(markers);
+        //console.log(map._layers);
 
+
+      // a method for trying to get markers all added to a layer that could be removed.
+      // didn't quite work yet. see http://jsfiddle.net/nqDKU/18/ for example
+
+      // var geojsonFeature = {
+      //     "type": "Feature",
+      //         "properties": {},
+      //         "geometry": {
+      //             "type": "Point",
+      //             "coordinates": [siteLat, siteLon]
+      //     }
+      // }
+      // var marker;
+      // L.geoJson(geojsonFeature, {
+      //
+      //     pointToLayer: function(feature, latlng){
+      //         marker = L.marker([siteLat,siteLon], {
+      //           icon: myIcon
+      //         })
+      //         return marker;
+      //     }
+      // }).addTo(map);
 
       // loop to go through each level record in the core.
       for (var level = 0, len = core.length; level < len; level++){
@@ -310,11 +336,13 @@ function getSamples(dataset, map){
         // variable for array containing all samples found at a particular level in the core
         var samples = obj.SampleData;
 
-        // gets the most recent addition in age of the sample, which is the most up to date and accurate dates
-        // (think about calibrated vs non-calibrated radiocarbon dates)
+        // variable for the age of level. 0 is used as sometimes there are multiple ages, and this is quick.
+        // need to, however, ensure we are using the same aging for all (if possible)
+        //gets the most recent addition in age of the sample (think about calibrated vs non-calibrated radiocarbon dates)
         var sampleAge = obj.SampleAges[obj.SampleAges.length-1].Age
 
-        //console.log(core);
+
+      //  if sampleAge
 
         //pushes all ages of samples into the bin. Total of 2511 instances.
         //round each year to the
@@ -329,7 +357,7 @@ function getSamples(dataset, map){
           var date = new Date();
           var currentYear = date.getFullYear();
 
-          //console.log(ageBin);
+          console.log(ageBin);
           //ages all measured relative to 1950. Thus negative numbers are younger than 1950.
           var min = Math.min.apply(null, ageBin),
               max = Math.max.apply(null, ageBin);
@@ -466,13 +494,9 @@ function createSymbols(data, map){
    else if (boxID == "taxon4"){
      var degrees = 270;
    };
-   //console.log(map);
-   //console.log(degrees);
-
-   //if going this route, need to pass degrees so I know which onese to be removed
+   console.log(map);
+   console.log(degrees);
    getAllMarkers();
-
-   //add new code for updating symbols here I think. resizing would take place here or adding new ones.
 
  };
 
@@ -481,7 +505,7 @@ function createSymbols(data, map){
  // experimental extension of the marker addition.
 
  function getAllMarkers() {
-   //console.log("fired");
+   console.log("fired");
    console.log(markers);
 
      var allMarkersObjArray = [];//new Array();
@@ -491,24 +515,12 @@ function createSymbols(data, map){
      $.each(map._layers, function (ml) {
          //console.log(ml)
          //formerly, map._layers[ml].feature
-         if (markers[ml]) {
-             console.log('value in Array!');
+         if (map._layers[ml]) {
              map.removeLayer(map._layers[ml]);
-             // takes too long to do. Need to do the updatesymbols call and just resize current symbols in some way.
-             //getDatasets(map,boxArr);
-        } else {
-            console.log('Not in array');
-        };
+             //need to look at geojson feature part...
+             //allMarkersGeoJsonArray.push(JSON.stringify(this.toGeoJSON()));
 
-
-
-        //  {
-        //      map.removeLayer(map._layers[ml]);
-        //      //need to look at geojson feature part...
-        //      //allMarkersGeoJsonArray.push(JSON.stringify(this.toGeoJSON()));
-        //
-        //  }
-
+         }
      })
 
      console.log(allMarkersObjArray);
