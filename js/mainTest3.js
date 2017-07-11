@@ -9,6 +9,7 @@ var ageBin = [];
 // array for markers to be placed into and removed from. May need to be outside this function.
 var markers = new Array();
 var ageCounter = 0;
+var map;
 
 var myIcon = L.icon({
   iconUrl:'lib/leaflet/images/LeafIcon.png',
@@ -26,13 +27,15 @@ function createMap(){
     bounds = L.latLngBounds(southWest, northEast);
 
     //create the map
-    var map = L.map('mapid', {
+     map = L.map('mapid', {
         center: [46, -94],
         zoom: 7,
         //maxBounds: bounds,
         maxBoundsViscosity:.7,
         minZoom: 7
     });
+
+    console.log(map);
 
     //add base tilelayer
     L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
@@ -157,7 +160,6 @@ getDatasets(map,boxArr);
 
 // temporal change used to call updateSymbols need to correct parameters
 function tempChange() {
-   var map = document.getElementById('mapid');
    var id = this.id;
    console.log(map);
    if (id == "ybp1000"){
@@ -244,7 +246,7 @@ function getSites(datasets,map,boxArr){
 
 
 ////////////////////////////////////////////////////////////////////////////////
-// Can't remember why I added this, but I like it. Probably to see if a function could call another one or something.
+// function added to easily check if elements are being fired.
 function meow(){
   console.log("meow");
 };
@@ -280,7 +282,9 @@ function getSamples(dataset, map){
       });
         map.addLayer(marker);
         markers[marker._leaflet_id] = marker;
-        console.log(markers);
+      //console.log(markers);
+        //console.log(map._layers);
+
 
       // a method for trying to get markers all added to a layer that could be removed.
       // didn't quite work yet. see http://jsfiddle.net/nqDKU/18/ for example
@@ -368,31 +372,7 @@ function getSamples(dataset, map){
 
 
 ////////////////////////////////////////////////////////////////////////////////
-// experimental extension of the marker addition.
 
-function getAllMarkers(map) {
-  console.log("fired");
-
-    var allMarkersObjArray = [];//new Array();
-    var allMarkersGeoJsonArray = [];//new Array();
-    console.log(map._layers);
-
-    $.each(map._layers, function (ml) {
-        //console.log(map._layers)
-        if (map._layers[ml].feature) {
-
-            allMarkersObjArray.push(this)
-                                    allMarkersGeoJsonArray.push(JSON.stringify(this.toGeoJSON()))
-        }
-    })
-
-    console.log(allMarkersObjArray);
-    alert("total Markers : " + allMarkersGeoJsonArray.length + "\n\n" + allMarkersGeoJsonArray + "\n\n Also see your console for object view of this array" );
-}
-
-
-
-////////////////////////////////////////////////////////////////////////////////
 // add taxon box id (eg. taxon1) for icon rotation and taxa value from that box as arguments.
 // also need different icons based on the box the taxa is selected from (and will be rotated according to that box)
 
@@ -501,11 +481,43 @@ function createSymbols(data, map){
    else if (boxID == "taxon4"){
      var degrees = 270;
    };
-   var map = document.getElementById('mapid');
+   console.log(map);
    console.log(degrees);
-   getAllMarkers(map);
+   getAllMarkers();
 
  };
+
+////////////////////////////////////////////////////////////////////////////////
+
+ // experimental extension of the marker addition.
+
+ function getAllMarkers() {
+   console.log("fired");
+   console.log(markers);
+
+     var allMarkersObjArray = [];//new Array();
+     //var allMarkersGeoJsonArray = [];//new Array();
+     console.log(map._layers);
+
+     $.each(map._layers, function (ml) {
+         //console.log(ml)
+         //formerly, map._layers[ml].feature
+         if (map._layers[ml]) {
+             map.removeLayer(map._layers[ml]);
+             //need to look at geojson feature part...
+             //allMarkersGeoJsonArray.push(JSON.stringify(this.toGeoJSON()));
+
+         }
+     })
+
+     console.log(allMarkersObjArray);
+    // console.log(allMarkersGeoJsonArray);
+    // alert("total Markers : " + allMarkersGeoJsonArray.length + "\n\n" + allMarkersGeoJsonArray + "\n\n Also see your console for object view of this array" );
+ }
+
+
+
+ ////////////////////////////////////////////////////////////////////////////////
 
 $(document).ready(createMap);
 
