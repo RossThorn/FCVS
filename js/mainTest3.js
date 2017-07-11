@@ -151,7 +151,7 @@ var box4 = document.getElementById("taxon4").id;
 boxArr = [box1,box2,box3,box4];
 
 // function to retrieve datasets is here so box IDs can be passed
-// getDatasets(map,boxArr);
+getDatasets(map,boxArr);
 
 };
 
@@ -177,36 +177,22 @@ function tempChange() {
 ////////////////////////////////////////////////////////////////////////////////
 
 //calls data to be used in petal plots
-
 function getDatasets(map,boxArr){
 
 
-     // ajax call that retrieves data based on taxon name. Represents a json call based
-     // on Flyover Country's polygon json calls defined by user path.
-  var taxonIds = ["Pinus","Picea"];
-  var ageChunks = [[0,1000],[1000,2000]];
-  for (var i = 0; i < taxonIds.length; i++) {
-    for (var j = 0; j < ageChunks.length; j++) {
-      console.log(taxonIds[i]);
-      var urlBaseMN = 'http://apidev.neotomadb.org/v1/data/pollen?wkt=POLYGON'+'
-      ((-97.294921875%2048.93964118139728,-96.6357421875%2043.3601336603352,-91.20849609375%2043.53560718808973,'+
-      '-93.09814453125%2045.10745410539934,-92.17529296875%2046.69749299744142,-88.79150390625%2047.874907453605935,'+
-      '-93.53759765625%2048.910767192107755,-97.294921875%2048.93964118139728))';
-      var url = [urlBaseMN, '&taxonname=', taxonIds[i], '&ageold=', ageChunks[j][1], '&ageyoung=', ageChunks[j][0]].join('')
-      $.ajax(url, {
+    // ajax call that retrieves data based on taxon name. Represents a json call based
+    // on Flyover Country's polygon json calls defined by user path.
+    //$.ajax("http://apidev.neotomadb.org/v1/data/pollen?taxonname=picea", {
+      $.ajax("Data/MinnesotaPollenSites.json", {
         dataType: "json",
         success: function(response){
-          //this is where we should bin and stuff
-          createSymbols(response, map);
-        }
-      });
-    }
-  }
+          //console.log(response);
+          getSites(response,map,boxArr);
+          //createSymbols(response,map);
+          }
+          });
 
-
- };
-
-
+};
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -397,6 +383,9 @@ function createSymbols(data, map){
   		tooltipAnchor: [16, -28],
       });
     //console.log("blam");
+    -89.8022,43.0458,-89.228,45.7484
+    if (lat < 45.7484 && lat > 43.0458 && lon < -89.228 && lon > -89.8022){
+      console.log(obj);
 
     var marker = L.marker([lat,lon], {
         //rotationAngle: degrees,
@@ -415,6 +404,7 @@ function createSymbols(data, map){
 
        marker.bindPopup(popupContent)
 
+    }
   };
   //console.log(counter);
 };
