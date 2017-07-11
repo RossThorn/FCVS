@@ -95,13 +95,52 @@ function createSymbols(data, map){
     var value = obj.properties.value;
 
 
-    var myIcon = L.icon({
-      iconUrl:'lib/leaflet/images/LeafIcon.png',
-  		iconSize: [(2*value),(3*value)],
-  		iconAnchor:  [(value),(3*value)],
-  		popupAnchor: [1, -34],
-  		tooltipAnchor: [16, -28],
+    var myIcon_dkblu = L.icon({
+      iconUrl:'lib/leaflet/images/LeafIcon_dkblu_lg.png',
+      iconSize: [(2*value),(4*value)],
+      iconAnchor:  [(value),(4*value)],
+      popupAnchor: [1, -34],
+      tooltipAnchor: [16, -28],
       });
+
+      var myIcon_ltblu = L.icon({
+        iconUrl:'lib/leaflet/images/LeafIcon_ltblu_lg.png',
+        iconSize: [(2*value),(4*value)],
+        iconAnchor:  [(value),(4*value)],
+        popupAnchor: [1, -34],
+        tooltipAnchor: [16, -28],
+        });
+
+      var myIcon_dkgrn = L.icon({
+        iconUrl:'lib/leaflet/images/LeafIcon_dkgrn_lg.png',
+        iconSize: [(2*value),(4*value)],
+        iconAnchor:  [(value),(4*value)],
+        popupAnchor: [1, -34],
+        tooltipAnchor: [16, -28],
+        });
+
+      var myIcon_ltgrn = L.icon({
+        iconUrl:'lib/leaflet/images/LeafIcon_ltgrn_lg.png',
+        iconSize: [(2*value),(4*value)],
+        iconAnchor:  [(value),(4*value)],
+        popupAnchor: [1, -34],
+        tooltipAnchor: [16, -28],
+        });
+
+
+       if (degrees == 360){
+         var myIcon = myIcon_dkblu;
+
+       } else if (degrees == 90){
+         var myIcon = myIcon_ltblu;
+
+       } else if (degrees == 180){
+         var myIcon = myIcon_dkgrn;
+
+       } else if (degrees == 270){
+         var myIcon = myIcon_ltgrn;
+
+       };
     //console.log("blam");
     //if (degrees == 360){
     var marker = L.marker([lat,lon], {
