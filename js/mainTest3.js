@@ -1,6 +1,13 @@
-(function(){
 
+////////////////////////////////////////////////////////////////////////////////
+// commented out to make everything global to be reference by the fmbols function which needs to
+// be global and needs to access other functions.
+//(function(){
+
+// array for the ages to be binned into
 var ageBin = [];
+// array for markers to be placed into and removed from. May need to be outside this function.
+var markers = new Array();
 var ageCounter = 0;
 
 var myIcon = L.icon({
@@ -24,7 +31,7 @@ function createMap(){
         zoom: 7,
         //maxBounds: bounds,
         maxBoundsViscosity:.7,
-        minZoom: 4
+        minZoom: 7
     });
 
     //add base tilelayer
@@ -33,16 +40,6 @@ function createMap(){
       	subdomains: 'abcd'
     }).addTo(map);
 
-
-    // Create necessary panes in correct order
-    // map.createPane("pointsPane");
-    // map.createPane("polygonsPane");
-
-
-        //call getData function
-//         getCountryShapeData(map);
-
-        getDatasets(map);
         createControls(map);
 
         //window resize function so map takes up entirety of screen on resize
@@ -67,7 +64,7 @@ function createControls(map){
 var taxon1 = L.control({position: 'topright'});
 taxon1.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend');
-    div.innerHTML = '<select id="taxon1" onchange="selectTaxon(this)">'+
+    div.innerHTML = '<select id="taxon1" onchange="updateSymbols(this)">'+
     '<option selected="selected" value="Spruce">Spruce</option>'+
     '<option value="Oak">Oak</option>'+
     '<option value="Maple">Maple</option>'+
@@ -83,7 +80,7 @@ taxon1.addTo(map);
 var taxon2 = L.control({position: 'topright'});
 taxon2.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend');
-    div.innerHTML = '<select id="taxon2" onchange="selectTaxon(this)">'+
+    div.innerHTML = '<select id="taxon2" onchange="updateSymbols(this)">'+
     '<option value="Spruce">Spruce</option>'+
     '<option selected="selected" value="Oak">Oak</option>'+
     '<option value="Maple">Maple</option>'+
@@ -98,7 +95,7 @@ taxon2.addTo(map);
 var taxon3 = L.control({position: 'topright'});
 taxon3.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend');
-    div.innerHTML = '<select id="taxon3" onchange="selectTaxon(this)">'+
+    div.innerHTML = '<select id="taxon3" onchange="updateSymbols(this)">'+
     '<option value="Spruce">Spruce</option>'+
     '<option value="Oak">Oak</option>'+
     '<option selected="selected" value="Maple">Maple</option>'+
@@ -113,7 +110,7 @@ taxon3.addTo(map);
 var taxon4 = L.control({position: 'topright'});
 taxon4.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend');
-    div.innerHTML = '<select id="taxon4" onchange="selectTaxon(this)">'+
+    div.innerHTML = '<select id="taxon4" onchange="updateSymbols(this)">'+
     '<option value="Spruce">Spruce</option>'+
     '<option value="Oak">Oak</option>'+
     '<option value="Maple">Maple</option>'+
@@ -143,50 +140,51 @@ tempLegend.addTo(map);
 document.getElementById ("ybp1000").addEventListener ("click", tempChange, false);
 document.getElementById ("ybp2000").addEventListener ("click", tempChange, false);
 
+var box1 = document.getElementById("taxon1").id;
+var box2 = document.getElementById("taxon2").id;
+var box3 = document.getElementById("taxon3").id;
+var box4 = document.getElementById("taxon4").id;
+var boxArr = [box1,box2,box3,box4];
+
+// function to retrieve datasets is here so box IDs can be passed
+getDatasets(map,boxArr);
+
 };
 
 
 
 ////////////////////////////////////////////////////////////////////////////////
 
-// function for changing and retrieving the value of the inner taxa to be used in
-// changing the representation.
-function selectTaxon(legend){
-  //var taxon = document.getElementById(legend.id).value;
-  console.log("yo");
-};
-
-
-////////////////////////////////////////////////////////////////////////////////
-
-
-// add the event handler
+// temporal change used to call updateSymbols need to correct parameters
 function tempChange() {
-   //alert("Clicked, checked = " + this.checked);
+   var map = document.getElementById('mapid');
    var id = this.id;
+   console.log(map);
    if (id == "ybp1000"){
-     updateSymbols(id);
-
-
+     meow();
+     //updateSymbols(id);
    }
    else if (id == "ybp2000"){
-     updateSymbols(id);
-
+     meow();
+     //updateSymbols(id);
    };
+
+   //getDatasets(map);
 };
 ////////////////////////////////////////////////////////////////////////////////
 
 //calls data to be used in petal plots
-function getDatasets(map){
+function getDatasets(map,boxArr){
 
 
-    //ajax call that retrieves data based on taxon name
+    // ajax call that retrieves data based on taxon name. Represents a json call based
+    // on Flyover Country's polygon json calls defined by user path.
     //$.ajax("http://apidev.neotomadb.org/v1/data/pollen?taxonname=picea", {
       $.ajax("data/MinnesotaPollenSites.json", {
         dataType: "json",
         success: function(response){
           //console.log(response);
-          getSites(response,map);
+          getSites(response,map,boxArr);
           //createSymbols(response,map);
           }
           });
@@ -195,18 +193,19 @@ function getDatasets(map){
 
 ////////////////////////////////////////////////////////////////////////////////
 
-function getSites(datasets,map){
+function getSites(datasets,map,boxArr){
 //console.log(datasets);
   var datasetArray = datasets.sites;
 
 
-  console.log(datasetArray);
+  console.log(boxArr);
   //console.log(datasetArray.length);
 
   // looping through to find every dataset in each site
   for (var i = 0, l = datasetArray.length; i < l; i++){
     //console.log(datasetArray[i].Datasets);
     var datasets = datasetArray[i].Datasets;
+
 
     //a for loop to make an ajax call for each dataset based on the dataset ID (54 total in this example)
     for (var set = 0, len = datasets.length; set < len; set++){
@@ -245,15 +244,23 @@ function getSites(datasets,map){
 
 
 ////////////////////////////////////////////////////////////////////////////////
+// Can't remember why I added this, but I like it. Probably to see if a function could call another one or something.
+function meow(){
+  console.log("meow");
+};
+////////////////////////////////////////////////////////////////////////////////
 
+
+// need to pass in taxa and taxon id (for each individual box) to be searched from the ones set in input boxes.
+// add taxon box id (eg. taxon1) for icon rotation and taxa value from that box as arguments.
 function getSamples(dataset, map){
     //console.log(dataset);
 
     // variable assigned to dataset (which contains site location, core, sample, and age data)
     var datasetData = dataset.data;
     //console.log(datasetData);
-    // a counter
-    var count = 0;
+
+
     //console.log(datasetData);
     // a loop to go through each object in the dataset array (which should only be one)
     for (var i = 0, l = datasetData.length; i < l; i++){
@@ -268,8 +275,34 @@ function getSamples(dataset, map){
 
       // temporary icons placed in the site locations. Need to do custom markers here
       // consider offering checkboxes with two years only rather than trying to do slider for now.
-      var siteLoc = L.marker([siteLat,siteLon], {icon:myIcon}).addTo(map);
-      //console.log(core);
+      var marker = L.marker([siteLat,siteLon], {
+        icon:myIcon
+      });
+        map.addLayer(marker);
+        markers[marker._leaflet_id] = marker;
+        console.log(markers);
+
+      // a method for trying to get markers all added to a layer that could be removed.
+      // didn't quite work yet. see http://jsfiddle.net/nqDKU/18/ for example
+
+      // var geojsonFeature = {
+      //     "type": "Feature",
+      //         "properties": {},
+      //         "geometry": {
+      //             "type": "Point",
+      //             "coordinates": [siteLat, siteLon]
+      //     }
+      // }
+      // var marker;
+      // L.geoJson(geojsonFeature, {
+      //
+      //     pointToLayer: function(feature, latlng){
+      //         marker = L.marker([siteLat,siteLon], {
+      //           icon: myIcon
+      //         })
+      //         return marker;
+      //     }
+      // }).addTo(map);
 
       // loop to go through each level record in the core.
       for (var level = 0, len = core.length; level < len; level++){
@@ -333,7 +366,35 @@ function getSamples(dataset, map){
 
 };
 
+
 ////////////////////////////////////////////////////////////////////////////////
+// experimental extension of the marker addition.
+
+function getAllMarkers(map) {
+  console.log("fired");
+
+    var allMarkersObjArray = [];//new Array();
+    var allMarkersGeoJsonArray = [];//new Array();
+    console.log(map._layers);
+
+    $.each(map._layers, function (ml) {
+        //console.log(map._layers)
+        if (map._layers[ml].feature) {
+
+            allMarkersObjArray.push(this)
+                                    allMarkersGeoJsonArray.push(JSON.stringify(this.toGeoJSON()))
+        }
+    })
+
+    console.log(allMarkersObjArray);
+    alert("total Markers : " + allMarkersGeoJsonArray.length + "\n\n" + allMarkersGeoJsonArray + "\n\n Also see your console for object view of this array" );
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// add taxon box id (eg. taxon1) for icon rotation and taxa value from that box as arguments.
+// also need different icons based on the box the taxa is selected from (and will be rotated according to that box)
 
 // ONLY WORKS WITH THE OLD JSON DATA NOT THE CURRENT DATA CALLS. NEEDS TO BE REDONE.
 
@@ -370,43 +431,25 @@ function createSymbols(data, map){
     -89.8022,43.0458,-89.228,45.7484
     if (lat < 45.7484 && lat > 43.0458 && lon < -89.228 && lon > -89.8022){
       console.log(obj);
+
     var marker = L.marker([lat,lon], {
         //rotationAngle: degrees,
         icon: myIcon
       }).addTo(map);
-      counter++;
 
-      //original popupContent changed to popupContent variable
-         var popupContent = "<p><b>Taxon:</b> " + obj.TaxonName + "</p>";
+      //counter++;
 
-         //add formatted attribute to popup content string
-         //var year = attribute.split("_")[1];
-         popupContent += "<p><b>% abundance:</b> <br>" + Math.round(value/(obj.UPHE+obj.VACR)) + "</p>";
-         //console.log("yep");
+       //original popupContent changed to popupContent variable
+       var popupContent = "<p><b>Taxon:</b> " + obj.TaxonName + "</p>";
 
-         marker.bindPopup(popupContent)
+       //add formatted attribute to popup content string
+       //var year = attribute.split("_")[1];
+       popupContent += "<p><b>% abundance:</b> <br>" + Math.round(value/(obj.UPHE+obj.VACR)) + "</p>";
+       //console.log("yep");
 
-        //  //bind the popup to the circle marker
-        //  marker.bindPopup(popupContent, {
-        //      offset: new L.Point(0,-options.radius),
-        //      closeButton: false
-        //  });
-        //  console.log("uh")
-        //  //event listeners to open popup on hover
-        //  marker.on({
-        //      mouseover: function(){
-        //          this.openPopup();
-        //      },
-        //      mouseout: function(){
-        //          this.closePopup();
-        //      },
-        //  });
+       marker.bindPopup(popupContent)
+
     }
-
-
-
-
-
   };
   //console.log(counter);
 };
@@ -437,10 +480,34 @@ function createSymbols(data, map){
 //  };
 
  ////////////////////////////////////////////////////////////////////////////////
+ // function for changing and retrieving the value of the inner taxa to
+ // change the representation.
+ // Must be on the global scale to be called by onchange of the taxon dropdowns.
+ // also must conform to temporal changes, not just changes based on taxon
 
- function updateSymbols(id){
-   console.log(id);
+ function updateSymbols(box){
+   var taxon = document.getElementById(box.id).value;
+   var boxID = box.id;
+
+   if (boxID == "taxon1"){
+     var degrees = 360;
+   }
+   else if (boxID == "taxon2"){
+     var degrees = 90;
+   }
+   else if (boxID == "taxon3"){
+     var degrees = 180;
+   }
+   else if (boxID == "taxon4"){
+     var degrees = 270;
+   };
+   var map = document.getElementById('mapid');
+   console.log(degrees);
+   getAllMarkers(map);
+
  };
 
 $(document).ready(createMap);
-})();
+
+//$(".get-markers").on("click", getAllMarkers);
+//})();

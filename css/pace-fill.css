@@ -1,0 +1,27 @@
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.pace .pace-progress {
+  background-color: rgba(68, 120, 220, 0.19999999999999996);
+  position: fixed;
+  z-index: 1100;
+  top: 0;
+  right: 100%;
+  bottom: 0;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+.pace-done, .pace-running {
+  margin: 0px;
+}
