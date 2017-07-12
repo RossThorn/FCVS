@@ -66,114 +66,115 @@ function createMap(){
 
 function createControls(map){
 
-var taxon1 = L.control({position: 'topright'});
-taxon1.onAdd = function (map) {
-    var div = L.DomUtil.create('div', 'info legend');
-    div.innerHTML = '<select id="taxon1" onchange="updateSymbols(this)">'+
-    '<option selected="selected" value="Spruce">Spruce</option>'+
-    '<option value="Oak">Oak</option>'+
-    '<option value="Maple">Maple</option>'+
-    '<option value="Pine">Pine</option>'+
-    '<option value="Hemlock">Hemlock</option>'+
-    '<option value="Birch">Birch</option></select>';
-    div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
-    return div;
-};
 
-taxon1.addTo(map);
+  var taxon1 = L.control({position: 'topright'});
+  taxon1.onAdd = function (map) {
+      var div = L.DomUtil.create('div', 'info legend');
+      div.innerHTML = '<select id="taxon1" onchange="updateSymbols(this)">'+
+      '<option selected="selected" value="Picea">Spruce</option>'+
+      '<option value="Quercus">Oak</option>'+
+      '<option value="Acer">Maple</option>'+
+      '<option value="Pinus">Pine</option>'+
+      '<option value="Pinaceae">Hemlock</option>'+
+      '<option value="Betula">Birch</option></select>';
+      div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
+      return div;
+  };
 
-var taxon2 = L.control({position: 'topright'});
-taxon2.onAdd = function (map) {
-    var div = L.DomUtil.create('div', 'info legend');
-    div.innerHTML = '<select id="taxon2" onchange="updateSymbols(this)">'+
-    '<option value="Spruce">Spruce</option>'+
-    '<option selected="selected" value="Oak">Oak</option>'+
-    '<option value="Maple">Maple</option>'+
-    '<option value="Pine">Pine</option>'+
-    '<option value="Hemlock">Hemlock</option>'+
-    '<option value="Birch">Birch</option></select>';
-    div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
-    return div;
-};
-taxon2.addTo(map);
+  taxon1.addTo(map);
 
-var taxon3 = L.control({position: 'topright'});
-taxon3.onAdd = function (map) {
-    var div = L.DomUtil.create('div', 'info legend');
-    div.innerHTML = '<select id="taxon3" onchange="updateSymbols(this)">'+
-    '<option value="Spruce">Spruce</option>'+
-    '<option value="Oak">Oak</option>'+
-    '<option selected="selected" value="Maple">Maple</option>'+
-    '<option value="Pine">Pine</option>'+
-    '<option value="Hemlock">Hemlock</option>'+
-    '<option value="Birch">Birch</option></select>';
-    div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
-    return div;
-};
-taxon3.addTo(map);
+  var taxon2 = L.control({position: 'topright'});
+  taxon2.onAdd = function (map) {
+      var div = L.DomUtil.create('div', 'info legend');
+      div.innerHTML = '<select id="taxon2" onchange="updateSymbols(this)">'+
+      '<option value="Picea">Spruce</option>'+
+      '<option selected="selected" value="Quercus">Oak</option>'+
+      '<option value="Acer">Maple</option>'+
+      '<option value="Pinus">Pine</option>'+
+      '<option value="Pinaceae">Hemlock</option>'+
+      '<option value="Betula">Birch</option></select>';
+      div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
+      return div;
+  };
+  taxon2.addTo(map);
 
-var taxon4 = L.control({position: 'topright'});
-taxon4.onAdd = function (map) {
-    var div = L.DomUtil.create('div', 'info legend');
-    div.innerHTML = '<select id="taxon4" onchange="updateSymbols(this)">'+
-    '<option value="Spruce">Spruce</option>'+
-    '<option value="Oak">Oak</option>'+
-    '<option value="Maple">Maple</option>'+
-    '<option selected="selected" value="Pine">Pine</option>'+
-    '<option value="Hemlock">Hemlock</option>'+
-    '<option value="Birch">Birch</option></select>';
-    div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
-    return div;
-};
-taxon4.addTo(map);
+  var taxon3 = L.control({position: 'topright'});
+  taxon3.onAdd = function (map) {
+      var div = L.DomUtil.create('div', 'info legend');
+      div.innerHTML = '<select id="taxon3" onchange="updateSymbols(this)">'+
+      '<option value="Picea">Spruce</option>'+
+      '<option value="Quercus">Oak</option>'+
+      '<option selected="selected" value="Acer">Maple</option>'+
+      '<option value="Pinus">Pine</option>'+
+      '<option value="Pinaceae">Hemlock</option>'+
+      '<option value="Betula">Birch</option></select>';
+      div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
+      return div;
+  };
+  taxon3.addTo(map);
 
-
-// create the temporal selector. Eventually will be a slider
-var tempLegend = L.control({position: 'topleft'});
-
-tempLegend.onAdd = function (map) {
-    var div = L.DomUtil.create('div', 'leaflet-control-layers-selector');
-
-    div.innerHTML = '<form><input id="ybp1000" type="radio" checked="true" name="temporal"/>0-1000 YBP</input>'+
-    '<br><input id="ybp2000" type="radio" name="temporal"/>1,001-2,000 YBP</input>'+
-    '<br><input id="ybp3000" type="radio" name="temporal"/>2,001-3,000 YBP</input>'+
-    '<br><input id="ybp4000" type="radio" name="temporal"/>3,001-4,000 YBP</input>'+
-    '<br><input id="ybp5000" type="radio" name="temporal"/>4,001-5,000 YBP</input>'+
-    '<br><input id="ybp6000" type="radio" name="temporal"/>5,001-6,000 YBP</input>'+
-    '<br><input id="ybp7000" type="radio" name="temporal"/>6,001-7,000 YBP</input>'+
-    '<br><input id="ybp8000" type="radio" name="temporal"/>7,001-8,000 YBP</input>'+
-    '<br><input id="ybp9000" type="radio" name="temporal"/>8,001-9,000 YBP</input>'+
-    '<br><input id="ybp10000" type="radio" name="temporal"/>9,001-10,000 YBP</input>'+
-    '<br><input id="ybp11000" type="radio" name="temporal"/>10,001-11,000 YBP</input>'+
-    '<br><input id="ybp12000" type="radio" name="temporal"/>11,001-12,000 YBP</input></form>';
-    return div;
-};
-
-tempLegend.addTo(map);
+  var taxon4 = L.control({position: 'topright'});
+  taxon4.onAdd = function (map) {
+      var div = L.DomUtil.create('div', 'info legend');
+      div.innerHTML = '<select id="taxon4" onchange="updateSymbols(this)">'+
+      '<option value="Picea">Spruce</option>'+
+      '<option value="Quercus">Oak</option>'+
+      '<option value="Acer">Maple</option>'+
+      '<option selected="selected" value="Pinus">Pine</option>'+
+      '<option value="Pinaceae">Hemlock</option>'+
+      '<option value="Betula">Birch</option></select>';
+      div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
+      return div;
+  };
+  taxon4.addTo(map);
 
 
-document.getElementById ("ybp1000").addEventListener ("click", tempChange, false);
-document.getElementById ("ybp2000").addEventListener ("click", tempChange, false);
-document.getElementById ("ybp3000").addEventListener ("click", tempChange, false);
-document.getElementById ("ybp4000").addEventListener ("click", tempChange, false);
-document.getElementById ("ybp5000").addEventListener ("click", tempChange, false);
-document.getElementById ("ybp6000").addEventListener ("click", tempChange, false);
-document.getElementById ("ybp7000").addEventListener ("click", tempChange, false);
-document.getElementById ("ybp8000").addEventListener ("click", tempChange, false);
-document.getElementById ("ybp9000").addEventListener ("click", tempChange, false);
-document.getElementById ("ybp10000").addEventListener ("click", tempChange, false);
-document.getElementById ("ybp11000").addEventListener ("click", tempChange, false);
-document.getElementById ("ybp12000").addEventListener ("click", tempChange, false);
+  // create the temporal selector. Eventually will be a slider
+  var tempLegend = L.control({position: 'topleft'});
+
+  tempLegend.onAdd = function (map) {
+      var div = L.DomUtil.create('div', 'leaflet-control-layers-selector');
+
+      div.innerHTML = '<form><input id="ybp1000" type="radio" checked="true" name="temporal"/>0-1000 YBP</input>'+
+      '<br><input id="ybp2000" type="radio" name="temporal"/>1,001-2,000 YBP</input>'+
+      '<br><input id="ybp3000" type="radio" name="temporal"/>2,001-3,000 YBP</input>'+
+      '<br><input id="ybp4000" type="radio" name="temporal"/>3,001-4,000 YBP</input>'+
+      '<br><input id="ybp5000" type="radio" name="temporal"/>4,001-5,000 YBP</input>'+
+      '<br><input id="ybp6000" type="radio" name="temporal"/>5,001-6,000 YBP</input>'+
+      '<br><input id="ybp7000" type="radio" name="temporal"/>6,001-7,000 YBP</input>'+
+      '<br><input id="ybp8000" type="radio" name="temporal"/>7,001-8,000 YBP</input>'+
+      '<br><input id="ybp9000" type="radio" name="temporal"/>8,001-9,000 YBP</input>'+
+      '<br><input id="ybp10000" type="radio" name="temporal"/>9,001-10,000 YBP</input>'+
+      '<br><input id="ybp11000" type="radio" name="temporal"/>10,001-11,000 YBP</input>'+
+      '<br><input id="ybp12000" type="radio" name="temporal"/>11,001-12,000 YBP</input></form>';
+      return div;
+  };
+
+  tempLegend.addTo(map);
 
 
-var box1 = document.getElementById("taxon1").id;
-var box2 = document.getElementById("taxon2").id;
-var box3 = document.getElementById("taxon3").id;
-var box4 = document.getElementById("taxon4").id;
-boxArr = [box1,box2,box3,box4];
+  document.getElementById ("ybp1000").addEventListener ("click", tempChange, false);
+  document.getElementById ("ybp2000").addEventListener ("click", tempChange, false);
+  document.getElementById ("ybp3000").addEventListener ("click", tempChange, false);
+  document.getElementById ("ybp4000").addEventListener ("click", tempChange, false);
+  document.getElementById ("ybp5000").addEventListener ("click", tempChange, false);
+  document.getElementById ("ybp6000").addEventListener ("click", tempChange, false);
+  document.getElementById ("ybp7000").addEventListener ("click", tempChange, false);
+  document.getElementById ("ybp8000").addEventListener ("click", tempChange, false);
+  document.getElementById ("ybp9000").addEventListener ("click", tempChange, false);
+  document.getElementById ("ybp10000").addEventListener ("click", tempChange, false);
+  document.getElementById ("ybp11000").addEventListener ("click", tempChange, false);
+  document.getElementById ("ybp12000").addEventListener ("click", tempChange, false);
 
-// function to retrieve datasets is here so box IDs can be passed
-getSites(age,boxArr);
+
+  var box1 = document.getElementById("taxon1");
+  var box2 = document.getElementById("taxon2");
+  var box3 = document.getElementById("taxon3");
+  var box4 = document.getElementById("taxon4");
+  boxArr = [box1.value,box2.value,box3.value,box4.value];
+  boxID = [box1.id,box2.id,box3.id,box4.id];
+  // function to retrieve datasets is here so box IDs can be passed
+  getSites(age,boxArr);
 
 };
 
@@ -296,7 +297,7 @@ function getSites(age, boxArr){
   //
   //         };
 
-  var taxonIds = ["Pinus","Picea","Quercus","Acer"];
+  var taxonIds = boxArr;
   var ageChunks = age;
   for (var i = 0; i < taxonIds.length; i++) {
     for (var j = 0; j < ageChunks.length; j++) {
@@ -308,9 +309,6 @@ function getSites(age, boxArr){
       $.ajax(url, {
         dataType: "json",
         success: function(response){
-          console.log(young, "to", old);
-          console.log(response);
-
           binDataBySite(response.data);
           // createSymbols(response, map);
         }
@@ -358,7 +356,7 @@ function binDataBySite(data) {
     Value = 0;
     index = 0;
   });
-  createSymbols(procData, map);
+  createSymbols(procData, map, boxArr);
 };
 
 
@@ -470,7 +468,7 @@ function getSamples(dataset, map){
 // ONLY WORKS WITH THE OLD JSON DATA NOT THE CURRENT DATA CALLS. NEEDS TO BE REDONE.
 
 //Add proportional markers for each point in data.
-function createSymbols(data, map){
+function createSymbols(data, map, boxArr){
   //console.log(data.data);
   var points = data;
   //console.log(points[0].LatitudeNorth);
@@ -504,17 +502,16 @@ function createSymbols(data, map){
     // else if (boxID == "taxon4"){
     //   var degrees = 270;
     // };
-
-    if (tax == "Picea"){
+    if (tax == boxArr[0]){
       var degrees = 360;
     }
-    else if (tax == "Quercus"){
+    else if (tax == boxArr[1]){
       var degrees = 90;
     }
-    else if (tax == "Acer"){
+    else if (tax == boxArr[2]){
       var degrees = 180;
     }
-    else if (tax == "Pinus"){
+    else if (tax == boxArr[3]){
       var degrees = 270;
     };
     //console.log(degrees);
@@ -632,6 +629,12 @@ function createSymbols(data, map){
  // also must conform to temporal changes, not just changes based on taxon
 
  function updateSymbols(box){
+   var box1 = document.getElementById("taxon1").value;
+   var box2 = document.getElementById("taxon2").value;
+   var box3 = document.getElementById("taxon3").value;
+   var box4 = document.getElementById("taxon4").value;
+   boxArr = [box1,box2,box3,box4];
+   getSites(age, boxArr)
    var taxon = document.getElementById(box.id).value;
    var boxID = box.id;
 
