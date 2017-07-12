@@ -11,6 +11,7 @@ var markers = new Array();
 var ageCounter = 0;
 var map;
 var boxArr;
+var age = [[0,1000]];
 
 var myIcon = L.icon({
   iconUrl:'lib/leaflet/images/LeafIcon_dkblu_lg.png',
@@ -151,7 +152,7 @@ var box4 = document.getElementById("taxon4").id;
 boxArr = [box1,box2,box3,box4];
 
 // function to retrieve datasets is here so box IDs can be passed
-getDatasets(map,boxArr);
+getSites(age,boxArr);
 
 };
 
@@ -164,12 +165,14 @@ function tempChange() {
    var id = this.id;
    //console.log(map);
    if (id == "ybp1000"){
-     meow();
-     getSites(id,age)
+     getAllMarkers();
+     age = [[0,1000]];
+     getSites(age, boxArr);
    }
    else if (id == "ybp2000"){
-     meow();
-     //updateSymbols(id);
+     getAllMarkers();
+     age = [[1000,2000]];
+     getSites(age, boxArr);
    };
 
    //getDatasets(map);
@@ -196,7 +199,7 @@ function getDatasets(map,boxArr){
 
 ////////////////////////////////////////////////////////////////////////////////
 
-function getSites(datasets,map,boxArr){
+function getSites(age, boxArr){
 //console.log(datasets);
   // var datasetArray = datasets.sites;
   //
@@ -233,7 +236,7 @@ function getSites(datasets,map,boxArr){
   //         };
 
   var taxonIds = ["Pinus","Picea","Quercus","Acer"];
-  var ageChunks = [[0,1000]];
+  var ageChunks = age;
   for (var i = 0; i < taxonIds.length; i++) {
     for (var j = 0; j < ageChunks.length; j++) {
       console.log(taxonIds[i]);
