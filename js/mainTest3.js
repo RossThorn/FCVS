@@ -569,7 +569,7 @@ function createSymbols(data, map){
       map.addLayer(marker);
       //console.log(marker);
       markers[marker._leaflet_id] = marker;
-      console.log(markers);
+      //console.log(markers);
 
 
       //counter++;
@@ -635,6 +635,8 @@ function round(value, precision) {
  // also must conform to temporal changes, not just changes based on taxon
 
  function updateSymbols(box){
+
+   getAllMarkers();
    var taxon = document.getElementById(box.id).value;
    var boxID = box.id;
 
@@ -653,8 +655,8 @@ function round(value, precision) {
    //console.log(map);
    //console.log(degrees);
 
-   //if going this route, need to pass degrees so I know which onese to be removed
-   getAllMarkers();
+   //if going this route, need to pass degrees so I know which ones to be removed
+
 
    //add new code for updating symbols here I think. resizing would take place here or adding new ones.
 
@@ -666,9 +668,9 @@ function round(value, precision) {
 
  function getAllMarkers() {
    //console.log("fired");
-   console.log(markers);
+   //console.log(markers);
 
-     var allMarkersObjArray = [];//new Array();
+     //var allMarkersObjArray = [];//new Array();
      //var allMarkersGeoJsonArray = [];//new Array();
      console.log(map._layers);
 
@@ -677,7 +679,7 @@ function round(value, precision) {
          //formerly, map._layers[ml].feature
          if (markers[ml]) {
              //console.log('value in Array!');
-             map.removeLayer(map._layers[ml]);
+             //map.removeLayer(map._layers[ml]);
 
         } else {
             //console.log('Not in array');
@@ -694,7 +696,7 @@ function round(value, precision) {
 
      })
 
-     console.log(allMarkersObjArray);
+     //console.log(allMarkersObjArray);
     // console.log(allMarkersGeoJsonArray);
     // alert("total Markers : " + allMarkersGeoJsonArray.length + "\n\n" + allMarkersGeoJsonArray + "\n\n Also see your console for object view of this array" );
  }
