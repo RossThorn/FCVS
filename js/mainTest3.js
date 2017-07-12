@@ -165,7 +165,7 @@ function tempChange() {
    //console.log(map);
    if (id == "ybp1000"){
      meow();
-     //updateSymbols(id);
+     getSites(id,age)
    }
    else if (id == "ybp2000"){
      meow();
@@ -233,26 +233,68 @@ function getSites(datasets,map,boxArr){
   //         };
 
   var taxonIds = ["Pinus","Picea","Quercus","Acer"];
-  var ageChunks = [[0,1000],[1000,2000]];
-    for (var i = 0; i < taxonIds.length; i++) {
-      for (var j = 0; j < ageChunks.length; j++) {
-        console.log(taxonIds[i]);
-        var urlBaseMN = 'http://apidev.neotomadb.org/v1/data/pollen?wkt=POLYGON((-97.294921875%2048.93964118139728,-96.6357421875%2043.3601336603352,-91.20849609375%2043.53560718808973,-93.09814453125%2045.10745410539934,-92.17529296875%2046.69749299744142,-88.79150390625%2047.874907453605935,-93.53759765625%2048.910767192107755,-97.294921875%2048.93964118139728))';
-        var url = [urlBaseMN, '&taxonname=', taxonIds[i], '&ageold=', ageChunks[j][1], '&ageyoung=', ageChunks[j][0]].join('')
-        $.ajax(url, {
-          dataType: "json",
-          success: function(response){
-            //this is where we should bin and stuff
-            createSymbols(response, map);
-          }
-        });
-      }
+  var ageChunks = [[0,1000]];
+  for (var i = 0; i < taxonIds.length; i++) {
+    for (var j = 0; j < ageChunks.length; j++) {
+      console.log(taxonIds[i]);
+      var young = ageChunks[j][0];
+      var old = ageChunks[j][1];
+      var urlBaseMN = 'http://apidev.neotomadb.org/v1/data/pollen?wkt=POLYGON((-97.294921875%2048.93964118139728,-96.6357421875%2043.3601336603352,-91.20849609375%2043.53560718808973,-93.09814453125%2045.10745410539934,-92.17529296875%2046.69749299744142,-88.79150390625%2047.874907453605935,-93.53759765625%2048.910767192107755,-97.294921875%2048.93964118139728))';
+      var url = [urlBaseMN, '&taxonname=', taxonIds[i], '&ageold=', old, '&ageyoung=', young].join('');
+      $.ajax(url, {
+        dataType: "json",
+        success: function(response){
+          console.log(young, "to", old);
+          console.log(response);
+
+          binDataBySite(response.data);
+          // createSymbols(response, map);
+        }
+      });
     }
+  }
 
   //console.log(ageBin);
   //console.log("done");
   //console.log(counter2);
 
+};
+
+////////////////////////////////////////////////////////////////////////////////
+
+function binDataBySite(data) {
+  var sites = [];
+  var binnedData = [];
+  for (var i = 0; i < data.length; i++) {
+    sites.push(data[i].SiteID);
+  }
+  sitesDeDoop = [];
+  sites.forEach(function(item) {
+   if(sitesDeDoop.indexOf(item) < 0) {
+     sitesDeDoop.push(item);
+   }
+  });
+
+  var procData = [];
+  var Value = 0;
+  var currentSite = {};
+  var index = 0;
+  sitesDeDoop.forEach(function(item){
+    for (var i = 0; i < data.length; i++) {
+      if (item === data[i].SiteID) {
+        index += 1;
+        currentSite = data[i];
+        Value += data[i].Value;
+      }
+    }
+    var avgVal = Value/index;
+    currentSite.Value = avgVal;
+    procData.push(currentSite);
+    currentSite = {};
+    Value = 0;
+    index = 0;
+  });
+  createSymbols(procData, map);
 };
 
 
@@ -366,7 +408,7 @@ function getSamples(dataset, map){
 //Add proportional markers for each point in data.
 function createSymbols(data, map){
   //console.log(data.data);
-  var points = data.data
+  var points = data;
   //console.log(points[0].LatitudeNorth);
   // console.log(data.features);
   // console.log(data.features[0].properties.degrees)
@@ -381,8 +423,7 @@ function createSymbols(data, map){
     // console.log(lon);
     // console.log(lat);
     //console.log(obj);
-    //redo this for Sequoia
-    //var degrees = obj.properties.degrees;
+
     var value = obj.Value;
     var tax = obj.TaxonName;
     //console.log(tax);
@@ -473,8 +514,8 @@ function createSymbols(data, map){
       rotationAngle: degrees,
       icon:myIcon
     });
-      //map.addLayer(marker);
-      console.log(marker);
+      map.addLayer(marker);
+      //console.log(marker);
       markers[marker._leaflet_id] = marker;
 
       //counter++;
