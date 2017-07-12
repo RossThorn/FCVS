@@ -21,10 +21,38 @@ body {
 }
 
 #page-title{
-  font-size: 30px;
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  bottom: 50%;
+  left: 0;
+  right: 0;
+  font-size: 100px;
+  width: 400px;
+  height: 100px;
+  margin: auto;
   font-family: sans-serif;
-  color: white;
-  margin-left:20px;
+  color: #447BDC;
+  text-align:center;
+  font-weight: bold;
+
+}
+
+#loading{
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  bottom: 30%;
+  left: 0;
+  right: 0;
+  font-size: 100px;
+  width: 400px;
+  height: 100px;
+  margin: auto;
+  font-family: sans-serif;
+  color: #447BDC;
+  text-align:center;
+  font-weight: bold;
 
 }
 

@@ -69,7 +69,8 @@ function createControls(map){
 var taxon1 = L.control({position: 'topright'});
 taxon1.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend');
-    div.innerHTML = '<select id="taxon1" onchange="updateSymbols(this)">'+
+    div.innerHTML = '<img src="lib/leaflet/images/LeafIcon_dkblu.png" style="width:20px;height:30px;">'+
+    '<select id="taxon1" onchange="updateSymbols(this)">'+
     '<option selected="selected" value="Spruce">Spruce</option>'+
     '<option value="Oak">Oak</option>'+
     '<option value="Maple">Maple</option>'+
@@ -85,7 +86,8 @@ taxon1.addTo(map);
 var taxon2 = L.control({position: 'topright'});
 taxon2.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend');
-    div.innerHTML = '<select id="taxon2" onchange="updateSymbols(this)">'+
+    div.innerHTML = '<img src="lib/leaflet/images/LeafIcon_ltblu.png" style="width:20px;height:30px;">'+
+    '<select id="taxon2" onchange="updateSymbols(this)">'+
     '<option value="Spruce">Spruce</option>'+
     '<option selected="selected" value="Oak">Oak</option>'+
     '<option value="Maple">Maple</option>'+
@@ -100,7 +102,8 @@ taxon2.addTo(map);
 var taxon3 = L.control({position: 'topright'});
 taxon3.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend');
-    div.innerHTML = '<select id="taxon3" onchange="updateSymbols(this)">'+
+    div.innerHTML = '<img src="lib/leaflet/images/LeafIcon_dkgrn.png" style="width:20px;height:30px;">'+
+    '<select id="taxon3" onchange="updateSymbols(this)">'+
     '<option value="Spruce">Spruce</option>'+
     '<option value="Oak">Oak</option>'+
     '<option selected="selected" value="Maple">Maple</option>'+
@@ -115,7 +118,8 @@ taxon3.addTo(map);
 var taxon4 = L.control({position: 'topright'});
 taxon4.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend');
-    div.innerHTML = '<select id="taxon4" onchange="updateSymbols(this)">'+
+    div.innerHTML = '<img src="lib/leaflet/images/LeafIcon_ltgrn.png" style="width:20px;height:30px;">'+
+    '<select id="taxon4" onchange="updateSymbols(this)">'+
     '<option value="Spruce">Spruce</option>'+
     '<option value="Oak">Oak</option>'+
     '<option value="Maple">Maple</option>'+
@@ -134,7 +138,7 @@ var tempLegend = L.control({position: 'topleft'});
 tempLegend.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'leaflet-control-layers-selector');
 
-    div.innerHTML = '<form><input id="ybp1000" type="radio" checked="true" name="temporal"/>0-1000 YBP</input>'+
+    div.innerHTML = '<form style="background-color:white; padding:2px; outline: solid; outline-width: 1px;"><input id="ybp1000" type="radio" checked="true" name="temporal"/>0-1000 YBP</input>'+
     '<br><input id="ybp2000" type="radio" name="temporal"/>1,001-2,000 YBP</input>'+
     '<br><input id="ybp3000" type="radio" name="temporal"/>2,001-3,000 YBP</input>'+
     '<br><input id="ybp4000" type="radio" name="temporal"/>3,001-4,000 YBP</input>'+
@@ -236,27 +240,8 @@ function tempChange() {
      getSites(age, boxArr);
    };
 
-   //getDatasets(map);
 };
-////////////////////////////////////////////////////////////////////////////////
 
-//calls data to be used in petal plots
-function getDatasets(map,boxArr){
-
-
-    // ajax call that retrieves data based on taxon name. Represents a json call based
-    // on Flyover Country's polygon json calls defined by user path.
-    //$.ajax("http://apidev.neotomadb.org/v1/data/pollen?taxonname=picea", {
-      $.ajax("Data/MinnesotaPollenSites.json", {
-        dataType: "json",
-        success: function(response){
-          //console.log(response);
-          getSites(response,map,boxArr);
-          //createSymbols(response,map);
-          }
-          });
-
-};
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -387,7 +372,7 @@ function getSamples(dataset, map){
       // variable for array of all samples in a particular dataset
       var core = datasetData[i].Samples;
       // variable to access site location data
-      var site = datasetData[i].Site;
+      // var site = datasetData[i].Site;
       // variables for the site's coordinates
       var siteLat = site.Latitude;
       var siteLon = site.Longitude;
@@ -490,7 +475,9 @@ function createSymbols(data, map){
 
     var value = obj.Value;
     var tax = obj.TaxonName;
+    var site = obj.SiteID;
     //console.log(tax);
+
     // Have to do boxID into this function I think...
     // if (boxID == "taxon1"){
     //   var degrees = 360;
@@ -507,15 +494,19 @@ function createSymbols(data, map){
 
     if (tax == "Picea"){
       var degrees = 360;
+      var taxonID = "taxon1";
     }
     else if (tax == "Quercus"){
       var degrees = 90;
+      var taxonID = "taxon2";
     }
     else if (tax == "Acer"){
       var degrees = 180;
+      var taxonID = "taxon3";
     }
     else if (tax == "Pinus"){
       var degrees = 270;
+      var taxonID = "taxon4";
     };
     //console.log(degrees);
 
@@ -569,18 +560,17 @@ function createSymbols(data, map){
         //console.log(myIcon);
     //console.log("blam");
 
-    // var marker = L.marker([lat,lon], {
-    //     rotationAngle: degrees,
-    //     icon: myIcon
-    //   }).addTo(map);
-
     var marker = L.marker([lat,lon], {
       rotationAngle: degrees,
-      icon:myIcon
+      icon:myIcon,
+      siteID: site,
+      legend: taxonID
     });
       map.addLayer(marker);
       //console.log(marker);
       markers[marker._leaflet_id] = marker;
+      console.log(markers);
+
 
       //counter++;
 
@@ -589,10 +579,12 @@ function createSymbols(data, map){
 
        //add formatted attribute to popup content string
        //var year = attribute.split("_")[1];
-       popupContent += "<p><b>% abundance:</b> <br>" + Math.round(value/(obj.UPHE+obj.VACR)) + "</p>";
+       popupContent += "<p><b>% abundance:</b> <br>" + round(value/(obj.UPHE+obj.VACR),2) + "</p>";
+       popupContent += "<p id='popup-site' value='"+site+"'><b>Site ID:</b> <br>" + site + "</p>";
        //console.log("yep");
 
-       marker.bindPopup(popupContent)
+       marker.bindPopup(popupContent);
+       marker.on('click',coordinatedViz);
 
        //console.log(markers);
 
@@ -602,6 +594,17 @@ function createSymbols(data, map){
 
 ////////////////////////////////////////////////////////////////////////////////
 
+function coordinatedViz(){
+  console.log(this.options.siteID);
+};
+
+////////////////////////////////////////////////////////////////////////////////
+
+function round(value, precision) {
+    var multiplier = Math.pow(10, precision || 0);
+    return Math.round(value * multiplier) / multiplier;
+};
+////////////////////////////////////////////////////////////////////////////////
 // function pointToLayer(feature, latlng){
 //   console.log("meow");
 //     //create marker options
@@ -673,12 +676,11 @@ function createSymbols(data, map){
          //console.log(ml)
          //formerly, map._layers[ml].feature
          if (markers[ml]) {
-             console.log('value in Array!');
+             //console.log('value in Array!');
              map.removeLayer(map._layers[ml]);
-             // takes too long to do. Need to do the updatesymbols call and just resize current symbols in some way.
-             //getDatasets(map,boxArr);
+
         } else {
-            console.log('Not in array');
+            //console.log('Not in array');
         };
 
 
