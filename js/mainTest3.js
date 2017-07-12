@@ -15,7 +15,7 @@ var boxArr;
 var myIcon = L.icon({
   iconUrl:'lib/leaflet/images/LeafIcon_dkblu_lg.png',
   iconSize: [20,40],
-  iconAnchor:  [10,30],
+  iconAnchor:  [10,40],
   popupAnchor: [1, -34],
   tooltipAnchor: [16, -28],
   });
@@ -198,46 +198,56 @@ function getDatasets(map,boxArr){
 
 function getSites(datasets,map,boxArr){
 //console.log(datasets);
-  var datasetArray = datasets.sites;
+  // var datasetArray = datasets.sites;
+  //
+  //
+  // //console.log(boxArr);
+  // //console.log(datasetArray.length);
+  //
+  // // looping through to find every dataset in each site
+  // for (var i = 0, l = datasetArray.length; i < l; i++){
+  //   //console.log(datasetArray[i].Datasets);
+  //   var datasets = datasetArray[i].Datasets;
+  //
+  //
+  //   //a for loop to make an ajax call for each dataset based on the dataset ID (54 total in this example)
+  //   for (var set = 0, len = datasets.length; set < len; set++){
+  //       var obj = datasets[set];
+  //       //console.log(obj);
+  //       var dataID = obj.DatasetID;
+  //       //console.log(dataID);
+  //
+  //       // ajax call based on datasetID that calls getSamples to retrieve data from each site
+  //       // downloads are heavy and slow.
+  //       $.ajax("http://api.neotomadb.org/v1/data/downloads/"+dataID, {
+  //        dataType: "json",
+  //        success: function(response){
+  //          //console.log(response);
+  //          getSamples(response,map);
+  //          //createSymbols(response,map);
+  //          }
+  //          });
+  //   }
+  //
+  //
+  //         };
 
-
-  //console.log(boxArr);
-  //console.log(datasetArray.length);
-
-  // looping through to find every dataset in each site
-  for (var i = 0, l = datasetArray.length; i < l; i++){
-    //console.log(datasetArray[i].Datasets);
-    var datasets = datasetArray[i].Datasets;
-
-
-    //a for loop to make an ajax call for each dataset based on the dataset ID (54 total in this example)
-    for (var set = 0, len = datasets.length; set < len; set++){
-        var obj = datasets[set];
-        //console.log(obj);
-        var dataID = obj.DatasetID;
-        //console.log(dataID);
-
-        // ajax call based on datasetID that calls getSamples to retrieve data from each site
-        // downloads are heavy and slow.
-        $.ajax("http://api.neotomadb.org/v1/data/downloads/"+dataID, {
-         dataType: "json",
-         success: function(response){
-           //console.log(response);
-           getSamples(response,map);
-           //createSymbols(response,map);
-           }
-           });
-
-        // attempt a d3 queue in the future to load them all at the same time then use a loading icon.
-        // the queue may be defined outside of the for loop. (see https://github.com/d3/d3-queue)
-
-        // d3.queue()
-        // .defer(d3.json, function())
-
+  var taxonIds = ["Pinus","Picea","Quercus","Acer"];
+  var ageChunks = [[0,1000],[1000,2000]];
+    for (var i = 0; i < taxonIds.length; i++) {
+      for (var j = 0; j < ageChunks.length; j++) {
+        console.log(taxonIds[i]);
+        var urlBaseMN = 'http://apidev.neotomadb.org/v1/data/pollen?wkt=POLYGON((-97.294921875%2048.93964118139728,-96.6357421875%2043.3601336603352,-91.20849609375%2043.53560718808973,-93.09814453125%2045.10745410539934,-92.17529296875%2046.69749299744142,-88.79150390625%2047.874907453605935,-93.53759765625%2048.910767192107755,-97.294921875%2048.93964118139728))';
+        var url = [urlBaseMN, '&taxonname=', taxonIds[i], '&ageold=', ageChunks[j][1], '&ageyoung=', ageChunks[j][0]].join('')
+        $.ajax(url, {
+          dataType: "json",
+          success: function(response){
+            //this is where we should bin and stuff
+            createSymbols(response, map);
+          }
+        });
+      }
     }
-
-
-          };
 
   //console.log(ageBin);
   //console.log("done");
@@ -370,27 +380,102 @@ function createSymbols(data, map){
     var lat = ((obj.LatitudeNorth) + (obj.LatitudeSouth))/2;
     // console.log(lon);
     // console.log(lat);
+    //console.log(obj);
     //redo this for Sequoia
     //var degrees = obj.properties.degrees;
     var value = obj.Value;
+    var tax = obj.TaxonName;
+    //console.log(tax);
+    // Have to do boxID into this function I think...
+    // if (boxID == "taxon1"){
+    //   var degrees = 360;
+    // }
+    // else if (boxID == "taxon2"){
+    //   var degrees = 90;
+    // }
+    // else if (boxID == "taxon3"){
+    //   var degrees = 180;
+    // }
+    // else if (boxID == "taxon4"){
+    //   var degrees = 270;
+    // };
+
+    if (tax == "Picea"){
+      var degrees = 360;
+    }
+    else if (tax == "Quercus"){
+      var degrees = 90;
+    }
+    else if (tax == "Acer"){
+      var degrees = 180;
+    }
+    else if (tax == "Pinus"){
+      var degrees = 270;
+    };
+    //console.log(degrees);
 
 
-    var myIcon = L.icon({
-      iconUrl:'lib/leaflet/images/LeafIcon.png',
-  		iconSize: [(0.2*value),(0.3*value)],
-  		iconAnchor:  [(0.1*value),(0.3*value)],
-  		popupAnchor: [1, -34],
-  		tooltipAnchor: [16, -28],
+    var myIcon_dkblu = L.icon({
+      iconUrl:'lib/leaflet/images/LeafIcon_dkblu_lg.png',
+      iconSize: [(.1*value),(.2*value)],
+      iconAnchor:  [(.05*value),(.2*value)],
+      popupAnchor: [1, -34],
+      tooltipAnchor: [16, -28],
       });
+
+      var myIcon_ltblu = L.icon({
+        iconUrl:'lib/leaflet/images/LeafIcon_ltblu_lg.png',
+        iconSize: [(.1*value),(.2*value)],
+        iconAnchor:  [(.05*value),(.2*value)],
+        popupAnchor: [1, -34],
+        tooltipAnchor: [16, -28],
+        });
+
+      var myIcon_dkgrn = L.icon({
+        iconUrl:'lib/leaflet/images/LeafIcon_dkgrn_lg.png',
+        iconSize: [(.1*value),(.2*value)],
+        iconAnchor:  [(.05*value),(.2*value)],
+        popupAnchor: [1, -34],
+        tooltipAnchor: [16, -28],
+        });
+
+      var myIcon_ltgrn = L.icon({
+        iconUrl:'lib/leaflet/images/LeafIcon_ltgrn_lg.png',
+        iconSize: [(.1*value),(.2*value)],
+        iconAnchor:  [(.05*value),(.2*value)],
+        popupAnchor: [1, -34],
+        tooltipAnchor: [16, -28],
+        });
+
+        if (degrees == 360){
+          var myIcon = myIcon_dkblu;
+
+        } else if (degrees == 90){
+          var myIcon = myIcon_ltblu;
+
+        } else if (degrees == 180){
+          var myIcon = myIcon_dkgrn;
+
+        } else if (degrees == 270){
+          var myIcon = myIcon_ltgrn;
+
+        };
+
+        //console.log(myIcon);
     //console.log("blam");
-    -89.8022,43.0458,-89.228,45.7484
-    if (lat < 45.7484 && lat > 43.0458 && lon < -89.228 && lon > -89.8022){
-      console.log(obj);
+
+    // var marker = L.marker([lat,lon], {
+    //     rotationAngle: degrees,
+    //     icon: myIcon
+    //   }).addTo(map);
 
     var marker = L.marker([lat,lon], {
-        //rotationAngle: degrees,
-        icon: myIcon
-      }).addTo(map);
+      rotationAngle: degrees,
+      icon:myIcon
+    });
+      //map.addLayer(marker);
+      console.log(marker);
+      markers[marker._leaflet_id] = marker;
 
       //counter++;
 
@@ -404,7 +489,8 @@ function createSymbols(data, map){
 
        marker.bindPopup(popupContent)
 
-    }
+       //console.log(markers);
+
   };
   //console.log(counter);
 };
