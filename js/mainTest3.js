@@ -560,7 +560,6 @@ function createSymbols(data, map, boxArr){
 
         } else if (degrees == 270){
           var myIcon = myIcon_ltgrn;
-
         };
 
         //console.log(myIcon);
@@ -588,6 +587,8 @@ function createSymbols(data, map, boxArr){
        //var year = attribute.split("_")[1];
        popupContent += "<p><b>% abundance:</b> <br>" + Math.round(value/(obj.UPHE+obj.VACR)) + "</p>";
        //console.log("yep");
+
+       marker.SiteID = obj.SiteID;
 
        marker.bindPopup(popupContent)
 
@@ -629,6 +630,7 @@ function createSymbols(data, map, boxArr){
  // also must conform to temporal changes, not just changes based on taxon
 
  function updateSymbols(box){
+   getAllMarkers();
    var box1 = document.getElementById("taxon1").value;
    var box2 = document.getElementById("taxon2").value;
    var box3 = document.getElementById("taxon3").value;
@@ -654,7 +656,6 @@ function createSymbols(data, map, boxArr){
    //console.log(degrees);
 
    //if going this route, need to pass degrees so I know which onese to be removed
-   getAllMarkers();
 
    //add new code for updating symbols here I think. resizing would take place here or adding new ones.
 
