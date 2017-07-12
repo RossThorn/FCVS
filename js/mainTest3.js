@@ -135,7 +135,17 @@ tempLegend.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'leaflet-control-layers-selector');
 
     div.innerHTML = '<form><input id="ybp1000" type="radio" checked="true" name="temporal"/>0-1000 YBP</input>'+
-    '<br><input id="ybp2000" type="radio" name="temporal"/>1001-2000 YBP</input></form>';
+    '<br><input id="ybp2000" type="radio" name="temporal"/>1,001-2,000 YBP</input>'+
+    '<br><input id="ybp3000" type="radio" name="temporal"/>2,001-3,000 YBP</input>'+
+    '<br><input id="ybp4000" type="radio" name="temporal"/>3,001-4,000 YBP</input>'+
+    '<br><input id="ybp5000" type="radio" name="temporal"/>4,001-5,000 YBP</input>'+
+    '<br><input id="ybp6000" type="radio" name="temporal"/>5,001-6,000 YBP</input>'+
+    '<br><input id="ybp7000" type="radio" name="temporal"/>6,001-7,000 YBP</input>'+
+    '<br><input id="ybp8000" type="radio" name="temporal"/>7,001-8,000 YBP</input>'+
+    '<br><input id="ybp9000" type="radio" name="temporal"/>8,001-9,000 YBP</input>'+
+    '<br><input id="ybp10000" type="radio" name="temporal"/>9,001-10,000 YBP</input>'+
+    '<br><input id="ybp11000" type="radio" name="temporal"/>10,001-11,000 YBP</input>'+
+    '<br><input id="ybp12000" type="radio" name="temporal"/>11,001-12,000 YBP</input></form>';
     return div;
 };
 
@@ -144,6 +154,17 @@ tempLegend.addTo(map);
 
 document.getElementById ("ybp1000").addEventListener ("click", tempChange, false);
 document.getElementById ("ybp2000").addEventListener ("click", tempChange, false);
+document.getElementById ("ybp3000").addEventListener ("click", tempChange, false);
+document.getElementById ("ybp4000").addEventListener ("click", tempChange, false);
+document.getElementById ("ybp5000").addEventListener ("click", tempChange, false);
+document.getElementById ("ybp6000").addEventListener ("click", tempChange, false);
+document.getElementById ("ybp7000").addEventListener ("click", tempChange, false);
+document.getElementById ("ybp8000").addEventListener ("click", tempChange, false);
+document.getElementById ("ybp9000").addEventListener ("click", tempChange, false);
+document.getElementById ("ybp10000").addEventListener ("click", tempChange, false);
+document.getElementById ("ybp11000").addEventListener ("click", tempChange, false);
+document.getElementById ("ybp12000").addEventListener ("click", tempChange, false);
+
 
 var box1 = document.getElementById("taxon1").id;
 var box2 = document.getElementById("taxon2").id;
@@ -171,7 +192,47 @@ function tempChange() {
    }
    else if (id == "ybp2000"){
      getAllMarkers();
-     age = [[1000,2000]];
+     age = [[1001,2000]];
+     getSites(age, boxArr);
+   }else if (id == "ybp3000"){
+     getAllMarkers();
+     age = [[2001,3000]];
+     getSites(age, boxArr);
+   }else if (id == "ybp4000"){
+     getAllMarkers();
+     age = [[3001,4000]];
+     getSites(age, boxArr);
+   }else if (id == "ybp5000"){
+     getAllMarkers();
+     age = [[4001,5000]];
+     getSites(age, boxArr);
+   }else if (id == "ybp6000"){
+     getAllMarkers();
+     age = [[5001,6000]];
+     getSites(age, boxArr);
+   }else if (id == "ybp7000"){
+     getAllMarkers();
+     age = [[6001,7000]];
+     getSites(age, boxArr);
+   }else if (id == "ybp8000"){
+     getAllMarkers();
+     age = [[7001,8000]];
+     getSites(age, boxArr);
+   }else if (id == "ybp9000"){
+     getAllMarkers();
+     age = [[8001,9000]];
+     getSites(age, boxArr);
+   }else if (id == "ybp10000"){
+     getAllMarkers();
+     age = [[9001,10000]];
+     getSites(age, boxArr);
+   }else if (id == "ybp11000"){
+     getAllMarkers();
+     age = [[10001,11000]];
+     getSites(age, boxArr);
+   }else if (id == "ybp12000"){
+     getAllMarkers();
+     age = [[11001,12000]];
      getSites(age, boxArr);
    };
 
