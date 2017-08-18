@@ -11,6 +11,7 @@ var markers = new Array();
 var ageCounter = 0;
 var map;
 var boxArr;
+var boxID;
 var age = [[0,1000]];
 
 var myIcon = L.icon({
@@ -71,12 +72,12 @@ taxon1.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend');
     div.innerHTML = '<img src="lib/leaflet/images/LeafIcon_dkblu.png" style="width:20px;height:30px;">'+
     '<select id="taxon1" onchange="updateSymbols(this)">'+
-    '<option selected="selected" value="Spruce">Spruce</option>'+
-    '<option value="Oak">Oak</option>'+
-    '<option value="Maple">Maple</option>'+
-    '<option value="Pine">Pine</option>'+
-    '<option value="Hemlock">Hemlock</option>'+
-    '<option value="Birch">Birch</option></select>';
+    '<option selected="selected" value="Picea">Spruce</option>'+
+    '<option value="Quercus">Oak</option>'+
+    '<option value="Acer">Maple</option>'+
+    '<option value="Pinus">Pine</option>'+
+    '<option value="Tsuga">Hemlock</option>'+
+    '<option value="Betula">Birch</option></select>';
     div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
     return div;
 };
@@ -88,12 +89,12 @@ taxon2.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend');
     div.innerHTML = '<img src="lib/leaflet/images/LeafIcon_ltblu.png" style="width:20px;height:30px;">'+
     '<select id="taxon2" onchange="updateSymbols(this)">'+
-    '<option value="Spruce">Spruce</option>'+
-    '<option selected="selected" value="Oak">Oak</option>'+
-    '<option value="Maple">Maple</option>'+
-    '<option value="Pine">Pine</option>'+
-    '<option value="Hemlock">Hemlock</option>'+
-    '<option value="Birch">Birch</option></select>';
+    '<option value="Picea">Spruce</option>'+
+    '<option selected="selected" value="Quercus">Oak</option>'+
+    '<option value="Acer">Maple</option>'+
+    '<option value="Pinus">Pine</option>'+
+    '<option value="Tsuga">Hemlock</option>'+
+    '<option value="Betula">Birch</option></select>';
     div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
     return div;
 };
@@ -104,12 +105,12 @@ taxon3.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend');
     div.innerHTML = '<img src="lib/leaflet/images/LeafIcon_dkgrn.png" style="width:20px;height:30px;">'+
     '<select id="taxon3" onchange="updateSymbols(this)">'+
-    '<option value="Spruce">Spruce</option>'+
-    '<option value="Oak">Oak</option>'+
-    '<option selected="selected" value="Maple">Maple</option>'+
-    '<option value="Pine">Pine</option>'+
-    '<option value="Hemlock">Hemlock</option>'+
-    '<option value="Birch">Birch</option></select>';
+    '<option value="Picea">Spruce</option>'+
+    '<option value="Quercus">Oak</option>'+
+    '<option selected="selected" value="Acer">Maple</option>'+
+    '<option value="Pinus">Pine</option>'+
+    '<option value="Tsuga">Hemlock</option>'+
+    '<option value="Betula">Birch</option></select>';
     div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
     return div;
 };
@@ -120,12 +121,12 @@ taxon4.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend');
     div.innerHTML = '<img src="lib/leaflet/images/LeafIcon_ltgrn.png" style="width:20px;height:30px;">'+
     '<select id="taxon4" onchange="updateSymbols(this)">'+
-    '<option value="Spruce">Spruce</option>'+
-    '<option value="Oak">Oak</option>'+
-    '<option value="Maple">Maple</option>'+
-    '<option selected="selected" value="Pine">Pine</option>'+
-    '<option value="Hemlock">Hemlock</option>'+
-    '<option value="Birch">Birch</option></select>';
+    '<option value="Picea">Spruce</option>'+
+    '<option value="Quercus">Oak</option>'+
+    '<option value="Acer">Maple</option>'+
+    '<option selected="selected" value="Pinus">Pine</option>'+
+    '<option value="Tsuga">Hemlock</option>'+
+    '<option value="Betula">Birch</option></select>';
     div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
     return div;
 };
@@ -170,11 +171,12 @@ document.getElementById ("ybp11000").addEventListener ("click", tempChange, fals
 document.getElementById ("ybp12000").addEventListener ("click", tempChange, false);
 
 
-var box1 = document.getElementById("taxon1").id;
-var box2 = document.getElementById("taxon2").id;
-var box3 = document.getElementById("taxon3").id;
-var box4 = document.getElementById("taxon4").id;
-boxArr = [box1,box2,box3,box4];
+var box1 = document.getElementById("taxon1");
+var box2 = document.getElementById("taxon2");
+var box3 = document.getElementById("taxon3");
+var box4 = document.getElementById("taxon4");
+boxArr = [box1.id,box2.id,box3.id,box4.id];
+boxID = [box1.value, box2.value, box3.value, box4.value];
 
 // function to retrieve datasets is here so box IDs can be passed
 getSites(age,boxArr);
@@ -246,42 +248,9 @@ function tempChange() {
 ////////////////////////////////////////////////////////////////////////////////
 
 function getSites(age, boxArr){
-//console.log(datasets);
-  // var datasetArray = datasets.sites;
-  //
-  //
-  // //console.log(boxArr);
-  // //console.log(datasetArray.length);
-  //
-  // // looping through to find every dataset in each site
-  // for (var i = 0, l = datasetArray.length; i < l; i++){
-  //   //console.log(datasetArray[i].Datasets);
-  //   var datasets = datasetArray[i].Datasets;
-  //
-  //
-  //   //a for loop to make an ajax call for each dataset based on the dataset ID (54 total in this example)
-  //   for (var set = 0, len = datasets.length; set < len; set++){
-  //       var obj = datasets[set];
-  //       //console.log(obj);
-  //       var dataID = obj.DatasetID;
-  //       //console.log(dataID);
-  //
-  //       // ajax call based on datasetID that calls getSamples to retrieve data from each site
-  //       // downloads are heavy and slow.
-  //       $.ajax("http://api.neotomadb.org/v1/data/downloads/"+dataID, {
-  //        dataType: "json",
-  //        success: function(response){
-  //          //console.log(response);
-  //          getSamples(response,map);
-  //          //createSymbols(response,map);
-  //          }
-  //          });
-  //   }
-  //
-  //
-  //         };
 
-  var taxonIds = ["Pinus","Picea","Quercus","Acer"];
+  var taxonIds = boxID;
+  console.log(taxonIds);
   var ageChunks = age;
   for (var i = 0; i < taxonIds.length; i++) {
     for (var j = 0; j < ageChunks.length; j++) {
@@ -476,6 +445,7 @@ function createSymbols(data, map){
     var value = obj.Value;
     var tax = obj.TaxonName;
     var site = obj.SiteID;
+    var dataset = obj.DatasetID;
     //console.log(tax);
 
     // Have to do boxID into this function I think...
@@ -564,6 +534,7 @@ function createSymbols(data, map){
       rotationAngle: degrees,
       icon:myIcon,
       siteID: site,
+      datasetID: dataset,
       legend: taxonID
     });
       map.addLayer(marker);
@@ -581,6 +552,7 @@ function createSymbols(data, map){
        //var year = attribute.split("_")[1];
        popupContent += "<p><b>% abundance:</b> <br>" + round(value/(obj.UPHE+obj.VACR),2) + "</p>";
        popupContent += "<p id='popup-site' value='"+site+"'><b>Site ID:</b> <br>" + site + "</p>";
+       popupContent += "<p id='popup-site' value='"+site+"'><b>Dataset ID:</b> <br>" + dataset + "</p>";
        //console.log("yep");
 
        marker.bindPopup(popupContent);
@@ -596,6 +568,7 @@ function createSymbols(data, map){
 
 function coordinatedViz(){
   console.log(this.options.siteID);
+  var siteID = this.options.siteID;
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -636,9 +609,10 @@ function round(value, precision) {
 
  function updateSymbols(box){
 
-   getAllMarkers();
+
    var taxon = document.getElementById(box.id).value;
    var boxID = box.id;
+   getAllMarkers(boxID);
 
    if (boxID == "taxon1"){
      var degrees = 360;
@@ -666,35 +640,41 @@ function round(value, precision) {
 
  // experimental extension of the marker addition.
 
- function getAllMarkers() {
+ function getAllMarkers(box) {
    //console.log("fired");
-   //console.log(markers);
+   console.log(markers);
+   console.log(box);
+
 
      //var allMarkersObjArray = [];//new Array();
      //var allMarkersGeoJsonArray = [];//new Array();
-     console.log(map._layers);
+     //console.log(map._layers);
+     if (box){
+       $.each(map._layers, function (ml) {
+           //formerly, map._layers[ml].feature
+           if (markers[ml]) {
+             if (markers[ml].options.legend == box){
+               //console.log(box);
+               map.removeLayer(map._layers[ml]);
+             }
 
-     $.each(map._layers, function (ml) {
-         //console.log(ml)
-         //formerly, map._layers[ml].feature
-         if (markers[ml]) {
-             //console.log('value in Array!');
-             //map.removeLayer(map._layers[ml]);
+          };
 
-        } else {
-            //console.log('Not in array');
-        };
+       })
 
+     } else {
+       $.each(map._layers, function (ml) {
+           //formerly, map._layers[ml].feature
+           if (markers[ml]) {
+               //console.log(box);
+               map.removeLayer(map._layers[ml]);
 
+          };
 
-        //  {
-        //      map.removeLayer(map._layers[ml]);
-        //      //need to look at geojson feature part...
-        //      //allMarkersGeoJsonArray.push(JSON.stringify(this.toGeoJSON()));
-        //
-        //  }
+       })
 
-     })
+     };
+
 
      //console.log(allMarkersObjArray);
     // console.log(allMarkersGeoJsonArray);
