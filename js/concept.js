@@ -213,5 +213,39 @@ function createSymbols(data, map){
 
  ////////////////////////////////////////////////////////////////////////////////
 
+ // //Create new sequence controls
+ function createSequenceControls(map, attributes){
+     var SequenceControl = L.Control.extend({
+         options: {
+             position: 'bottomleft'
+         },
+         onAdd: function (map) {
+             // create the control container div with a particular class name
+             var container = L.DomUtil.create('div', 'sequence-control-container');
+             // create div element with the class 'overlay' and append it to the body
+
+             //$(container).append('<button class="skip" id="reverse" title="Reverse">Reverse</button>');
+             //create range input element (slider)
+             $(container).append('<input class="range-slider" type="range" max="6" min="0" step="1" value="0">');
+           //  $(container).append('<button class="skip" id="forward" title="Forward">Skip</button>');
+           // var initialYear = attributes[0]
+           // var year = initialYear.split("_")[1];
+           // $(container).append('<p>'+year+'</p>');
+            //kill any mouse event listeners on the map
+            L.DomEvent.disableClickPropagation(container);
+             $(container).on('mousedown click', function(e){
+
+                 $('.range-slider').on('input', function(){
+                     var index = $(this).val();
+
+                     updatePropSymbols(map, attributes[index]);
+             });
+             });
+             return container;
+         }
+     });
+     map.addControl(new SequenceControl());
+   };
+
 
 $(document).ready(createMap);
