@@ -1,4 +1,4 @@
-# <img src="images/FCLogo.png"> Flyover Country Neotoma Visualization Suite (FCNVS)
+# <img src="images/FCLogo.png" style="height:30px; width:30px;"> Flyover Country Neotoma Visualization Suite (FCNVS)
 
 This repository contains the Flyover Country Neotoma Visualization Suite (FCNVS), a multivariate visualization library currently built on [Leaflet](http://leafletjs.com/) for integration into the Flyover Country mobile app.
 
