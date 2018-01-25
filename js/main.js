@@ -17,8 +17,8 @@ var boxArr =[];
 // array that holds values (pollen scientific names) of the taxon dropboxes.
 var taxonIDs;
 // array that stores all called data in one place. Sorted by Taxa.
-var allData = [];
-// counter that sorts through data to store in allData.
+var allTaxaData = [];
+// counter that sorts through data to store in allTaxaData.
 var dataCounter = 0;
 // array that stores all data by site.
 var allSiteData = [];
@@ -310,10 +310,10 @@ function binDataBySite(data) {
     sites.push(data[i].SiteID);
   }
   //array created to place all unique siteIDs (as sites has duplicates) in for loop.
-  sitesDeDoop = [];
+  var sitesFinal = [];
   sites.forEach(function(item) {
-   if(sitesDeDoop.indexOf(item) < 0) {
-     sitesDeDoop.push(item);
+   if(sitesFinal.indexOf(item) < 0) {
+     sitesFinal.push(item);
    }
   });
 
@@ -322,7 +322,7 @@ function binDataBySite(data) {
   var Value = 0;
   var currentSite = {};
   var index = 0;
-  sitesDeDoop.forEach(function(item){
+  sitesFinal.forEach(function(item){
     for (var i = 0; i < data.length; i++) {
       if (item === data[i].SiteID) {
         index += 1;
@@ -342,16 +342,60 @@ function binDataBySite(data) {
   // making big array of all retrieved data to organized by taxon. This will be used
   // to make it easier for multiple vizualizations as well as not having to make
   // more ajax calls.
-      allData[dataCounter] = procData;
+      allTaxaData[dataCounter] = procData;
       dataCounter++;
-      console.log(allData);
 
-      if (allSiteData.length == sitesDeDoop.length){
 
-        // createBarCharts(allSiteData, map);
-      };
 
-  // will be moved outside of this function as the allData will be the source of information.
+      // if statement triggers once all available data has been compiled
+      // a for loop inside to re-sort all data into an array categorized by site
+      if (allTaxaData.length == taxonIDs.length){
+        console.log(allTaxaData);
+
+        // for loop to retrieve each unique siteID
+        for (var k = 0, arrayLength = sitesFinal.length; k < arrayLength; k++){
+              var sampleCounter = 0;
+              var tempArray = [];
+
+        // for loop to go through each array of objects in the array of taxa
+        for (var i = 0, l = allTaxaData.length; i < l; i++){
+          var taxArray = allTaxaData[i];
+          //console.log(allTaxaData[i]);
+
+
+          // another for loop nested in the other to populate allSiteData with
+          // with all data but sorted by sites
+          for (var j = 0, len = taxArray.length; j < len; j++){
+            var sample = taxArray[j];
+            var sampleID = sample.SiteID;
+
+            // console.log(taxArray[j].SiteID);
+
+            if (sampleID == sitesFinal[k]){
+              tempArray[sampleCounter]= sample;
+              sampleCounter++;
+            }
+
+            }
+            //push tempArray to allSiteData to a unique position
+            if (i == l-1){
+              allSiteData.push(tempArray);
+            }
+
+          }
+
+        }
+        if (allSiteData.length == sitesFinal.length){
+          console.log(allSiteData);
+          console.log("Boom bam thank you ma'am");
+          // createBarCharts(allSiteData, map);
+        };
+
+      }
+
+
+
+  // will be moved outside of this function as the allTaxaData will be the source of information.
   createPetalPlots(procData, map);
 };
 
@@ -638,8 +682,8 @@ function round(value, precision) {
 
  // experimental extension of the marker addition.
  // currently removes selected taxa but needs to redraw new ones according to new
- // taxa values. However, because of allData holding all available taxons, we
- // won't have to do another ajax call for it, just find it in the allData.
+ // taxa values. However, because of allTaxaData holding all available taxons, we
+ // won't have to do another ajax call for it, just find it in the allTaxaData.
 
  function getAllMarkers(box) {
 
