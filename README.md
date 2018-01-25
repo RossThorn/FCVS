@@ -24,7 +24,7 @@ The FCVS was designed to address the problem of visualizing large multivariate d
 
 *Screenshot of Petal Plot*
 
-A **petal plot** contains *n* custom icons rotated around a single location, where *n* is the number of variables in the data shown. The base of each icon located at the same latitude and longitude and each icon is rotated 360/*n* degrees. It uses color and size to encode nominal and numerical data, respectively. Each color (in this example) is associated with a distinct taxon of pollen found at that site and is sized according to its value.
+A **petal plot** contains *n* custom icons rotated around a single location, where *n* is the number of variables in the data shown. The base of each icon located at the same latitude and longitude and each icon is rotated 360/*n* degrees. It uses color and size to encode nominal and numerical data, respectively. The orientation of each symbol also is used to encode the nominal value. Each color (in this example) is associated with a distinct taxon of pollen found at that site and is sized according to its value.
 
 ### Stacked Bar Chart
 
