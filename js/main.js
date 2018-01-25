@@ -16,13 +16,12 @@ var map;
 var boxArr =[];
 // array that holds values (pollen scientific names) of the taxon dropboxes.
 var taxonIDs;
-// array that stores all called data in one place.
+// array that stores all called data in one place. Sorted by Taxa.
 var allData = [];
-// allData contains thousands of empty slots. This array only pulls slots with actual information.
-// should be equal to the number of taxon dropboxes there are.
-var focusedData = [];
-// counter to check in focusedData population.
-var focusedCounter = 0;
+// counter that sorts through data to store in allData.
+var dataCounter = 0;
+// array that stores all data by site.
+var allSiteData = [];
 // initial age of data shown.
 var age = [[0,1000]];
 
@@ -343,9 +342,14 @@ function binDataBySite(data) {
   // making big array of all retrieved data to organized by taxon. This will be used
   // to make it easier for multiple vizualizations as well as not having to make
   // more ajax calls.
-      allData[focusedCounter] = procData;
-      focusedCounter++;
+      allData[dataCounter] = procData;
+      dataCounter++;
       console.log(allData);
+
+      if (allSiteData.length == sitesDeDoop.length){
+
+        // createBarCharts(allSiteData, map);
+      };
 
   // will be moved outside of this function as the allData will be the source of information.
   createPetalPlots(procData, map);
