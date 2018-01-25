@@ -60,8 +60,6 @@ function createMap(){
 
       // function used to create map controls.
         createControls(map);
-        testBarChart(map);
-
 
         //window resize function so map takes up entirety of screen on resize
         $(window).on("resize", function () { $("#mapid").height($(window).height()); map.invalidateSize(); }).trigger("resize");
@@ -386,9 +384,7 @@ function binDataBySite(data) {
 
         }
         if (allSiteData.length == sitesFinal.length){
-          console.log(allSiteData);
-          console.log("Boom bam thank you ma'am");
-          // createBarCharts(allSiteData, map);
+        //createBarCharts(allSiteData, map);
         };
 
       }
@@ -396,7 +392,7 @@ function binDataBySite(data) {
 
 
   // will be moved outside of this function as the allTaxaData will be the source of information.
-  createPetalPlots(procData, map);
+    createPetalPlots(procData, map);
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -513,6 +509,7 @@ function createPetalPlots(data, map){
     var lat = ((obj.LatitudeNorth) + (obj.LatitudeSouth))/2;
 
     var value = obj.Value;
+    var percAbundance = value/(obj.Total)*100;
     var tax = obj.TaxonName;
     var site = obj.SiteID;
     var dataset = obj.DatasetID;
@@ -552,37 +549,37 @@ function createPetalPlots(data, map){
 
     // defining custom icons for each petal.
     var myIcon_dkblu = L.icon({
-      // #4F77BB
+      // #4F77BB dark blue
       iconUrl:'lib/leaflet/images/LeafIcon_dkblu_lg.png',
-      iconSize: [(.1*value),(.2*value)],
-      iconAnchor:  [(.05*value),(.2*value)],
+      iconSize: [(percAbundance),(2*percAbundance)],
+      iconAnchor:  [(.5*percAbundance),(2*percAbundance)],
       popupAnchor: [1, -34],
       tooltipAnchor: [16, -28],
       });
 
       var myIcon_ltblu = L.icon({
-        // #A6CFE5
+        // #A6CFE5 light blue
         iconUrl:'lib/leaflet/images/LeafIcon_ltblu_lg.png',
-        iconSize: [(.1*value),(.2*value)],
-        iconAnchor:  [(.05*value),(.2*value)],
+        iconSize: [(percAbundance),(2*percAbundance)],
+        iconAnchor:  [(.5*percAbundance),(2*percAbundance)],
         popupAnchor: [1, -34],
         tooltipAnchor: [16, -28],
         });
 
       var myIcon_dkgrn = L.icon({
-        // #31A148
+        // #31A148 dark green
         iconUrl:'lib/leaflet/images/LeafIcon_dkgrn_lg.png',
-        iconSize: [(.1*value),(.2*value)],
-        iconAnchor:  [(.05*value),(.2*value)],
+        iconSize: [(percAbundance),(2*percAbundance)],
+        iconAnchor:  [(.5*percAbundance),(2*percAbundance)],
         popupAnchor: [1, -34],
         tooltipAnchor: [16, -28],
         });
 
       var myIcon_ltgrn = L.icon({
-        // #B3D88A
+        // #B3D88A light green
         iconUrl:'lib/leaflet/images/LeafIcon_ltgrn_lg.png',
-        iconSize: [(.1*value),(.2*value)],
-        iconAnchor:  [(.05*value),(.2*value)],
+        iconSize: [(percAbundance),(2*percAbundance)],
+        iconAnchor:  [(.5*percAbundance),(2*percAbundance)],
         popupAnchor: [1, -34],
         tooltipAnchor: [16, -28],
         });
@@ -624,7 +621,7 @@ function createPetalPlots(data, map){
 
        //add formatted attribute to popup content string
        //var year = attribute.split("_")[1];
-       popupContent += "<p><b>% abundance:</b> <br>" + round(value/(obj.UPHE+obj.VACR),2) + "</p>";
+       popupContent += "<p><b>% abundance:</b> <br>" + round(percAbundance,2) + "</p>";
        popupContent += "<p id='popup-site' value='"+site+"'><b>Site ID:</b> <br>" + site + "</p>";
        popupContent += "<p id='popup-site' value='"+site+"'><b>Dataset ID:</b> <br>" + dataset + "</p>";
 
@@ -722,70 +719,171 @@ function round(value, precision) {
  };
 
 ////////////////////////////////////////////////////////////////////////////////
-function testBarChart(map){
+function createBarCharts(data, map){
 
-  // #4F77BB
-// #A6CFE5
-// #31A148
-// #B3D88A
+  // #4F77BB dark blue
+  // #A6CFE5 light blue
+  // #31A148 dark green
+  // #B3D88A light green
+for (var i = 0, l = data.length; i < l; i++){
 
-  //need to change the options under _loadComponents (I think) to make these stacked.
+  var thisSite = data[i];
 
-  // bar chart works well, just need to add something that looks at data in each site and pull it out.
+  // default values set for the taxa
+  // Spruce/Picea
+  var tax1 = 0;
+  // Oak/Quercus
+  var tax2 = 0;
+  // Birch/Betula
+  var tax3 = 0;
+  // Pine/Pinus
+  var tax4 = 0;
+
+  // multiple if statements used to assign the proper value to the proper taxon variable
+  // some sites may not have samples of all taxa. So the ordering of the Samples
+  // in the sites will not always match up.
+
+  // looking at the first spot in the array (if it exists)
+    if (thisSite[0]){
+      console.log("bam");
+      if (thisSite[0].TaxonName == "Picea"){
+        tax1 = (thisSite[0].Value/(thisSite[0].Total)*100);
+      }
+      else if (thisSite[0].TaxonName == "Quercus"){
+        tax2 = (thisSite[0].Value/(thisSite[0].Total)*100);
+      }
+      else if (thisSite[0].TaxonName == "Betula"){
+        tax3 = (thisSite[0].Value/(thisSite[0].Total)*100);
+      }
+      else if (thisSite[0].TaxonName == "Pinus"){
+        tax4 = (thisSite[0].Value/(thisSite[0].Total)*100);
+      }
+      else {
+        console.log("I don't know, yo");
+      }
+    };
+
+
+    // looking at the second sample in the array (if it exists)
+      if (thisSite[1]){
+      if (thisSite[1].TaxonName == "Picea"){
+        tax1 = (thisSite[1].Value/(thisSite[1].Total)*100);
+      }
+      else if (thisSite[1].TaxonName == "Quercus"){
+        tax2 = (thisSite[1].Value/(thisSite[1].Total)*100);
+      }
+      else if (thisSite[1].TaxonName == "Betula"){
+        tax3 = (thisSite[1].Value/(thisSite[1].Total)*100);
+      }
+      else if (thisSite[1].TaxonName == "Pinus"){
+        tax4 = (thisSite[1].Value/(thisSite[1].Total)*100);
+      }
+      else {
+        console.log("I don't know, yo");
+      }
+    };
+
+    // looking at the third sample in the array (if it exists)
+    if (thisSite[2]){
+      if (thisSite[2].TaxonName == "Picea"){
+        tax1 = (thisSite[2].Value/(thisSite[2].Total)*100);
+      }
+      else if (thisSite[2].TaxonName == "Quercus"){
+        tax2 = (thisSite[2].Value/(thisSite[2].Total)*100);
+      }
+      else if (thisSite[2].TaxonName == "Betula"){
+        tax3 = (thisSite[2].Value/(thisSite[2].Total)*100);
+      }
+      else if (thisSite[2].TaxonName == "Pinus"){
+        tax4 = (thisSite[2].Value/(thisSite[2].Total)*100);
+      }
+      else {
+        console.log("I don't know, yo");
+      }
+    }
+
+    // looking at the fourth sample in the array (if it exists)
+    if (thisSite[3]){
+      if (thisSite[3].TaxonName == "Picea"){
+        tax1 = (thisSite[3].Value/(thisSite[3].Total)*100);
+      }
+      else if (thisSite[3].TaxonName == "Quercus"){
+        tax2 = (thisSite[3].Value/(thisSite[3].Total)*100);
+      }
+      else if (thisSite[3].TaxonName == "Betula"){
+        tax3 = (thisSite[3].Value/(thisSite[3].Total)*100);
+      }
+      else if (thisSite[3].TaxonName == "Pinus"){
+        tax4 = (thisSite[3].Value/(thisSite[3].Total)*100);
+      }
+      else {
+        console.log("I don't know, yo");
+      }
+    }
+
 
   var options = {
-	data: {
-		'dataPoint1': Math.random() * 20,
-		'dataPoint2': Math.random() * 20,
-		'dataPoint3': Math.random() * 20,
-		'dataPoint4': Math.random() * 20
+  data: {
+    'Picea': tax1,
+    'Quercus': tax2,
+    'Betula': tax3,
+    'Pinus': tax4
+    //
+    // 'dataPoint1': (thisSite[0].Value/(thisSite[0].Total)*100),
+    // 'dataPoint2': (thisSite[1].Value/(thisSite[1].Total)*100)
 
-	},
-	chartOptions: {
-		'dataPoint1': {
-			fillColor: '#4F77BB',
-			minValue: 0,
-			maxValue: 20,
-			maxHeight: 50,
-			displayText: function (value) {
-				return value.toFixed(2);
-			}
-		},
-		'dataPoint2': {
-			fillColor: '#A6CFE5',
-			minValue: 0,
-			maxValue: 20,
-			maxHeight: 50,
-			displayText: function (value) {
-				return value.toFixed(2);
-			}
-		},
-		'dataPoint3': {
-			fillColor: '#31A148',
-			minValue: 0,
-			maxValue: 20,
-			maxHeight: 50,
-			displayText: function (value) {
-				return value.toFixed(2);
-			}
-		},
-		'dataPoint4': {
-			fillColor: '#B3D88A',
-			minValue: 0,
-			maxValue: 20,
-			maxHeight: 50,
-			displayText: function (value) {
-				return value.toFixed(2);
-			}
-		}
-	},
-	weight: 1,
-	color: '#000000'
+  },
+  chartOptions: {
+    'Picea': {
+      fillColor: '#4F77BB',
+      minValue: 0,
+      maxValue: 100,
+      maxHeight: 50,
+      displayText: function (value) {
+        return value.toFixed(2);
+      }
+    },
+    'Quercus': {
+      fillColor: '#A6CFE5',
+      minValue: 0,
+      maxValue: 100,
+      maxHeight: 50,
+      displayText: function (value) {
+        return value.toFixed(2);
+      }
+    },
+    'Betula': {
+      fillColor: '#31A148',
+      minValue: 0,
+      maxValue: 100,
+      maxHeight: 50,
+      displayText: function (value) {
+        return value.toFixed(2);
+      }
+    },
+    'Pinus': {
+      fillColor: '#B3D88A',
+      minValue: 0,
+      maxValue: 100,
+      maxHeight: 50,
+      displayText: function (value) {
+        return value.toFixed(2);
+      }
+    }
+  },
+  weight: 1,
+  color: '#000000'
 };
 
-var barChartMarker = new L.BarChartMarker(new L.LatLng(45, -90), options);
+var lon = ((thisSite[0].LongitudeEast) + (thisSite[0].LongitudeWest))/2;
+var lat = ((thisSite[0].LatitudeNorth) + (thisSite[0].LatitudeSouth))/2;
+
+var barChartMarker = new L.BarChartMarker(new L.LatLng(lat, lon), options);
 
 barChartMarker.addTo(map);
+
+
+}
 
 
 };

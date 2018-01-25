@@ -1,4 +1,4 @@
-
+// File to show the examples of the visualizations
 function createMap(){
 
     // set map bounds
@@ -23,15 +23,8 @@ function createMap(){
         minZoom:2
     }).addTo(map);
 
-
-    // Create necessary panes in correct order
-    // map.createPane("pointsPane");
-    // map.createPane("polygonsPane");
-
-
-        //call getData function
-//         getCountryShapeData(map);
         getData(map);
+        createBarCharts(map);
 
         //window resize function so map takes up entirety of screen on resize
         $(window).on("resize", function () { $("#mapid").height($(window).height()); map.invalidateSize(); }).trigger("resize");
@@ -58,24 +51,10 @@ function getData(map){
             //call function to create symbols
             createSymbols(response, map);
 
-            // //call function to create sequence controls
-            // createSequenceControls(map, attributes);
-            // //call function to create legend for prop symbols
-            // createSymbolLegend(map,attributes);
-            // //create legend display for year
-            // createLegend (map, attributes);
-            // //create legend for overlay
-            // createPolyLegend(map);
+
         }
     });
 
-    $.ajax("http://apidev.neotomadb.org/v1/data/pollen?taxonname=sequoia", {
-        dataType: "json",
-        success: function(response){
-          console.log(response);
-          createSymbols(response,map);
-          }
-          });
 
 };
 
@@ -83,8 +62,9 @@ function getData(map){
 
 //Add proportional markers for each point in data
 function createSymbols(data, map){
+
   var points = data.features
-  // console.log(data.features);
+
   // console.log(data.features[0].properties.degrees)
   for (var i = 0, l = points.length; i < l; i++){
     // console.log("fired");
@@ -158,59 +138,83 @@ function createSymbols(data, map){
 
     marker.bindPopup(popupContent)
 
-      // //original popupContent changed to popupContent variable
-      //
-      // if (obj.properties)
-      //    var popupContent = "<p><b>Taxon:</b> " + feature.properties.Country + "</p>";
-      //
-      //    //add formatted attribute to popup content string
-      //    var year = attribute.split("_")[1];
-      //    popupContent += "<p><b>CO2 emissions in " + year + " (kt):</b> <br>" + Math.round(feature.properties[attribute]) + "</p>";
-      //
-      //    //bind the popup to the circle marker
-      //    layer.bindPopup(popupContent, {
-      //        offset: new L.Point(0,-options.radius),
-      //        closeButton: false
-      //    });
-      //    //event listeners to open popup on hover
-      //    layer.on({
-      //        mouseover: function(){
-      //            this.openPopup();
-      //        },
-      //        mouseout: function(){
-      //            this.closePopup();
-      //        },
-      //    });
 
 
   };
 };
 
-////////////////////////////////////////////////////////////////////////////////
 
-// function pointToLayer(feature, latlng){
-//   console.log("meow");
-//     //create marker options
-//     var options = {
-//         radius: 8,
-//         fillColor: "#5e5e5e",
-//         color: "#000",
-//         weight: 1,
-//         opacity: 1,
-//         fillOpacity: 0.6
-//     };
-//
-//     //For each feature, determine its value for the selected attribute
-//      var attValue = Number(feature.properties[attribute]);
-//
-//      //create circle marker layer
-//      var layer = L.marker(latlng, options);
-//
-//
-//      //return the circle marker to the L.geoJson pointToLayer option
-//      return layer;
-//  };
+ ////////////////////////////////////////////////////////////////////////////////
 
+
+ function createBarCharts(map){
+
+   // #4F77BB dark blue
+   // #A6CFE5 light blue
+   // #31A148 dark green
+   // #B3D88A light green
+
+
+   var options = {
+   data: {
+     'Picea': Math.random()*50,
+     'Quercus': Math.random()*50,
+     'Betula': Math.random()*50,
+     'Pinus': Math.random()*50
+
+   },
+   chartOptions: {
+     'Picea': {
+       fillColor: '#4F77BB',
+       minValue: 0,
+       maxValue: 100,
+       maxHeight: 50,
+       displayText: function (value) {
+         return value.toFixed(2);
+       }
+     },
+     'Quercus': {
+       fillColor: '#A6CFE5',
+       minValue: 0,
+       maxValue: 100,
+       maxHeight: 50,
+       displayText: function (value) {
+         return value.toFixed(2);
+       }
+     },
+     'Betula': {
+       fillColor: '#31A148',
+       minValue: 0,
+       maxValue: 100,
+       maxHeight: 50,
+       displayText: function (value) {
+         return value.toFixed(2);
+       }
+     },
+     'Pinus': {
+       fillColor: '#B3D88A',
+       minValue: 0,
+       maxValue: 100,
+       maxHeight: 50,
+       displayText: function (value) {
+         return value.toFixed(2);
+       }
+     }
+   },
+   weight: 1,
+   color: '#000000'
+ };
+
+
+ var barChartMarker = new L.BarChartMarker(new L.LatLng(45, -90), options);
+
+ barChartMarker.addTo(map);
+
+
+
+
+
+ };
  ////////////////////////////////////////////////////////////////////////////////
 
  // //Create new sequence controls
