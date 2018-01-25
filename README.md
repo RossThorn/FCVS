@@ -10,15 +10,13 @@ The FCVS will be implemented into future versions of the app.
 
 ## Multivariate Visualization
 
-This FCVS was deigned to visualize large multivariate datasets from the [Neotoma Database](https://www.neotomadb.org/). The suite includes four visualizations to explore Neotoma's pollen data:
+The FCVS was deigned to visualize large multivariate datasets from the [Neotoma Database](https://www.neotomadb.org/). Addressing the problem of visualizing these data through a cartographic interface on a mobile device, the suite includes four visualizations to explore Neotoma's pollen data:
 * Petal Plots
 * Stacked Bar Charts
 * Radar Charts
 * Flagpole Diagrams
 
-These visualizations were chosen after conducting a quantitative content analysis on all the visualizations from papers in the [Neotoma Citations Google Scholar page](https://scholar.google.com/citations?user=idoixqkAAAAJ&hl=en). The analysis provided insight into extant visualization methods in the field of paleoecology and informed selection of the particular examples included in the suite. The visualizations are created using [D3](https://github.com/d3/d3), a JavaScript library for interactive data visualization, and native [Leaflet](http://leafletjs.com/) icon functions.
-
-The FCVS was designed to address the problem of visualizing large multivariate datasets in a cartographic interface on a mobile device. 
+These visualizations were chosen after conducting a quantitative content analysis on all the visualizations from papers in the [Neotoma Citations Google Scholar page](https://scholar.google.com/citations?user=idoixqkAAAAJ&hl=en). The analysis provided insight into extant visualization methods in the field of paleoecology and informed selection of the particular examples included in the suite. The visualizations are created using [D3](https://github.com/d3/d3), a JavaScript library for interactive data visualization, and native [Leaflet](http://leafletjs.com/) icon functions. 
 
 ### Petal Plot
 
