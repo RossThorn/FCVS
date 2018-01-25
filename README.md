@@ -10,7 +10,7 @@ The FCVS will be implemented into future versions of the app.
 
 ## Multivariate Visualization
 
-The FCVS was deigned to visualize large multivariate datasets from the [Neotoma Database](https://www.neotomadb.org/). Addressing the problem of visualizing these data through a cartographic interface on a mobile device, the suite includes four visualizations to explore Neotoma's pollen data:
+The FCVS was deigned to visualize large multivariate datasets from the [Neotoma Database](https://www.neotomadb.org/). Addressing the problem of visualizing these data through a mobile cartographic interface, the suite includes four visualizations to explore Neotoma's pollen data:
 * Petal Plots
 * Stacked Bar Charts
 * Radar Charts
