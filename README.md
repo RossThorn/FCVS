@@ -1,4 +1,4 @@
-# <img src="images/FCLogo.png"> Flyover Country Visualization Suite (FCVS)
+# Flyover Country Visualization Suite (FCVS) <img src="images/FCLogo.png"> 
 
 This repository contains the **Flyover Country Visualization Suite (FCVS)**, a multivariate visualization Javascript library currently built on [Leaflet](http://leafletjs.com/) for integration into the Flyover Country mobile app.
 
