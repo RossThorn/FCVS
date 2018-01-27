@@ -43,6 +43,14 @@ A **radar chart** has a polygon with *n* vertices along equi-angular axes, where
 
 A **flagpole diagram** is a stacked area chart that is rotated 90 degrees, depicting time on the y-axis and value on the x-axis. The base of the graph is centered at the latitude and longitude of the site. It uses color and size to encode nominal and numerical data, respectively. 
 
-## Data
+## Exploring the Data
+
+### What?
+
+The FCVS utilizes the [Neotoma Database](https://www.neotomadb.org/) to bring vast multivariate paleoecological datasets into a concise mobile interface. While currently set up to access a certain number of pollen taxa, the framework will be able to handle most data in the database.
+
+### Where?
+
+The user first defines an area on the map he or she wishes to explore. The latitude and longitude coordinates of the vertices are stored in WKT format and used to query the Neotoma API portal for data within the polygon. 
 
 ## Example
