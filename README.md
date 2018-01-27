@@ -47,10 +47,22 @@ A **flagpole diagram** is a stacked area chart that is rotated 90 degrees, depic
 
 ### What?
 
+<img align="left">
+
 The FCVS utilizes the [Neotoma Database](https://www.neotomadb.org/) to bring vast multivariate paleoecological datasets into a concise mobile interface. While currently set up to access a certain number of pollen taxa, the framework will be able to handle most data in the database.
+
+More information on the Neotoma database can be found [here](https://www.neotomadb.org/about/category/database).
 
 ### Where?
 
-The user first defines an area on the map he or she wishes to explore. The latitude and longitude coordinates of the vertices are stored in WKT format and used to query the Neotoma API portal for data within the polygon. 
+The user first defines an area on the map he or she wishes to explore. The latitude and longitude coordinates of the vertices are stored in WKT format and used to query the Neotoma API for data that lies within the defined polygon. 
+
+Each visualization is attached to the coordinates of a site where the sample was collected. The SiteID, a number that act as the unique identifier for each site, can be retrieved by clicking/tapping on the icon.
+
+### How?
+
+### When?
+
+
 
 ## Example
