@@ -36,19 +36,19 @@ These visualizations were chosen after conducting a quantitative content analysi
 
 #### Petal Plot
 
-<img align="left"  src="images/Petal_Plot_Example.png">
+<img align="left"  src="images/Petal_Plot_Example.PNG">
 
 A **petal plot** contains *n* custom icons rotated around a single location, where *n* is the number of variables in the data shown. The base of each icon located at the same latitude and longitude and each icon is rotated 360/*n* degrees. It uses color and size to encode nominal and numerical data, respectively. The orientation of each symbol also is used to encode the nominal value. Each color (in this example) is associated with a distinct taxon of pollen found at that site and is sized according to its value.
 
 #### Stacked Bar Chart
 
-<img align="left"  src="images/Stacked_Bar_Chart_Example.png">
+<img align="left"  src="images/Stacked_Bar_Chart_Example.PNG">
 
 A **stacked bar chart** depicts proportionally sized bars on top of each other, with the base of the stack centered at the latitude and longitude of the site. It uses color and size to encode nominal and numerical data, respectively. 
 
 #### Radar Chart
 
-<img align="left"  src="images/Radar_Chart_Example.png">
+<img align="left"  src="images/Radar_Chart_Example.PNG">
 
 A **radar chart** has a polygon with *n* vertices along equi-angular axes, where *n* is the number of variables in the data shown. Each vertex and axis correspond to a single variable. The distance a particular vertex is displaced along the axis from the center of the chart is proportional to the value for that particular variable. Each chart is centered at the latitude and longitude of the site.
 
