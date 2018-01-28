@@ -36,28 +36,30 @@ These visualizations were chosen after conducting a quantitative content analysi
 
 #### Petal Plot
 
-<img align="left"  src="images/Petal_Plot_Example.PNG">
+<img align="left"  height=150px width=auto src="images/Petal_Plot_Example.PNG">
 
-A **petal plot** contains *n* custom icons rotated around a single location, where *n* is the number of variables in the data shown. The base of each icon located at the same latitude and longitude and each icon is rotated 360/*n* degrees. It uses color and size to encode nominal and numerical data, respectively. The orientation of each symbol also is used to encode the nominal value. Each color (in this example) is associated with a distinct taxon of pollen found at that site and is sized according to its value.
+A **petal plot** contains *n* custom icons rotated around a single location, where *n* is the number of variables in the data shown. The base of each icon located at the same latitude and longitude and each icon is rotated 360/*n* degrees. It uses color and size to encode nominal and numerical data, respectively. The orientation of each symbol also is used to encode the nominal value. Each color (in this example) is associated with a distinct taxon of pollen found at that site and is sized according to its value. The petal plot was not found in the analysis of the Neotoma citations, but is a novel technique for multivariate pollen visualization and suitable for mobile interfaces. 
+ 
 
 #### Stacked Bar Chart
 
-<img align="left"  src="images/Stacked_Bar_Chart_Example.PNG">
+<img align="left"  height=150px width=auto src="images/Stacked_Bar_Chart_Example.PNG">
 
-A **stacked bar chart** depicts proportionally sized bars on top of each other, with the base of the stack centered at the latitude and longitude of the site. It uses color and size to encode nominal and numerical data, respectively. 
+A **stacked bar chart** depicts proportionally sized bars on top of each other. The base of the stack is centered at the latitude and longitude of the site. It uses color and size to encode nominal and numerical data, respectively. Each bar is a separate icon attached to the site coordinates, but displaced vertically by the sum of the height of the previously drawn bars. Stacked bar charts were one of the most popular visualization techniques revealed in the Neotoma citation analysis and are also suitable for mobile interfaces.
+ 
 
 #### Radar Chart
 
-<img align="left"  src="images/Radar_Chart_Example.PNG">
+<img align="left" height=150px width=auto src="images/Radar_Plot_Example.PNG">
 
-A **radar chart** has a polygon with *n* vertices along equi-angular axes, where *n* is the number of variables in the data shown. Each vertex and axis correspond to a single variable. The distance a particular vertex is displaced along the axis from the center of the chart is proportional to the value for that particular variable. Each chart is centered at the latitude and longitude of the site.
+A **radar chart** (otherwise known as a star plot) has a polygon with *n* vertices along equi-angular axes, where *n* is the number of variables in the data shown. Each vertex and axis correspond to a single variable. The distance a particular vertex is displaced along the axis from the center of the chart is proportional to the value for that particular variable. Each chart is centered at the latitude and longitude of the site. The radar chart was not prevalent in the Neotoma citation analysis, but is another suitable multivariate visualization technique for mobile interfaces, as it can depict a lot of information in a concise space.
 
-
+ 
 #### Flagpole Diagram
 
 *Screenshot of Flagpole Diagram*
 
-A **flagpole diagram** is a stacked area chart that is rotated 90 degrees, depicting time on the y-axis and value on the x-axis. The base of the graph is centered at the latitude and longitude of the site. It uses color and size to encode nominal and numerical data, respectively. 
+A **flagpole diagram** is a stacked area chart that is rotated 90 degrees, depicting time on the y-axis and value on the x-axis. The base of the graph is centered at the latitude and longitude of the site. It uses color and size to encode nominal and numerical data, respectively. Area charts of all kinds were quite popular in the Neotoma citation analysis. While flagpole diagrams are not entirely mobile-friendly, they allow for good comparison of multivariate data.
 
 ### When?
 
