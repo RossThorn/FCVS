@@ -392,7 +392,7 @@ function binDataBySite(data) {
 
 
   // will be moved outside of this function as the allTaxaData will be the source of information.
-    createPetalPlots(procData, map);
+     createPetalPlots(procData, map);
 };
 
 ////////////////////////////////////////////////////////////////////////////////
