@@ -57,9 +57,9 @@ A **radar chart** (otherwise known as a star plot) has a polygon with *n* vertic
  
 #### Flagpole Diagram
 
-*Screenshot of Flagpole Diagram*
+<img align="left" height=150px width=auto src="images/Flagpole_Diagram_Example.png">
 
-A **flagpole diagram** is a stacked area chart that is rotated 90 degrees, depicting time on the y-axis and value on the x-axis. The base of the graph is centered at the latitude and longitude of the site. It uses color and size to encode nominal and numerical data, respectively. Area charts of all kinds were quite popular in the Neotoma citation analysis. While flagpole diagrams are not entirely mobile-friendly, they allow for good comparison of multivariate data.
+A **flagpole diagram** is a stacked area chart that is rotated 90 degrees, depicting time on the y-axis and value on the x-axis. The base of the graph is centered at the latitude and longitude of the site. It uses color and size to encode nominal and numerical data, respectively. Area charts of all kinds were quite popular in the Neotoma citation analysis. While flagpole diagrams are not entirely mobile-friendly, they allow for good comparison of multivariate data. The flagpole diagram is the purest temporal visualization included in the suite, while the others are augmented by interactivity. 
 
 ### When?
 
