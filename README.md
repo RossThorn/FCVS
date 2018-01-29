@@ -63,10 +63,10 @@ A **flagpole diagram** is a stacked area chart that is rotated 90 degrees, depic
 
 ### When?
 
-The samples in the database are not only spread across space, but as time as well. The user can explore the timeline of the database through a slider bar. As the slider is shifted, the visualizations change according to the value of the preset taxa for that time period.
+The samples in the database are not only spread across space, but as time as well. The data is binned by a defined time interval. The user can explore the timeline of the database through a slider bar. As the slider is shifted, the visualizations change according to the value of the preset taxa for that time period.
 
 ## Example
 
 The following gif shows a possible interaction with the FCVS.
 
-*GIF depicting possible interactions*
+*GIF depicting possible interaction*
