@@ -400,6 +400,7 @@ function binDataBySite(data) {
 
 // need to pass in taxa and taxon id (for each individual box) to be searched from the ones set in input boxes.
 // add taxon box id (eg. taxon1) for icon rotation and taxa value from that box as arguments.
+// CURRENTLY NOT BEING CALLED
 function getSamples(dataset, map){
 
 
@@ -466,7 +467,7 @@ function getSamples(dataset, map){
           //numbers corrected for current year. Unsure if this will work right now. Probably not as I need to call things based on their cataloged year.
           // will need to do this sort of correction for temporal filter, but not for searching data.
 
-          //var diffCorrect = currentYear - 1950;
+          var diffCorrect = currentYear - 1950;
           var range = max - min;
 
 
