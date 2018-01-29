@@ -14,7 +14,7 @@ The FCVS will be implemented into future versions of the app.
 
 <img align="left"  src="images/Neotoma.png">
 
-The FCVS utilizes the [Neotoma Database](https://www.neotomadb.org/) to bring vast multivariate paleoecological datasets into a concise mobile interface. Four specific taxa are set as the default, however, the user can pick any taxa to investigate. While currently set up to access a certain number of pollen taxa, the framework will be able to handle most data in the database. 
+The FCVS utilizes the [Neotoma Database](https://www.neotomadb.org/) to bring vast multivariate, temporal paleoecological datasets into a concise mobile interface. Four specific taxa are set as the default, however, the user can pick any taxa to investigate. While currently set up to access a certain number of pollen taxa, the framework will be able to handle most data in the database. 
 
 More information on the Neotoma database can be found [here](https://www.neotomadb.org/about/category/database).
 
@@ -59,11 +59,13 @@ A **radar chart** (otherwise known as a star plot) has a polygon with *n* vertic
 
 <img align="left" height=150px width=auto src="images/Flagpole_Diagram_Example.png">
 
-A **flagpole diagram** is a stacked area chart that is rotated 90 degrees, depicting time on the y-axis and value on the x-axis. The base of the graph is centered at the latitude and longitude of the site. It uses color and size to encode nominal and numerical data, respectively. Area charts of all kinds were quite popular in the Neotoma citation analysis. While flagpole diagrams are not entirely mobile-friendly, they allow for good comparison of multivariate data. The flagpole diagram is the purest temporal visualization included in the suite, while the others are augmented by interactivity. 
+A **flagpole diagram** is a stacked area chart that is rotated 90 degrees, depicting time on the y-axis and value on the x-axis. The base of the graph is centered at the latitude and longitude of the site. It uses color and size to encode nominal and numerical data, respectively. Area charts of all kinds were quite popular in the Neotoma citation analysis. While flagpole diagrams are not entirely mobile-friendly, they allow for good comparison of multivariate data. The flagpole diagram is the purest temporal visualization included in the suite.
 
 ### When?
 
 The samples in the database are not only spread across space, but as time as well. The data is binned by a defined time interval. The user can explore the timeline of the database through a slider bar. As the slider is shifted, the visualizations change according to the value of the preset taxa for that time period.
+
+The petal plots, stacked bar charts, and flagpole diagrams are not inherently temporal visualizations. Interactivity via the sliding bar control allows for these visualizations to display information over time. The flagpole diagram, as mentioned, is the only inherently temporal visualization in the suite, displaying data across time without interactivity.
 
 ## Example
 
