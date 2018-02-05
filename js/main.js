@@ -299,6 +299,7 @@ function getSites(age, boxArr){
 // function used to organize all data of a particular taxon by site location.
 //fires for each taxon desired
 function binDataBySite(data) {
+  console.log(data);
 
   // creates array to hold all sites where the taxon is found.
   var sites = [];
