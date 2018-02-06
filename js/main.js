@@ -268,13 +268,35 @@ function tempChange() {
 // function used to call the neotoma database and retrieve the proper data based on a preset bounding box (which will eventually be user defined)
 // and the preselected taxon names from boxArr
 function getSites(age, boxArr){
+  // these variables are arbitrary. Used strictly for parsing Neotoma data
+  var young = 0;
+  var old = 12000;
+  var step = 1000;
+
+  var classNum = (old-young)/step;
+
+  // variable for storing age bin values
+  var ageArray = [];
+  var ageCount = young+step;
+
+  for (var j = 0; j < classNum; j++){
+    ageArray.push(ageCount);
+    ageCount+= step;
+  }
+
+  console.log(ageArray);
+
 
   // for loop that looks at all the taxa in taxonIDs, retrieving data for each one.
   // age is used to determine which samples to retrieve
   // NOTE: want to take all the data and put it into one object/array to be dealt with that way.
+
   for (var i = 0; i < taxonIDs.length; i++) {
-      var young = age[0][0];
-      var old = age[0][1];
+
+    // age variables that are probably no longer needed. Going to instead get all the data from all the years and store them all in one place.
+      // var young = age[0][0];
+      // var old = age[0][1];
+
       // constructing URL based on coordinates (to be changed to user inputted bounding box later) and the taxon and ages.
       // need to change this so it retrieves information for all offered taxa.
       var urlBaseMN = 'http://apidev.neotomadb.org/v1/data/pollen?wkt=POLYGON((-97.294921875%2048.93964118139728,-96.6357421875%2043.3601336603352,-91.20849609375%2043.53560718808973,-93.09814453125%2045.10745410539934,-92.17529296875%2046.69749299744142,-88.79150390625%2047.874907453605935,-93.53759765625%2048.910767192107755,-97.294921875%2048.93964118139728))';
@@ -284,7 +306,7 @@ function getSites(age, boxArr){
         dataType: "json",
         success: function(response){
           // calling function to organize data
-          binDataBySite(response.data);
+          binDataBySite(response.data,ageArray);
           // createPetalPlots(response, map);
         }
       });
@@ -298,8 +320,8 @@ function getSites(age, boxArr){
 ////////////////////////////////////////////////////////////////////////////////
 // function used to organize all data of a particular taxon by site location.
 //fires for each taxon desired
-function binDataBySite(data) {
-  console.log(data);
+function binDataBySite(data,ageArray) {
+  // console.log(data);
 
   // creates array to hold all sites where the taxon is found.
   var sites = [];
@@ -385,7 +407,8 @@ function binDataBySite(data) {
 
         }
         if (allSiteData.length == sitesFinal.length){
-        //createBarCharts(allSiteData, map);
+        console.log(allSiteData);
+        createBarCharts(allSiteData, map);
         };
 
       }
@@ -393,7 +416,7 @@ function binDataBySite(data) {
 
 
   // will be moved outside of this function as the allTaxaData will be the source of information.
-     createPetalPlots(procData, map);
+     //createPetalPlots(procData, map);
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -747,7 +770,7 @@ for (var i = 0, l = data.length; i < l; i++){
 
   // looking at the first spot in the array (if it exists)
     if (thisSite[0]){
-      console.log("bam");
+
       if (thisSite[0].TaxonName == "Picea"){
         tax1 = (thisSite[0].Value/(thisSite[0].Total)*100);
       }
