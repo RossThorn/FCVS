@@ -24,6 +24,8 @@ var dataCounter = 0;
 var allRawData = [];
 // array that stores all data by site.
 var allSiteData = [];
+// final array of data in proper format
+var formattedData = [];
 // initial age of data shown.
 var age = [[0,1000]];
 
@@ -286,7 +288,7 @@ function getSites(age, boxArr){
     ageCount+= step;
   }
 
-  console.log(ageArray);
+  //console.log(ageArray);
 
 
   // for loop that looks at all the taxa in taxonIDs, retrieving data for each one.
@@ -347,45 +349,105 @@ function binDataBySite(data,ageArray) {
    allRawData.push(data);
    // if statement triggers after everything has run and all the data has been collected.
    if (ageCounter == taxonIDs.length*ageArray.length){
-     console.log("it is finished +");
-     console.log(allRawData);
-   }
+     // console.log("it is finished +");
+     // console.log(allRawData);
 
-  // // creates array to hold all sites where the taxon is found.
-  // var sites = [];
-  //
-  // // loop that pushes all the site IDs into the array.
-  // for (var i = 0; i < data.length; i++) {
-  //   sites.push(data[i].SiteID);
-  // }
-  // //array created to place all unique siteIDs (as sites has duplicates) in for loop.
-  // var sitesFinal = [];
-  // sites.forEach(function(item) {
-  //  if(sitesFinal.indexOf(item) < 0) {
-  //    sitesFinal.push(item);
-  //  }
-  // });
-  //
-  // // array
-  // var procData = [];
-  // var Value = 0;
-  // var currentSite = {};
-  // var index = 0;
-  // sitesFinal.forEach(function(item){
-  //   for (var i = 0; i < data.length; i++) {
-  //     if (item === data[i].SiteID) {
-  //       index += 1;
-  //       currentSite = data[i];
-  //       Value += data[i].Value;
-  //     }
-  //   }
-  //   var avgVal = Value/index;
-  //   currentSite.Value = avgVal;
-  //   procData.push(currentSite);
-  //   currentSite = {};
-  //   Value = 0;
-  //   index = 0;
-  // });
+
+  // creates array to hold all sites where the taxon is found.
+  var sites = [];
+
+  // nested loop that pushes all the site IDs into the array.
+  for (var i = 0; i < allRawData.length; i++) {
+    for (var j = 0; j < allRawData[i].length; j++){
+      sites.push(allRawData[i][j].SiteID);
+    }
+  }
+
+
+  //array created to place all unique siteIDs (as sites has duplicates) in for loop.
+  var sitesFinal = [];
+  sites.forEach(function(item) {
+   if(sitesFinal.indexOf(item) < 0) {
+     sitesFinal.push(item);
+   }
+  });
+
+  console.log(taxonIDs);
+  console.log(ageArray);
+  console.log(sitesFinal);
+  console.log(allRawData);
+    var index = 0;
+// function that reformats data from raw data array into
+// formattedData array
+  sitesFinal.forEach(function(item){
+    var currentSite = {};
+    var value = 0;
+
+    // loop for every array (which is all sites that contain a certain taxa from a certain
+    // time slice) within allRawData
+    for (var i = 0; i < allRawData.length; i++) {
+      var taxaSlice = allRawData[i];
+      // loop for all sites/samples within that taxa slice
+      for (var j = 0; j < taxaSlice.length; j++){
+        var taxaSliceSite = taxaSlice[j];
+
+        // if statement checks whether the siteID of the taxaSliceSite matches the
+        // siteID item in the sitesFinal array
+        if (taxaSliceSite.SiteID == item){
+          // if statement triggers on the first occurence and populates the currentSite
+          // array with all the fixings
+          if (Boolean(currentSite.name) == false){
+            // variables for latitude and longitude that finds the average between the values
+            // provided.
+            var siteLat = (taxaSliceSite.LatitudeNorth + taxaSliceSite.LatitudeSouth)/2;
+            var siteLon = (taxaSliceSite.LongitudeEast + taxaSliceSite.LongitudeWest)/2;
+            currentSite.name = taxaSliceSite.SiteName;
+            currentSite.siteID = taxaSliceSite.SiteID;
+            currentSite.latitude = siteLat;
+            currentSite.longitude = siteLon;
+            currentSite.time = {};
+            // for loop creating object that holds all temporal data defined by
+            // bin values in ageArray
+            for (var k = 0; k < ageArray.length; k++){
+              var temporalSlot = ageArray[k];
+              currentSite.time[temporalSlot] = {};
+
+              // for loop creating object for each taxa in taxonIDs arrays
+              // under each temporal bin object
+              for (var l = 0; l < taxonIDs.length; l++){
+                var taxaSlot = taxonIDs[l];
+                currentSite.time[temporalSlot][taxaSlot] = {};
+              }
+            }
+
+
+
+            // if statement to just test and make sure it's all working correctly
+            if (currentSite.siteID == 1815){
+              console.log(currentSite);
+            }
+          }
+
+          // code to populate each taxa and time period.
+
+
+
+        }
+
+
+        // if (item === data[i].SiteID) {
+        //   index += 1;
+        //   currentSite = data[i];
+        //   value += data[i].Value;
+        // }
+      }
+
+    }
+    // var avgVal = value/index;
+    // currentSite.Value = avgVal;
+    // formattedData.push(currentSite);
+
+  });
   //
   //
   // // making big array of all retrieved data to organized by taxon. This will be used
@@ -440,11 +502,12 @@ function binDataBySite(data,ageArray) {
   //       };
   //
   //     }
-  //
-  //
-  //
-  // // will be moved outside of this function as the allTaxaData will be the source of information.
-  //    //createPetalPlots(procData, map);
+
+         }
+
+
+  // will be moved outside of this function as the allTaxaData will be the source of information.
+     //createPetalPlots(procData, map);
 };
 
 ////////////////////////////////////////////////////////////////////////////////
