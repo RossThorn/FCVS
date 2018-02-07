@@ -394,6 +394,7 @@ function binDataBySite(data,ageArray) {
         // if statement checks whether the siteID of the taxaSliceSite matches the
         // siteID item in the sitesFinal array
         if (taxaSliceSite.SiteID == item){
+
           // if statement triggers on the first occurence and populates the currentSite
           // array with all the fixings
           if (Boolean(currentSite.name) == false){
@@ -411,24 +412,64 @@ function binDataBySite(data,ageArray) {
             for (var k = 0; k < ageArray.length; k++){
               var temporalSlot = ageArray[k];
               currentSite.time[temporalSlot] = {};
+              // totalValue key created for calculating %abundance with this data.
+              // Will not be necessary for all data and will be populated later.
+              // NOTE: need to ensure that this is populated only once... saving for later.
+              currentSite.time[temporalSlot].totalValue = 0;
 
-              // for loop creating object for each taxa in taxonIDs arrays
+              // for loop creating variable for each taxa in taxonIDs arrays
               // under each temporal bin object
               for (var l = 0; l < taxonIDs.length; l++){
                 var taxaSlot = taxonIDs[l];
-                currentSite.time[temporalSlot][taxaSlot] = {};
+                currentSite.time[temporalSlot][taxaSlot] = 0;
               }
             }
 
-
-
             // if statement to just test and make sure it's all working correctly
-            if (currentSite.siteID == 1815){
-              console.log(currentSite);
-            }
+            // triggers only once with initial if statement
+            // siteID is arbitrary
+
+
+
+          }
+          if (currentSite.siteID == 1815){
+            console.log(taxaSliceSite);
+            console.log(currentSite);
           }
 
-          // code to populate each taxa and time period.
+          // look at the Age of each sample
+          var sampleAge = taxaSliceSite.Age;
+          var sampleTaxon = taxaSliceSite.TaxonName;
+          var sampleValue = taxaSliceSite.Value;
+          // Total value might need to be moved to the first time thing.
+          var sampleTotal = taxaSliceSite.Total;
+
+          for (var key in currentSite.time){
+
+            // for loop to ensure that each is placed in the right spot.
+            // works because the ageArray is in the right order.
+            for (var m = 0; m < ageArray.length; m++){
+              if (sampleAge < key && key == ageArray[m]){
+                for (var tax in currentSite.time[key]){
+                  if (tax == sampleTaxon){
+                    currentSite.time[key][tax] = sampleValue;
+                  }
+                }
+              }
+
+            }
+
+          }
+
+          // CODE TO POPULATE EACH TAXON IN EACH TIME PERIOD
+          // move code down here so it occurs for each item
+
+          // look at the Age of each sample
+          //var sampleAge = taxaSliceSite.Age;
+
+          // look at the taxonName of each sample
+
+          // place value
 
 
 
@@ -445,7 +486,9 @@ function binDataBySite(data,ageArray) {
     }
     // var avgVal = value/index;
     // currentSite.Value = avgVal;
-    // formattedData.push(currentSite);
+
+    // pushes data into formattedData array to be used in visualizations
+     formattedData.push(currentSite);
 
   });
   //
