@@ -319,7 +319,7 @@ function getSites(age, boxArr){
           dataType: "json",
           success: function(response){
             // calling function to organize data
-            binDataBySite(response.data,ageArray,youngAge,oldAge);
+            formatData(response.data,ageArray,step);
             // createPetalPlots(response, map);
           }
         });
@@ -341,7 +341,7 @@ function getSites(age, boxArr){
 ////////////////////////////////////////////////////////////////////////////////
 // function used to organize all data of a particular taxon by site location.
 //fires for each taxon desired
-function binDataBySite(data,ageArray) {
+function formatData(data,ageArray,step) {
    // console.log(data);
    // console.log(ageCounter);
    ageCounter++;
@@ -426,14 +426,11 @@ function binDataBySite(data,ageArray) {
 
             }
 
-            // if statement to just test and make sure it's all working correctly
-            // triggers only once with initial if statement
-            // siteID is arbitrary
-
-
-
           }
-          if (currentSite.siteID == 1815){
+          // if statement to just test and make sure it's all working correctly
+          // triggers only once with initial if statement
+          // siteID is arbitrary
+          if (currentSite.siteID == 1815 && taxaSliceSite.Age < 1001 && taxaSliceSite.TaxonName == "Picea"){
              //console.log(taxaSliceSite);
             // console.log(currentSite);
           }
@@ -442,6 +439,7 @@ function binDataBySite(data,ageArray) {
           var sampleAge = taxaSliceSite.Age;
           var sampleTaxon = taxaSliceSite.TaxonName;
           var sampleValue = taxaSliceSite.Value;
+
           // Total value might need to be moved to the first time thing.
           var sampleTotal = taxaSliceSite.Total;
 
@@ -450,17 +448,13 @@ function binDataBySite(data,ageArray) {
             // for loop to ensure that each is placed in the right spot.
             // works because the ageArray is in the right order.
             for (var m = 0; m < ageArray.length; m++){
-              if (sampleAge < key && key == ageArray[m]){
-                // console.log("key is " + key);
-                // console.log("SampleAge is "+sampleAge);
-                // console.log("Is lower than "+ageArray[m]);
+              if (sampleAge <= key && sampleAge > (key-step) && key == ageArray[m]){
                 for (var tax in currentSite.time[key]){
                   if (tax == sampleTaxon){
-                      
                       currentSite.time[key][tax] += sampleValue;
                   }
                 }
-                break
+
               }
 
             }
@@ -545,10 +539,10 @@ function binDataBySite(data,ageArray) {
   //         }
   //
   //       }
-  //       if (allSiteData.length == sitesFinal.length){
-  //       console.log(allSiteData);
-  //       //createBarCharts(allSiteData, map);
-  //       };
+        if (formattedData.length == sitesFinal.length){
+        console.log(formattedData);
+        //createBarCharts(allSiteData, map);
+        };
   //
   //     }
 
