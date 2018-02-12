@@ -423,6 +423,7 @@ function binDataBySite(data,ageArray) {
                 var taxaSlot = taxonIDs[l];
                 currentSite.time[temporalSlot][taxaSlot] = 0;
               }
+
             }
 
             // if statement to just test and make sure it's all working correctly
@@ -433,8 +434,8 @@ function binDataBySite(data,ageArray) {
 
           }
           if (currentSite.siteID == 1815){
-            console.log(taxaSliceSite);
-            console.log(currentSite);
+             //console.log(taxaSliceSite);
+            // console.log(currentSite);
           }
 
           // look at the Age of each sample
@@ -450,11 +451,16 @@ function binDataBySite(data,ageArray) {
             // works because the ageArray is in the right order.
             for (var m = 0; m < ageArray.length; m++){
               if (sampleAge < key && key == ageArray[m]){
+                // console.log("key is " + key);
+                // console.log("SampleAge is "+sampleAge);
+                // console.log("Is lower than "+ageArray[m]);
                 for (var tax in currentSite.time[key]){
                   if (tax == sampleTaxon){
-                    currentSite.time[key][tax] = sampleValue;
+                      
+                      currentSite.time[key][tax] += sampleValue;
                   }
                 }
+                break
               }
 
             }
