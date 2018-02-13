@@ -452,6 +452,7 @@ function formatData(data,ageArray,step) {
                 for (var tax in currentSite.time[key]){
                   if (tax == sampleTaxon){
                       currentSite.time[key][tax] += sampleValue;
+                      currentSite.time[key]["totalValue"] += sampleTotal;
                   }
                 }
 
@@ -461,90 +462,23 @@ function formatData(data,ageArray,step) {
 
           }
 
-          // CODE TO POPULATE EACH TAXON IN EACH TIME PERIOD
-          // move code down here so it occurs for each item
-
-          // look at the Age of each sample
-          //var sampleAge = taxaSliceSite.Age;
-
-          // look at the taxonName of each sample
-
-          // place value
-
-
-
         }
 
-
-        // if (item === data[i].SiteID) {
-        //   index += 1;
-        //   currentSite = data[i];
-        //   value += data[i].Value;
-        // }
       }
 
     }
-    // var avgVal = value/index;
-    // currentSite.Value = avgVal;
 
     // pushes data into formattedData array to be used in visualizations
      formattedData.push(currentSite);
 
   });
-  //
-  //
-  // // making big array of all retrieved data to organized by taxon. This will be used
-  // // to make it easier for multiple vizualizations as well as not having to make
-  // // more ajax calls.
-  //     allTaxaData[dataCounter] = procData;
-  //     dataCounter++;
-  //
-  //
-  //
-  //     // if statement triggers once all available data has been compiled
-  //     // a for loop inside to re-sort all data into an array categorized by site
-  //     if (allTaxaData.length == taxonIDs.length){
-  //       console.log(allTaxaData);
-  //
-  //       // for loop to retrieve each unique siteID
-  //       for (var k = 0, arrayLength = sitesFinal.length; k < arrayLength; k++){
-  //             var sampleCounter = 0;
-  //             var tempArray = [];
-  //
-  //       // for loop to go through each array of objects in the array of taxa
-  //       for (var i = 0, l = allTaxaData.length; i < l; i++){
-  //         var taxArray = allTaxaData[i];
-  //         //console.log(allTaxaData[i]);
-  //
-  //
-  //         // another for loop nested in the other to populate allSiteData with
-  //         // with all data but sorted by sites
-  //         for (var j = 0, len = taxArray.length; j < len; j++){
-  //           var sample = taxArray[j];
-  //           var sampleID = sample.SiteID;
-  //
-  //           // console.log(taxArray[j].SiteID);
-  //
-  //           if (sampleID == sitesFinal[k]){
-  //             tempArray[sampleCounter]= sample;
-  //             sampleCounter++;
-  //           }
-  //
-  //           }
-  //           //push tempArray to allSiteData to a unique position
-  //           if (i == l-1){
-  //             allSiteData.push(tempArray);
-  //           }
-  //
-  //         }
-  //
-  //       }
+
+
         if (formattedData.length == sitesFinal.length){
         console.log(formattedData);
+        createPetalPlots(formattedData);
         //createBarCharts(allSiteData, map);
         };
-  //
-  //     }
 
          }
 
@@ -555,7 +489,167 @@ function formatData(data,ageArray,step) {
 
 ////////////////////////////////////////////////////////////////////////////////
 
+// Add initial symbols (petal plots) based on data
+function createPetalPlots(data){
 
+  //console.log(data);
+
+  // will need code to look at the slider bar position to get the year it's set
+  // at. Has to match a bin value in the site json.
+  var time = 1000;
+
+
+  // for loop through each site in the data.
+  for (var i = 0; i < data.length; i++){
+    var site = data[i];
+    var period = site.time[time];
+    console.log(period);
+
+    // array to hold all variables defined by the user. Helpful if each
+    // site has different variables as well.
+    var variableArray = [];
+
+    // for loop to compile all variables into variableArray
+    for (var variable in period){
+      // if the sites do not have a totalValue field this will still work. This
+      // is tailored to the formatted data I'm using
+      if (variable != "totalValue"){
+        variableArray.push(variable);
+      };
+    };
+
+    // another for loop to use variableArray and apply the appropriate properties
+    // for the symbols.
+    for (var variable in variableArray){
+      for (var ogVariable in period){
+        if (variable == ogVariable){
+
+        };
+      };
+
+    };
+
+  };
+
+  // var counter = 0;
+  // for (var i = 0, l = points.length; i < l; i++){
+  //
+  //   var obj = points[i];
+  //
+  //   //can be omitted due to access to each site's lon and lat values
+  //   var lon = ((obj.LongitudeEast) + (obj.LongitudeWest))/2;
+  //   var lat = ((obj.LatitudeNorth) + (obj.LatitudeSouth))/2;
+  //
+  //   var value = obj.Value;
+  //   var percAbundance = value/(obj.Total)*100;
+  //   var tax = obj.TaxonName;
+  //   var site = obj.SiteID;
+  //   var dataset = obj.DatasetID;
+  //
+  //   if (tax == "Picea"){
+  //     var degrees = 360;
+  //     var taxonID = "taxon1";
+  //   }
+  //   else if (tax == "Quercus"){
+  //     var degrees = 90;
+  //     var taxonID = "taxon2";
+  //   }
+  //   else if (tax == "Betula"){
+  //     var degrees = 180;
+  //     var taxonID = "taxon3";
+  //   }
+  //   else if (tax == "Pinus"){
+  //     var degrees = 270;
+  //     var taxonID = "taxon4";
+  //   };
+  //
+  //
+  //   // defining custom icons for each petal.
+  //   var myIcon_dkblu = L.icon({
+  //     // #4F77BB dark blue
+  //     iconUrl:'lib/leaflet/images/LeafIcon_dkblu_lg.png',
+  //     iconSize: [(percAbundance),(2*percAbundance)],
+  //     iconAnchor:  [(.5*percAbundance),(2*percAbundance)],
+  //     popupAnchor: [1, -34],
+  //     tooltipAnchor: [16, -28],
+  //     });
+  //
+  //     var myIcon_ltblu = L.icon({
+  //       // #A6CFE5 light blue
+  //       iconUrl:'lib/leaflet/images/LeafIcon_ltblu_lg.png',
+  //       iconSize: [(percAbundance),(2*percAbundance)],
+  //       iconAnchor:  [(.5*percAbundance),(2*percAbundance)],
+  //       popupAnchor: [1, -34],
+  //       tooltipAnchor: [16, -28],
+  //       });
+  //
+  //     var myIcon_dkgrn = L.icon({
+  //       // #31A148 dark green
+  //       iconUrl:'lib/leaflet/images/LeafIcon_dkgrn_lg.png',
+  //       iconSize: [(percAbundance),(2*percAbundance)],
+  //       iconAnchor:  [(.5*percAbundance),(2*percAbundance)],
+  //       popupAnchor: [1, -34],
+  //       tooltipAnchor: [16, -28],
+  //       });
+  //
+  //     var myIcon_ltgrn = L.icon({
+  //       // #B3D88A light green
+  //       iconUrl:'lib/leaflet/images/LeafIcon_ltgrn_lg.png',
+  //       iconSize: [(percAbundance),(2*percAbundance)],
+  //       iconAnchor:  [(.5*percAbundance),(2*percAbundance)],
+  //       popupAnchor: [1, -34],
+  //       tooltipAnchor: [16, -28],
+  //       });
+  //
+  //       // selecting the proper icon depending on the defined rotation.
+  //       if (degrees == 360){
+  //         var myIcon = myIcon_dkblu;
+  //
+  //       } else if (degrees == 90){
+  //         var myIcon = myIcon_ltblu;
+  //
+  //       } else if (degrees == 180){
+  //         var myIcon = myIcon_dkgrn;
+  //
+  //       } else if (degrees == 270){
+  //         var myIcon = myIcon_ltgrn;
+  //
+  //       };
+  //
+  //   // creating each individual marker.
+  //   var marker = L.marker([lat,lon], {
+  //     rotationAngle: degrees,
+  //     icon:myIcon,
+  //     siteID: site,
+  //     datasetID: dataset,
+  //     legend: taxonID
+  //   });
+  //     map.addLayer(marker);
+  //
+  //     //adding markerID for tooltips
+  //     markers[marker._leaflet_id] = marker;
+  //
+  //
+  //
+  //     //counter++;
+  //
+  //      //original popupContent changed to popupContent variable
+  //      var popupContent = "<p><b>Taxon:</b> " + obj.TaxonName + "</p>";
+  //
+  //      //add formatted attribute to popup content string
+  //      //var year = attribute.split("_")[1];
+  //      popupContent += "<p><b>% abundance:</b> <br>" + round(percAbundance,2) + "</p>";
+  //      popupContent += "<p id='popup-site' value='"+site+"'><b>Site ID:</b> <br>" + site + "</p>";
+  //      popupContent += "<p id='popup-site' value='"+site+"'><b>Dataset ID:</b> <br>" + dataset + "</p>";
+  //
+  //      marker.bindPopup(popupContent);
+  //
+  //
+  // };
+
+};
+
+////////////////////////////////////////////////////////////////////////////////
 
 
 $(document).ready(createMap);

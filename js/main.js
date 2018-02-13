@@ -408,7 +408,7 @@ function binDataBySite(data,ageArray) {
         }
         if (allSiteData.length == sitesFinal.length){
         console.log(allSiteData);
-        createBarCharts(allSiteData, map);
+        // createBarCharts(allSiteData, map);
         };
 
       }
@@ -416,7 +416,7 @@ function binDataBySite(data,ageArray) {
 
 
   // will be moved outside of this function as the allTaxaData will be the source of information.
-     //createPetalPlots(procData, map);
+     createPetalPlots(procData, map);
 };
 
 ////////////////////////////////////////////////////////////////////////////////
