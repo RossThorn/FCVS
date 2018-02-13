@@ -492,10 +492,11 @@ function formatData(data,ageArray,step) {
 // Add initial symbols (petal plots) based on data
 function createPetalPlots(data){
 
-  //console.log(data);
 
-  // will need code to look at the slider bar position to get the year it's set
-  // at. Has to match a bin value in the site json.
+
+  // This section will look at the slider bar position to get the year it's set
+  // at. Has to match a bin value in the site json. For now, just visualizing
+  // the youngest data.
   var time = 1000;
 
 
@@ -503,7 +504,7 @@ function createPetalPlots(data){
   for (var i = 0; i < data.length; i++){
     var site = data[i];
     var period = site.time[time];
-    console.log(period);
+    //console.log(period);
 
     // array to hold all variables defined by the user. Helpful if each
     // site has different variables as well.
@@ -520,10 +521,108 @@ function createPetalPlots(data){
 
     // another for loop to use variableArray and apply the appropriate properties
     // for the symbols.
-    for (var variable in variableArray){
-      for (var ogVariable in period){
-        if (variable == ogVariable){
+    for (var j = 0; j < variableArray.length; j++){
+      for (var variable in period){
+        if (variableArray[j] == variable){
+          var value = period[variable];
 
+          // this if statement resets value to the percent, based on the presence
+          // of a totalValue field.
+          if (Boolean(period["totalValue"])== true){
+            value = (value/period["totalValue"])*100;
+          }
+
+
+          // defining custom icons for each petal. The icons and size can easily
+          // be changed. However, the ratios in the iconSize and iconAnchor need to remain
+          // the same. This ensures the icon is anchored to the correct lat longer
+          // no matter the size.
+
+            var myIcon_dkblu = L.icon({
+              // #4F77BB dark blue
+              iconUrl:'lib/leaflet/images/LeafIcon_dkblu_lg.png',
+              iconSize: [(2*value),(4*value)],
+              iconAnchor:  [(1*value),(4*value)],
+              popupAnchor: [1, -34],
+              tooltipAnchor: [16, -28],
+              });
+
+              var myIcon_ltblu = L.icon({
+                // #A6CFE5 light blue
+                iconUrl:'lib/leaflet/images/LeafIcon_ltblu_lg.png',
+                iconSize: [(2*value),(4*value)],
+                iconAnchor:  [(1*value),(4*value)],
+                popupAnchor: [1, -34],
+                tooltipAnchor: [16, -28],
+                });
+
+              var myIcon_dkgrn = L.icon({
+                // #31A148 dark green
+                iconUrl:'lib/leaflet/images/LeafIcon_dkgrn_lg.png',
+                iconSize: [(2*value),(4*value)],
+                iconAnchor:  [(1*value),(4*value)],
+                popupAnchor: [1, -34],
+                tooltipAnchor: [16, -28],
+                });
+
+              var myIcon_ltgrn = L.icon({
+                // #B3D88A light green
+                iconUrl:'lib/leaflet/images/LeafIcon_ltgrn_lg.png',
+                iconSize: [(2*value),(4*value)],
+                iconAnchor:  [(1*value),(4*value)],
+                popupAnchor: [1, -34],
+                tooltipAnchor: [16, -28],
+                });
+
+                  if (variable == variableArray[0]){
+                    var degrees = 360;
+                    var variableID = "taxon1";
+                    var myIcon = myIcon_dkblu;
+                  }
+                  else if (variable == variableArray[1]){
+                    var degrees = 90;
+                    var variableID = "taxon2";
+                    var myIcon = myIcon_ltblu;
+                  }
+                  else if (variable == variableArray[2]){
+                    var degrees = 180;
+                    var variableID = "taxon3";
+                    var myIcon = myIcon_dkgrn;
+                  }
+                  else if (variable == variableArray[3]){
+                    var degrees = 270;
+                    var variableID = "taxon4";
+                    var myIcon = myIcon_ltgrn;
+                  };
+
+                  var marker = L.marker([site.latitude,site.longitude], {
+                    rotationAngle: degrees,
+                    icon:myIcon,
+                    name: site.name,
+                    siteID: site.siteID,
+                    legend: variableID
+                  });
+
+                  map.addLayer(marker);
+
+                  //adding markerID for tooltips.
+                  // NOTE: need to address this. I believe this was used to remove
+                  // markers from the map, but need to check.
+                  markers[marker._leaflet_id] = marker;
+
+                   //
+                   var popupContent = "<p><b>Variable:</b> " + variable + "</p>";
+
+                   //add formatted attribute to popup content string
+                   popupContent += "<p><b>% abundance:</b> <br>" + round(value,2) + "</p>";
+                   popupContent += "<p id='popup-site' value='"+site.siteID+"'><b>Site ID:</b> <br>" + site.siteID + "</p>";
+                   popupContent += "<p id='popup-site'><b>Site Name:</b> <br>" + site.name + "</p>";
+
+                   marker.bindPopup(popupContent);
+
+
+
+        // end of variable if
         };
       };
 
@@ -531,99 +630,10 @@ function createPetalPlots(data){
 
   };
 
-  // var counter = 0;
-  // for (var i = 0, l = points.length; i < l; i++){
+
   //
-  //   var obj = points[i];
-  //
-  //   //can be omitted due to access to each site's lon and lat values
-  //   var lon = ((obj.LongitudeEast) + (obj.LongitudeWest))/2;
-  //   var lat = ((obj.LatitudeNorth) + (obj.LatitudeSouth))/2;
-  //
-  //   var value = obj.Value;
-  //   var percAbundance = value/(obj.Total)*100;
-  //   var tax = obj.TaxonName;
-  //   var site = obj.SiteID;
-  //   var dataset = obj.DatasetID;
-  //
-  //   if (tax == "Picea"){
-  //     var degrees = 360;
-  //     var taxonID = "taxon1";
-  //   }
-  //   else if (tax == "Quercus"){
-  //     var degrees = 90;
-  //     var taxonID = "taxon2";
-  //   }
-  //   else if (tax == "Betula"){
-  //     var degrees = 180;
-  //     var taxonID = "taxon3";
-  //   }
-  //   else if (tax == "Pinus"){
-  //     var degrees = 270;
-  //     var taxonID = "taxon4";
-  //   };
-  //
-  //
-  //   // defining custom icons for each petal.
-  //   var myIcon_dkblu = L.icon({
-  //     // #4F77BB dark blue
-  //     iconUrl:'lib/leaflet/images/LeafIcon_dkblu_lg.png',
-  //     iconSize: [(percAbundance),(2*percAbundance)],
-  //     iconAnchor:  [(.5*percAbundance),(2*percAbundance)],
-  //     popupAnchor: [1, -34],
-  //     tooltipAnchor: [16, -28],
-  //     });
-  //
-  //     var myIcon_ltblu = L.icon({
-  //       // #A6CFE5 light blue
-  //       iconUrl:'lib/leaflet/images/LeafIcon_ltblu_lg.png',
-  //       iconSize: [(percAbundance),(2*percAbundance)],
-  //       iconAnchor:  [(.5*percAbundance),(2*percAbundance)],
-  //       popupAnchor: [1, -34],
-  //       tooltipAnchor: [16, -28],
-  //       });
-  //
-  //     var myIcon_dkgrn = L.icon({
-  //       // #31A148 dark green
-  //       iconUrl:'lib/leaflet/images/LeafIcon_dkgrn_lg.png',
-  //       iconSize: [(percAbundance),(2*percAbundance)],
-  //       iconAnchor:  [(.5*percAbundance),(2*percAbundance)],
-  //       popupAnchor: [1, -34],
-  //       tooltipAnchor: [16, -28],
-  //       });
-  //
-  //     var myIcon_ltgrn = L.icon({
-  //       // #B3D88A light green
-  //       iconUrl:'lib/leaflet/images/LeafIcon_ltgrn_lg.png',
-  //       iconSize: [(percAbundance),(2*percAbundance)],
-  //       iconAnchor:  [(.5*percAbundance),(2*percAbundance)],
-  //       popupAnchor: [1, -34],
-  //       tooltipAnchor: [16, -28],
-  //       });
-  //
-  //       // selecting the proper icon depending on the defined rotation.
-  //       if (degrees == 360){
-  //         var myIcon = myIcon_dkblu;
-  //
-  //       } else if (degrees == 90){
-  //         var myIcon = myIcon_ltblu;
-  //
-  //       } else if (degrees == 180){
-  //         var myIcon = myIcon_dkgrn;
-  //
-  //       } else if (degrees == 270){
-  //         var myIcon = myIcon_ltgrn;
-  //
-  //       };
-  //
-  //   // creating each individual marker.
-  //   var marker = L.marker([lat,lon], {
-  //     rotationAngle: degrees,
-  //     icon:myIcon,
-  //     siteID: site,
-  //     datasetID: dataset,
-  //     legend: taxonID
-  //   });
+    // creating each individual marker.
+
   //     map.addLayer(marker);
   //
   //     //adding markerID for tooltips
@@ -650,6 +660,12 @@ function createPetalPlots(data){
 };
 
 ////////////////////////////////////////////////////////////////////////////////
+
+function round(value, precision) {
+    var multiplier = Math.pow(10, precision || 0);
+    return Math.round(value * multiplier) / multiplier;
+};
+ ////////////////////////////////////////////////////////////////////////////////
 
 
 $(document).ready(createMap);
