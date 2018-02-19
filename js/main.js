@@ -153,45 +153,6 @@ taxon4.onAdd = function (map) {
 };
 taxon4.addTo(map);
 
-
-// create the temporal selector. Eventually will be a slider
-var tempLegend = L.control({position: 'topleft'});
-
-tempLegend.onAdd = function (map) {
-    var div = L.DomUtil.create('div', 'leaflet-control-layers-selector');
-    // all the options for the temporal legend
-    div.innerHTML = '<form style="background-color:white; padding:2px; outline: solid; outline-width: 1px;"><input id="ybp1000" type="radio" checked="true" name="temporal"/>0-1000 YBP</input>'+
-    '<br><input id="ybp2000" type="radio" name="temporal"/>1,001-2,000 YBP</input>'+
-    '<br><input id="ybp3000" type="radio" name="temporal"/>2,001-3,000 YBP</input>'+
-    '<br><input id="ybp4000" type="radio" name="temporal"/>3,001-4,000 YBP</input>'+
-    '<br><input id="ybp5000" type="radio" name="temporal"/>4,001-5,000 YBP</input>'+
-    '<br><input id="ybp6000" type="radio" name="temporal"/>5,001-6,000 YBP</input>'+
-    '<br><input id="ybp7000" type="radio" name="temporal"/>6,001-7,000 YBP</input>'+
-    '<br><input id="ybp8000" type="radio" name="temporal"/>7,001-8,000 YBP</input>'+
-    '<br><input id="ybp9000" type="radio" name="temporal"/>8,001-9,000 YBP</input>'+
-    '<br><input id="ybp10000" type="radio" name="temporal"/>9,001-10,000 YBP</input>'+
-    '<br><input id="ybp11000" type="radio" name="temporal"/>10,001-11,000 YBP</input>'+
-    '<br><input id="ybp12000" type="radio" name="temporal"/>11,001-12,000 YBP</input></form>';
-    return div;
-};
-
-tempLegend.addTo(map);
-
-// event listeners bound to each temporal change, calling the tempChange function to redraw symbols.
-document.getElementById ("ybp1000").addEventListener ("click", tempChange, false);
-document.getElementById ("ybp2000").addEventListener ("click", tempChange, false);
-document.getElementById ("ybp3000").addEventListener ("click", tempChange, false);
-document.getElementById ("ybp4000").addEventListener ("click", tempChange, false);
-document.getElementById ("ybp5000").addEventListener ("click", tempChange, false);
-document.getElementById ("ybp6000").addEventListener ("click", tempChange, false);
-document.getElementById ("ybp7000").addEventListener ("click", tempChange, false);
-document.getElementById ("ybp8000").addEventListener ("click", tempChange, false);
-document.getElementById ("ybp9000").addEventListener ("click", tempChange, false);
-document.getElementById ("ybp10000").addEventListener ("click", tempChange, false);
-document.getElementById ("ybp11000").addEventListener ("click", tempChange, false);
-document.getElementById ("ybp12000").addEventListener ("click", tempChange, false);
-
-
 // variables assigned to IDs to be stored in boxArr and the values in boxID
 var box1 = document.getElementById("taxon1");
 var box2 = document.getElementById("taxon2");
@@ -203,67 +164,6 @@ taxonIDs = [box1.value, box2.value, box3.value, box4.value];
 
 // function to retrieve datasets is here so box IDs can be passed
 getSites(age,boxArr);
-
-};
-
-////////////////////////////////////////////////////////////////////////////////
-
-// temporal change used to call updateSymbols need to correct parameters
-function tempChange() {
-  // variable assigned to element id of the selected temporal range.
-   var id = this.id;
-
-   // if else chain to get the sites from the proper time period.
-   if (id == "ybp1000"){
-     getAllMarkers();
-     age = [[0,1000]];
-     getSites(age, boxArr);
-   }
-   else if (id == "ybp2000"){
-     getAllMarkers();
-     age = [[1001,2000]];
-     getSites(age, boxArr);
-   }else if (id == "ybp3000"){
-     getAllMarkers();
-     age = [[2001,3000]];
-     getSites(age, boxArr);
-   }else if (id == "ybp4000"){
-     getAllMarkers();
-     age = [[3001,4000]];
-     getSites(age, boxArr);
-   }else if (id == "ybp5000"){
-     getAllMarkers();
-     age = [[4001,5000]];
-     getSites(age, boxArr);
-   }else if (id == "ybp6000"){
-     getAllMarkers();
-     age = [[5001,6000]];
-     getSites(age, boxArr);
-   }else if (id == "ybp7000"){
-     getAllMarkers();
-     age = [[6001,7000]];
-     getSites(age, boxArr);
-   }else if (id == "ybp8000"){
-     getAllMarkers();
-     age = [[7001,8000]];
-     getSites(age, boxArr);
-   }else if (id == "ybp9000"){
-     getAllMarkers();
-     age = [[8001,9000]];
-     getSites(age, boxArr);
-   }else if (id == "ybp10000"){
-     getAllMarkers();
-     age = [[9001,10000]];
-     getSites(age, boxArr);
-   }else if (id == "ybp11000"){
-     getAllMarkers();
-     age = [[10001,11000]];
-     getSites(age, boxArr);
-   }else if (id == "ybp12000"){
-     getAllMarkers();
-     age = [[11001,12000]];
-     getSites(age, boxArr);
-   };
 
 };
 
