@@ -32,7 +32,7 @@ The FCVS was deigned to visualize large multivariate datasets from the [Neotoma 
 * [Radar Charts](#radar-chart)
 * [Flagpole Diagrams](#flagpole-diagram)
 
-These visualizations were chosen after conducting a quantitative content analysis on all the visualizations from papers in the [Neotoma Citations Google Scholar page](https://scholar.google.com/citations?user=idoixqkAAAAJ&hl=en). The analysis provided insight into extant visualization methods in the field of paleoecology and informed selection of the particular examples included in the suite. The visualizations are created using [D3](https://github.com/d3/d3), a JavaScript library for interactive data visualization, while also leveraging the [Leaflet Data Visualization Framework](https://github.com/humangeo/leaflet-dvf), [Leaflet Rotated Markers](https://github.com/bbecquet/Leaflet.RotatedMarker), and native [Leaflet](http://leafletjs.com/) icon functions.
+These visualizations were chosen after conducting a quantitative content analysis on all the visualizations from papers in the [Neotoma Citations Google Scholar page](https://scholar.google.com/citations?user=idoixqkAAAAJ&hl=en). The analysis provided insight into extant visualization methods in the field of paleoecology and informed selection of the particular examples included in the suite. The visualizations are created using [D3](https://github.com/d3/d3), the [Leaflet Data Visualization Framework](https://github.com/humangeo/leaflet-dvf), [Leaflet Rotated Markers](https://github.com/bbecquet/Leaflet.RotatedMarker), and native [Leaflet](http://leafletjs.com/) icon functions.
 
 #### Petal Plot
 
