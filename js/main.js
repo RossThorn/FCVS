@@ -377,8 +377,8 @@ function formatData(data,ageArray,step) {
         if (formattedData.length == sitesFinal.length){
         console.log(formattedData);
         //alert("Data has been downloaded!\nClick OK to visualize the data.");
-        //createPetalPlots(formattedData);
-        createBarCharts(formattedData);
+        createPetalPlots(formattedData);
+        //createBarCharts(formattedData);
         };
 
          }
