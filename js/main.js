@@ -212,7 +212,7 @@ function getSites(age, boxArr){
 
         // constructing URL based on coordinates (to be changed to user inputted bounding box later) and the taxon and ages.
         // need to change this so it retrieves information for all offered taxa.
-        var urlBaseMN = 'http://apidev.neotomadb.org/v1/data/pollen?wkt=POLYGON((-97.294921875%2048.93964118139728,-96.6357421875%2043.3601336603352,-91.20849609375%2043.53560718808973,-93.09814453125%2045.10745410539934,-92.17529296875%2046.69749299744142,-88.79150390625%2047.874907453605935,-93.53759765625%2048.910767192107755,-97.294921875%2048.93964118139728))';
+        var urlBaseMN = 'https://apidev.neotomadb.org/v1/data/pollen?wkt=POLYGON((-97.294921875%2048.93964118139728,-96.6357421875%2043.3601336603352,-91.20849609375%2043.53560718808973,-93.09814453125%2045.10745410539934,-92.17529296875%2046.69749299744142,-88.79150390625%2047.874907453605935,-93.53759765625%2048.910767192107755,-97.294921875%2048.93964118139728))';
         var url = [urlBaseMN, '&taxonname=', taxonIDs[i], '&ageold=', oldAge, '&ageyoung=', youngAge].join('');
         // ajax call to neotoma database
         $.ajax(url, {
