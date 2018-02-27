@@ -68,3 +68,15 @@ body {
 #default {
   color: #bebebe;
 }
+
+.swal-title, .swal-text {
+  font-family: sans-serif;
+}
+
+.swal-overlay {
+  background-color: rgb(79, 119, 187, 0.45);
+}
+
+.swal-modal{
+  opacity:1;
+}

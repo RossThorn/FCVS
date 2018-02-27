@@ -1,7 +1,6 @@
 
 ////////////////////////////////////////////////////////////////////////////////
-// commented out to make everything global to be reference by the fmbols function which needs to
-// be global and needs to access other functions.
+// commented out to make everything global
 //(function(){
 
 // array for the ages to be binned into.
@@ -376,8 +375,8 @@ function formatData(data,ageArray,step) {
 
         if (formattedData.length == sitesFinal.length){
         console.log(formattedData);
-        //alert("Data has been downloaded!\nClick OK to visualize the data.");
-        createPetalPlots(formattedData);
+        coolAlert(formattedData);
+        //createPetalPlots(formattedData);
         //createBarCharts(formattedData);
         };
 
@@ -641,6 +640,27 @@ function round(value, precision) {
 };
  ////////////////////////////////////////////////////////////////////////////////
 
+function coolAlert(data){
+  swal("Welcome to the Flyover Country Visualization Suite!","How would you like to visualize data?", {
+  buttons: {
+    cancel: true,
+    petal: "Petal Plots",
+    bar: "Bar Charts",
+  },
+})
+.then((value) => {
+  switch (value) {
+
+    case "bar":
+    createBarCharts(data);
+      break;
+
+    case "petal":
+    createPetalPlots(data);
+      break;
+  }
+});
+}
 
 $(document).ready(createMap);
 
