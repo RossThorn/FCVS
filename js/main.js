@@ -161,8 +161,69 @@ boxArr = [box1.id,box2.id,box3.id,box4.id];
 
 taxonIDs = [box1.value, box2.value, box3.value, box4.value];
 
+
+// create the visualization selector.
+var vizControl = L.control({position: 'topright'});
+
+vizControl.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'leaflet-control-layers-selector');
+    // all the options for visualization
+    div.innerHTML = '<form style="background-color:white; padding:2px; outline: solid; outline-width: 1px;">'+
+    '<input id="petal" type="radio" checked="true" name="viz"/>Petal Plots</input>'+
+    '<br><input id="bar" type="radio" name="viz"/>Stacked Bar Charts</input></form>';
+    return div;
+};
+
+vizControl.addTo(map);
+
+// event listeners bound to each temporal change, calling the tempChange function to redraw symbols.
+document.getElementById ("petal").addEventListener ("click", vizChange, false);
+document.getElementById ("bar").addEventListener ("click", vizChange, false);
+
+
+var SequenceControl = L.Control.extend({
+        options: {
+            position: 'topright'
+        },
+        onAdd: function (map) {
+            // create the control container div with a particular class name
+            var container = L.DomUtil.create('div', 'sequence-control-container');
+            // create div element with the class 'overlay' and append it to the body
+
+            //$(container).append('<button class="skip" id="reverse" title="Reverse">Reverse</button>');
+            //create range input element (slider)
+            $(container).append('<input style="background-color:white; padding:5px; margin:0px; outline: solid; outline-width: 1px;" class="range-slider" type="range" max="12" min="0" step="1" value="0">');
+          //  $(container).append('<button class="skip" id="forward" title="Forward">Skip</button>');
+          // var initialYear = attributes[0]
+          // var year = initialYear.split("_")[1];
+          // $(container).append('<p>'+year+'</p>');
+           //kill any mouse event listeners on the map
+           L.DomEvent.disableClickPropagation(container);
+            $(container).on('mousedown click', function(e){
+
+                $('.range-slider').on('input', function(){
+                    var index = $(this).val();
+                    //updatePropSymbols(map, attributes[index]);
+            });
+            });
+            return container;
+        }
+    });
+    //map.addControl(new SequenceControl());
+
+
 // function to retrieve datasets is here so box IDs can be passed
-getSites(age,boxArr);
+// commented out and formattedData is local
+//getSites(age,boxArr);
+
+$.ajax('formattedData.json', {
+  dataType: "json",
+  success: function(response){
+    // calling function to organize data
+    formattedData = response.data;
+    createPetalPlots(formattedData);
+  }
+});
 
 };
 
@@ -199,7 +260,6 @@ function getSites(age, boxArr){
 
       // for loop to do a call for each time period.
       for (var k = 0; k < ageArray.length; k++){
-
         if (youngAge == young){
           var oldAge = youngAge + step;
         } else {
@@ -503,7 +563,6 @@ function createPetalPlots(data){
                     siteID: site.siteID,
                     legend: variableID
                   });
-
                   map.addLayer(marker);
 
                   //adding markerID for tooltips.
@@ -537,7 +596,6 @@ function createPetalPlots(data){
 
 ////////////////////////////////////////////////////////////////////////////////
 function createBarCharts(data){
-
 
   // #4F77BB dark blue
   // #A6CFE5 light blue
@@ -623,12 +681,11 @@ function createBarCharts(data){
       // leaflet-dvf.markers.js file. As it is difficult for the bars to be
       // taller and skinner (especially considering mobile contexts), it was
       // sensible to make the bars wider to better show off the data.
-      var barChartMarker = new L.BarChartMarker(new L.LatLng(site.latitude, site.longitude), options);
 
+      var barChartMarker = new L.BarChartMarker(new L.LatLng(site.latitude, site.longitude), options);
       barChartMarker.addTo(map);
 
   };
-
 
 };
 
@@ -641,28 +698,82 @@ function round(value, precision) {
  ////////////////////////////////////////////////////////////////////////////////
 
 function coolAlert(data){
-  swal("Welcome to the Flyover Country Visualization Suite!","How would you like to visualize data?", {
-  buttons: {
-    cancel: true,
-    petal: "Petal Plots",
-    bar: "Bar Charts",
-  },
-})
-.then((value) => {
-  switch (value) {
-
-    case "bar":
-    createBarCharts(data);
-      break;
-
-    case "petal":
+//   swal("Welcome to the Flyover Country Visualization Suite!","How would you like to visualize data?", {
+//   buttons: {
+//     cancel: true,
+//     petal: "Petal Plots",
+//     bar: "Bar Charts",
+//   },
+// })
+// .then((value) => {
+//   switch (value) {
+//
+//     case "bar":
+//     createBarCharts(data);
+//       break;
+//
+//     case "petal":
     createPetalPlots(data);
-      break;
-  }
-});
+//       break;
+//   }
+// });
 }
+////////////////////////////////////////////////////////////////////////////////
+function vizChange(){
+  var id = this.id;
+  console.log(id);
+  removeMarkers();
+  if (id=='petal'){
+    createPetalPlots(formattedData);
+  } else if (id=='bar'){
+    createBarCharts(formattedData);
+  };
+};
+////////////////////////////////////////////////////////////////////////////////
+//function for removing existing visualizaitons from the map by clearing the panes
+function removeMarkers(){
+  $('.leaflet-marker-pane').empty();
+  $('.leaflet-overlay-pane').empty();
+};
+
+////////////////////////////////////////////////////////////////////////////////
+ // experimental extension of the marker addition.
+ // currently removes selected taxa but needs to redraw new ones according to new
+ // taxa values. However, because of allTaxaData holding all available taxons, we
+ // won't have to do another ajax call for it, just find it in the allTaxaData.
+
+ function getAllMarkers(box) {
+
+     //var allMarkersObjArray = [];//new Array();
+     //var allMarkersGeoJsonArray = [];//new Array();
+
+     // if (box){
+     //   $.each(map._layers, function (ml) {
+     //       //formerly, map._layers[ml].feature
+     //       if (markers[ml]) {
+     //         if (markers[ml].options.legend == box){
+     //
+     //           map.removeLayer(map._layers[ml]);
+     //         }
+     //
+     //      };
+     //
+     //   })
+     //
+     // } else {
+     //   $.each(map._layers, function (ml) {
+     //       //formerly, map._layers[ml].feature
+     //       if (markers[ml]) {
+     //
+     //           map.removeLayer(map._layers[ml]);
+     //
+     //      };
+     //
+     //   })
+
+
+     // };
+ };
+////////////////////////////////////////////////////////////////////////////////
 
 $(document).ready(createMap);
-
-//$(".get-markers").on("click", getAllMarkers);
-//})();

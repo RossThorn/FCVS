@@ -740,7 +740,6 @@ function round(value, precision) {
 
 
 
-    // alert("total Markers : " + allMarkersGeoJsonArray.length + "\n\n" + allMarkersGeoJsonArray + "\n\n Also see your console for object view of this array" );
  };
 
 ////////////////////////////////////////////////////////////////////////////////
