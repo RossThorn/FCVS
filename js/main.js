@@ -25,6 +25,8 @@ var allRawData = [];
 var allSiteData = [];
 // final array of data in proper format
 var formattedData = [];
+// Layer group to add bar chart markers to.
+var barChartLayer = new L.LayerGroup();
 // initial age of data shown.
 var age = [[0,1000]];
 
@@ -40,17 +42,17 @@ var myIcon = L.icon({
 // function that sets the whole thing in motion. Creates leaflet map
 function createMap(){
     // set map bounds
-    var southWest = L.latLng(39, -98),
-    northEast = L.latLng(50, -79),
+    var southWest = L.latLng(42, -102),
+    northEast = L.latLng(50, -85),
     bounds = L.latLngBounds(southWest, northEast);
 
     //create the map
      map = L.map('mapid', {
         center: [46, -94],
         zoom: 7,
-        //maxBounds: bounds,
-        maxBoundsViscosity:.7,
-        minZoom: 7
+        maxBounds: bounds,
+        maxBoundsViscosity:0.8,
+        minZoom: 6
     });
 
 
@@ -63,14 +65,11 @@ function createMap(){
 
       // function used to create map controls.
         createControls(map);
+        barChartLayer.addTo(map);
 
         //window resize function so map takes up entirety of screen on resize
         $(window).on("resize", function () { $("#mapid").height($(window).height()); map.invalidateSize(); }).trigger("resize");
-        $(document).ready(function() {$(window).resize(function() {
-        var bodyheight = $(this).height();
-        $("#page-content").height(bodyheight-70);
-    }).resize();
-});
+        $(document).ready(function() {$(window).resize();});
 
 };
 
@@ -83,134 +82,61 @@ function createMap(){
 
 function createControls(map){
 
-// first taxon dropdown.
-var taxon1 = L.control({position: 'topright'});
-taxon1.onAdd = function (map) {
-    var div = L.DomUtil.create('div', 'info legend');
-    div.innerHTML = '<img src="lib/leaflet/images/LeafIcon_dkblu.png" style="width:20px;height:30px;">'+
-    '<select id="taxon1" onchange="updateSymbols(this)">'+
-    '<option selected="selected" value="Picea">Spruce</option>'+
-    '<option value="Quercus">Oak</option>'+
-    '<option value="Acer">Maple</option>'+
-    '<option value="Pinus">Pine</option>'+
-    '<option value="Tsuga">Hemlock</option>'+
-    '<option value="Betula">Birch</option></select>';
-    div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
-    return div;
-};
+// dynamically adding the legend to ensure defaults are consistent on reload.
+$('#page').append(
+  '<div id="control-panel">'+
+  '<div class="control-label">Visualization</div>'+
+    '<div id="viz-control" class="control-buttons">'+
+    '<a href="#" id="petal"><img class="control-icon" src="images/PetalPlotButton.png"></a>'+
+    '<a href="#" id="bar"><img class="control-icon" src="images/BarChartButton.png"></a>'+
+    '</div>'+
 
-taxon1.addTo(map);
+  '<div class="control-label" style="border-radius:0px;">Taxa</div>'+
+  '<select class="control-dropdown"id="taxon1" onchange="updateSymbols(this)">'+
+       '<option selected="selected" value="Picea">Picea</option>'+
+       '<option value="Quercus">Quercus</option>'+
+       '<option value="Acer">Acer</option>'+
+       '<option value="Pinus">Pinus</option>'+
+       '<option value="Tsuga">Tsuga</option>'+
+       '<option value="Betula">Betula</option>'+
+  '</select>'+
+  '<select class="control-dropdown"id="taxon2" onchange="updateSymbols(this)">'+
+       '<option value="Picea">Picea</option>'+
+       '<option selected="selected" value="Quercus">Quercus</option>'+
+       '<option value="Acer">Acer</option>'+
+       '<option value="Pinus">Pinus</option>'+
+       '<option value="Tsuga">Tsuga</option>'+
+       '<option value="Betula">Betula</option>'+
+  '</select>'+
+  '<select class="control-dropdown"id="taxon3" onchange="updateSymbols(this)">'+
+       '<option value="Picea">Picea</option>'+
+       '<option value="Quercus">Quercus</option>'+
+       '<option value="Acer">Acer</option>'+
+       '<option value="Pinus">Pinus</option>'+
+       '<option value="Tsuga">Tsuga</option>'+
+       '<option selected="selected" value="Betula">Betula</option>'+
+  '</select>'+
+  '<select class="control-dropdown"id="taxon4" onchange="updateSymbols(this)"'+
+  'style= "border-radius:0px 0px 3px 3px;">'+
+       '<option value="Picea">Picea</option>'+
+       '<option value="Quercus">Quercus</option>'+
+       '<option value="Acer">Acer</option>'+
+       '<option selected="selected" value="Pinus">Pinus</option>'+
+       '<option value="Tsuga">Tsuga</option>'+
+       '<option value="Betula">Betula</option>'+
+  '</select>'+
+'</div>'+
+'<div id="legend">'+
+  '<img id="tax1" src="lib/leaflet/images/LeafIcon_dkblu_lg.png">'+
+  '<img id="tax2" src="lib/leaflet/images/LeafIcon_ltblu_lg.png">'+
+  '<img id="tax3" src="lib/leaflet/images/LeafIcon_dkgrn_lg.png">'+
+  '<img id="tax4" src="lib/leaflet/images/LeafIcon_ltgrn_lg.png">'+
+'</div>');
 
-// second taxon dropdown.
-var taxon2 = L.control({position: 'topright'});
-taxon2.onAdd = function (map) {
-    var div = L.DomUtil.create('div', 'info legend');
-    div.innerHTML = '<img src="lib/leaflet/images/LeafIcon_ltblu.png" style="width:20px;height:30px;">'+
-    '<select id="taxon2" onchange="updateSymbols(this)">'+
-    '<option value="Picea">Spruce</option>'+
-    '<option selected="selected" value="Quercus">Oak</option>'+
-    '<option value="Acer">Maple</option>'+
-    '<option value="Pinus">Pine</option>'+
-    '<option value="Tsuga">Hemlock</option>'+
-    '<option value="Betula">Birch</option></select>';
-    div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
-    return div;
-};
-taxon2.addTo(map);
+taxonIDs = [ "Picea", "Quercus", "Betula", "Pinus" ]
 
-// third taxon dropdown.
-var taxon3 = L.control({position: 'topright'});
-taxon3.onAdd = function (map) {
-    var div = L.DomUtil.create('div', 'info legend');
-    div.innerHTML = '<img src="lib/leaflet/images/LeafIcon_dkgrn.png" style="width:20px;height:30px;">'+
-    '<select id="taxon3" onchange="updateSymbols(this)">'+
-    '<option value="Picea">Spruce</option>'+
-    '<option value="Quercus">Oak</option>'+
-    '<option value="Acer">Maple</option>'+
-    '<option value="Pinus">Pine</option>'+
-    '<option value="Tsuga">Hemlock</option>'+
-    '<option selected="selected" value="Betula">Birch</option></select>';
-    div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
-    return div;
-};
-taxon3.addTo(map);
-
-// fourth taxon dropdown.
-var taxon4 = L.control({position: 'topright'});
-taxon4.onAdd = function (map) {
-    var div = L.DomUtil.create('div', 'info legend');
-    div.innerHTML = '<img src="lib/leaflet/images/LeafIcon_ltgrn.png" style="width:20px;height:30px;">'+
-    '<select id="taxon4" onchange="updateSymbols(this)">'+
-    '<option value="Picea">Spruce</option>'+
-    '<option value="Quercus">Oak</option>'+
-    '<option value="Acer">Maple</option>'+
-    '<option selected="selected" value="Pinus">Pine</option>'+
-    '<option value="Tsuga">Hemlock</option>'+
-    '<option value="Betula">Birch</option></select>';
-    div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
-    return div;
-};
-taxon4.addTo(map);
-
-// variables assigned to IDs to be stored in boxArr and the values in boxID
-var box1 = document.getElementById("taxon1");
-var box2 = document.getElementById("taxon2");
-var box3 = document.getElementById("taxon3");
-var box4 = document.getElementById("taxon4");
-boxArr = [box1.id,box2.id,box3.id,box4.id];
-
-taxonIDs = [box1.value, box2.value, box3.value, box4.value];
-
-
-// create the visualization selector.
-var vizControl = L.control({position: 'topright'});
-
-vizControl.onAdd = function (map) {
-    var div = L.DomUtil.create('div', 'leaflet-control-layers-selector');
-    // all the options for visualization
-    div.innerHTML = '<form style="background-color:white; padding:2px; outline: solid; outline-width: 1px;">'+
-    '<input id="petal" type="radio" checked="true" name="viz"/>Petal Plots</input>'+
-    '<br><input id="bar" type="radio" name="viz"/>Stacked Bar Charts</input></form>';
-    return div;
-};
-
-vizControl.addTo(map);
-
-// event listeners bound to each temporal change, calling the tempChange function to redraw symbols.
 document.getElementById ("petal").addEventListener ("click", vizChange, false);
 document.getElementById ("bar").addEventListener ("click", vizChange, false);
-
-
-var SequenceControl = L.Control.extend({
-        options: {
-            position: 'topright'
-        },
-        onAdd: function (map) {
-            // create the control container div with a particular class name
-            var container = L.DomUtil.create('div', 'sequence-control-container');
-            // create div element with the class 'overlay' and append it to the body
-
-            //$(container).append('<button class="skip" id="reverse" title="Reverse">Reverse</button>');
-            //create range input element (slider)
-            $(container).append('<input style="background-color:white; padding:5px; margin:0px; outline: solid; outline-width: 1px;" class="range-slider" type="range" max="12" min="0" step="1" value="0">');
-          //  $(container).append('<button class="skip" id="forward" title="Forward">Skip</button>');
-          // var initialYear = attributes[0]
-          // var year = initialYear.split("_")[1];
-          // $(container).append('<p>'+year+'</p>');
-           //kill any mouse event listeners on the map
-           L.DomEvent.disableClickPropagation(container);
-            $(container).on('mousedown click', function(e){
-
-                $('.range-slider').on('input', function(){
-                    var index = $(this).val();
-                    //updatePropSymbols(map, attributes[index]);
-            });
-            });
-            return container;
-        }
-    });
-    //map.addControl(new SequenceControl());
-
 
 // function to retrieve datasets is here so box IDs can be passed
 // commented out and formattedData is local
@@ -681,9 +607,9 @@ function createBarCharts(data){
       // leaflet-dvf.markers.js file. As it is difficult for the bars to be
       // taller and skinner (especially considering mobile contexts), it was
       // sensible to make the bars wider to better show off the data.
-
+      console.log(barChartLayer);
       var barChartMarker = new L.BarChartMarker(new L.LatLng(site.latitude, site.longitude), options);
-      barChartMarker.addTo(map);
+      barChartMarker.addTo(barChartLayer);
 
   };
 
@@ -721,7 +647,6 @@ function coolAlert(data){
 ////////////////////////////////////////////////////////////////////////////////
 function vizChange(){
   var id = this.id;
-  console.log(id);
   removeMarkers();
   if (id=='petal'){
     createPetalPlots(formattedData);
@@ -733,7 +658,7 @@ function vizChange(){
 //function for removing existing visualizaitons from the map by clearing the panes
 function removeMarkers(){
   $('.leaflet-marker-pane').empty();
-  $('.leaflet-overlay-pane').empty();
+  barChartLayer.clearLayers();
 };
 
 ////////////////////////////////////////////////////////////////////////////////
