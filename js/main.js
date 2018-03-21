@@ -87,8 +87,8 @@ $('#page').append(
   '<div id="control-panel">'+
   '<div class="control-label">Visualization</div>'+
     '<div id="viz-control" class="control-buttons">'+
-    '<a href="#" id="petal"><img class="control-icon" src="images/PetalPlotButton.png"></a>'+
-    '<a href="#" id="bar"><img class="control-icon" src="images/BarChartButton.png"></a>'+
+    '<a href="#" id="petal"><img alt="Petal Plots" title="Petal Plots" class="control-icon" src="images/PetalPlotButton.png"></a>'+
+    '<a href="#" id="bar"><img alt="Stacked Bar Charts" title="Stacked Bar Charts" class="control-icon" src="images/BarChartButton.png"></a>'+
     '</div>'+
 
   '<div class="control-label" style="border-radius:0px;">Taxa</div>'+
