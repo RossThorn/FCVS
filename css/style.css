@@ -9,7 +9,7 @@ a {
 }
 
 a:hover .control-icon{
-  filter: brightness(70%);
+  filter: brightness(85%);
 }
 
 #control-panel {
@@ -74,9 +74,9 @@ label{
 }
 
 .control-icon{
-  margin: 5px;
+  margin: 0.5vw;
   height:auto;
-  width: 50px;
+  width: 3.5vw;
   border-radius: 10px;
   box-shadow: 1px 1px 2px #a6a6a6;
 }
@@ -92,7 +92,7 @@ label{
   width:auto;
   position:fixed;
   right:130px;
-  top: 130px;
+  top: 133px;
   z-index: 3000;
 }
 #tax2 {
@@ -100,7 +100,7 @@ label{
   width:auto;
   position:fixed;
   right:130px;
-  top: 162px;
+  top: 165px;
   z-index: 3000;
 }
 #tax3 {
@@ -108,7 +108,7 @@ label{
   width:auto;
   position:fixed;
   right:130px;
-  top: 194px;
+  top: 197px;
   z-index: 3000;
 }
 #tax4 {
@@ -116,7 +116,7 @@ label{
   width:auto;
   position:fixed;
   right:130px;
-  top: 226px;
+  top: 229px;
   z-index: 3000;
 }
 
