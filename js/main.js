@@ -29,6 +29,8 @@ var formattedData = [];
 var barChartLayer = new L.LayerGroup();
 // initial age of data shown.
 var age = [[0,1000]];
+// variable that holds name of active visualization. Petal is default.
+var activeViz = 'petal';
 
 // using custom icon.
 var myIcon = L.icon({
@@ -137,6 +139,7 @@ taxonIDs = [ "Picea", "Quercus", "Betula", "Pinus" ]
 
 document.getElementById ("petal").addEventListener ("click", vizChange, false);
 document.getElementById ("bar").addEventListener ("click", vizChange, false);
+changeActiveViz(activeViz);
 
 // function to retrieve datasets is here so box IDs can be passed
 // commented out and formattedData is local
@@ -607,7 +610,6 @@ function createBarCharts(data){
       // leaflet-dvf.markers.js file. As it is difficult for the bars to be
       // taller and skinner (especially considering mobile contexts), it was
       // sensible to make the bars wider to better show off the data.
-      console.log(barChartLayer);
       var barChartMarker = new L.BarChartMarker(new L.LatLng(site.latitude, site.longitude), options);
       barChartMarker.addTo(barChartLayer);
 
@@ -650,8 +652,10 @@ function vizChange(){
   removeMarkers();
   if (id=='petal'){
     createPetalPlots(formattedData);
+    changeActiveViz(id);
   } else if (id=='bar'){
     createBarCharts(formattedData);
+    changeActiveViz(id);
   };
 };
 ////////////////////////////////////////////////////////////////////////////////
@@ -662,43 +666,17 @@ function removeMarkers(){
 };
 
 ////////////////////////////////////////////////////////////////////////////////
- // experimental extension of the marker addition.
- // currently removes selected taxa but needs to redraw new ones according to new
- // taxa values. However, because of allTaxaData holding all available taxons, we
- // won't have to do another ajax call for it, just find it in the allTaxaData.
 
- function getAllMarkers(box) {
+function changeActiveViz(viz){
+var nonActiveButtons = document.getElementsByClassName('control-icon');
+for (var i = 0; i < nonActiveButtons.length; i++) {
+    var button = nonActiveButtons[i];
+    button.style = "box-shadow: 0px 1px 2px #a6a6a6;"
+}
+var activeButton = document.getElementById(viz).children[0];
+activeButton.style = "box-shadow: 0px 2px 4px #262626;"
+}
 
-     //var allMarkersObjArray = [];//new Array();
-     //var allMarkersGeoJsonArray = [];//new Array();
-
-     // if (box){
-     //   $.each(map._layers, function (ml) {
-     //       //formerly, map._layers[ml].feature
-     //       if (markers[ml]) {
-     //         if (markers[ml].options.legend == box){
-     //
-     //           map.removeLayer(map._layers[ml]);
-     //         }
-     //
-     //      };
-     //
-     //   })
-     //
-     // } else {
-     //   $.each(map._layers, function (ml) {
-     //       //formerly, map._layers[ml].feature
-     //       if (markers[ml]) {
-     //
-     //           map.removeLayer(map._layers[ml]);
-     //
-     //      };
-     //
-     //   })
-
-
-     // };
- };
 ////////////////////////////////////////////////////////////////////////////////
 
 $(document).ready(createMap);
