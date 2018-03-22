@@ -25,8 +25,12 @@ var allRawData = [];
 var allSiteData = [];
 // final array of data in proper format
 var formattedData = [];
-// Layer group to add bar chart markers to.
+// Layer group to add bar chart markers to. This is so we can easily access
+// and manipulate the icons for temporal/taxa changes.
 var barChartLayer = new L.LayerGroup();
+// Layer group to add petal plot markers to. This is so we can easily access
+// and manipulate the icons for temporal/taxa changes.
+var petalPlotLayer = new L.LayerGroup();
 // initial age of data shown.
 var age = [[0,1000]];
 // variable that holds name of active visualization. Petal is default.
@@ -67,6 +71,7 @@ function createMap(){
 
       // function used to create map controls.
         createControls(map);
+        petalPlotLayer.addTo(map);
         barChartLayer.addTo(map);
 
         //window resize function so map takes up entirety of screen on resize
@@ -141,9 +146,8 @@ document.getElementById ("petal").addEventListener ("click", vizChange, false);
 document.getElementById ("bar").addEventListener ("click", vizChange, false);
 changeActiveViz(activeViz);
 
-// function to retrieve datasets is here so box IDs can be passed
-// commented out and formattedData is local
-//getSites(age,boxArr);
+//code block creating temporal slider control
+
 
 $.ajax('formattedData.json', {
   dataType: "json",
@@ -208,7 +212,6 @@ function getSites(age, boxArr){
           success: function(response){
             // calling function to organize data
             formatData(response.data,ageArray,step);
-            // createPetalPlots(response, map);
           }
         });
         // if statement to ensure mutually exclusive classes
@@ -227,6 +230,9 @@ function getSites(age, boxArr){
 };
 
 ////////////////////////////////////////////////////////////////////////////////
+// NOTE: this is not currently called, as the formatted data is already provided.
+// this is just to format data actually called from the database.
+
 // function used to organize all data of a particular taxon by site location.
 //fires for each taxon desired
 function formatData(data,ageArray,step) {
@@ -492,7 +498,7 @@ function createPetalPlots(data){
                     siteID: site.siteID,
                     legend: variableID
                   });
-                  map.addLayer(marker);
+                  marker.addTo(petalPlotLayer);
 
                   //adding markerID for tooltips.
                   // NOTE: need to address this. I believe this was used to remove
