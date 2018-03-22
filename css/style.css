@@ -11,7 +11,7 @@ a {
 }
 
 a:hover .control-icon{
-  filter: brightness(90%);
+  filter:  brightness(80%) grayscale(0) !important;
 
 }
 

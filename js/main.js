@@ -364,9 +364,9 @@ function formatData(data,ageArray,step) {
 
         if (formattedData.length == sitesFinal.length){
         console.log(formattedData);
-        coolAlert(formattedData);
-        //createPetalPlots(formattedData);
-        //createBarCharts(formattedData);
+
+        createPetalPlots(formattedData);
+
         };
 
          }
@@ -624,29 +624,6 @@ function round(value, precision) {
     return Math.round(value * multiplier) / multiplier;
 };
  ////////////////////////////////////////////////////////////////////////////////
-
-function coolAlert(data){
-//   swal("Welcome to the Flyover Country Visualization Suite!","How would you like to visualize data?", {
-//   buttons: {
-//     cancel: true,
-//     petal: "Petal Plots",
-//     bar: "Bar Charts",
-//   },
-// })
-// .then((value) => {
-//   switch (value) {
-//
-//     case "bar":
-//     createBarCharts(data);
-//       break;
-//
-//     case "petal":
-    createPetalPlots(data);
-//       break;
-//   }
-// });
-}
-////////////////////////////////////////////////////////////////////////////////
 function vizChange(){
   var id = this.id;
   removeMarkers();
@@ -671,7 +648,7 @@ function changeActiveViz(viz){
 var nonActiveButtons = document.getElementsByClassName('control-icon');
 for (var i = 0; i < nonActiveButtons.length; i++) {
     var button = nonActiveButtons[i];
-    button.style = "box-shadow: 0px 1px 2px #a6a6a6;"
+    button.style = "box-shadow: 0px 1px 2px #a6a6a6; filter: brightness(110%) grayscale(60%);"
 }
 var activeButton = document.getElementById(viz).children[0];
 activeButton.style = "box-shadow: 0px 2px 4px #262626;"
