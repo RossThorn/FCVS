@@ -1,3 +1,5 @@
+
+
 body {
 
   margin: 0px;
@@ -87,36 +89,44 @@ label{
   background-color: none;
 }
 
+select{
+  text-align-last:center;
+}
+
 #tax1 {
-  height:30px;
+  display: inline;
+  height:26px;
   width:auto;
   position:fixed;
-  right:130px;
-  top: 130px;
+  right:135px;
+  top: 128px;
   z-index: 3000;
 }
 #tax2 {
-  height:30px;
+  display:inline;
+  height:26px;
   width:auto;
   position:fixed;
-  right:130px;
-  top: 162px;
+  right:135px;
+  top: 160px;
   z-index: 3000;
 }
 #tax3 {
-  height:30px;
+  display: inline;
+  height:26px;
   width:auto;
   position:fixed;
-  right:130px;
-  top: 194px;
+  right:135px;
+  top: 192px;
   z-index: 3000;
 }
 #tax4 {
-  height:30px;
+  display: inline;
+  height:26px;
   width:auto;
   position:fixed;
-  right:130px;
-  top: 226px;
+  right:135px;
+  top: 224px;
   z-index: 3000;
 }
 

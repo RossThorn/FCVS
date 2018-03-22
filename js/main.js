@@ -92,7 +92,7 @@ $('#page').append(
     '</div>'+
 
   '<div class="control-label" style="border-radius:0px;">Taxa</div>'+
-  '<select class="control-dropdown"id="taxon1" onchange="updateSymbols(this)">'+
+  '<select disabled class="control-dropdown"id="taxon1" onchange="updateSymbols(this)">'+
        '<option selected="selected" value="Picea">Picea</option>'+
        '<option value="Quercus">Quercus</option>'+
        '<option value="Acer">Acer</option>'+
@@ -100,7 +100,7 @@ $('#page').append(
        '<option value="Tsuga">Tsuga</option>'+
        '<option value="Betula">Betula</option>'+
   '</select>'+
-  '<select class="control-dropdown"id="taxon2" onchange="updateSymbols(this)">'+
+  '<select disabled class="control-dropdown"id="taxon2" onchange="updateSymbols(this)">'+
        '<option value="Picea">Picea</option>'+
        '<option selected="selected" value="Quercus">Quercus</option>'+
        '<option value="Acer">Acer</option>'+
@@ -108,7 +108,7 @@ $('#page').append(
        '<option value="Tsuga">Tsuga</option>'+
        '<option value="Betula">Betula</option>'+
   '</select>'+
-  '<select class="control-dropdown"id="taxon3" onchange="updateSymbols(this)">'+
+  '<select disabled class="control-dropdown"id="taxon3" onchange="updateSymbols(this)">'+
        '<option value="Picea">Picea</option>'+
        '<option value="Quercus">Quercus</option>'+
        '<option value="Acer">Acer</option>'+
@@ -116,7 +116,7 @@ $('#page').append(
        '<option value="Tsuga">Tsuga</option>'+
        '<option selected="selected" value="Betula">Betula</option>'+
   '</select>'+
-  '<select class="control-dropdown"id="taxon4" onchange="updateSymbols(this)"'+
+  '<select disabled class="control-dropdown"id="taxon4" onchange="updateSymbols(this)"'+
   'style= "border-radius:0px 0px 3px 3px;">'+
        '<option value="Picea">Picea</option>'+
        '<option value="Quercus">Quercus</option>'+
