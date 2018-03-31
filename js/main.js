@@ -35,6 +35,7 @@ var petalPlotLayer = new L.LayerGroup();
 var age = [[0,1000]];
 // variable that holds name of active visualization. Petal is default.
 var activeViz = 'petal';
+var activeYear = 1000;
 
 // using custom icon.
 var myIcon = L.icon({
@@ -138,7 +139,10 @@ $('#page').append(
   '<img id="tax2" src="lib/leaflet/images/LeafIcon_ltblu_lg.png">'+
   '<img id="tax3" src="lib/leaflet/images/LeafIcon_dkgrn_lg.png">'+
   '<img id="tax4" src="lib/leaflet/images/LeafIcon_ltgrn_lg.png">'+
-'</div>');
+'</div>'+
+'<div id="slider-vertical" style="height:200px;"></div>'+
+'<div id="slider-legend"><p id="legend-text">1-1000<br>YBP</p></div>'
+);
 
 taxonIDs = [ "Picea", "Quercus", "Betula", "Pinus" ]
 
@@ -147,14 +151,28 @@ document.getElementById ("bar").addEventListener ("click", vizChange, false);
 changeActiveViz(activeViz);
 
 //code block creating temporal slider control
+$( function() {
+    $( "#slider-vertical" ).slider({
+      orientation: "vertical",
+      range: "min",
+      step: 1,
+      min: 0,
+      max: 11,
+      value: 11,
+      slide: function(event, ui){
+        tempChange(ui);
+      }
+    });
+    $( "#amount" ).val( $( "#slider-vertical" ).slider( "value" ) );
+  } );
 
 
-$.ajax('formattedData.json', {
+$.ajax('Data/formattedData.json', {
   dataType: "json",
   success: function(response){
     // calling function to organize data
     formattedData = response.data;
-    createPetalPlots(formattedData);
+    createPetalPlots(formattedData, 1000);
   }
 });
 
@@ -165,7 +183,7 @@ $.ajax('formattedData.json', {
 // function used to call the neotoma database and retrieve the proper data based on a preset bounding box (which will eventually be user defined)
 // and the preselected taxon names from boxArr
 function getSites(age, boxArr){
-  // these variables are arbitrary. Used strictly for parsing Neotoma data
+  // these variables are arbitrary. Used for parsing Neotoma data
   var young = 0;
   var old = 12000;
   var step = 1000;
@@ -382,7 +400,7 @@ function formatData(data,ageArray,step) {
 ////////////////////////////////////////////////////////////////////////////////
 
 // Add initial symbols (petal plots) based on data
-function createPetalPlots(data){
+function createPetalPlots(data, time){
 
 
 
@@ -392,8 +410,9 @@ function createPetalPlots(data){
   // the bins are 1000 years and thus the totalValue attribute of each time
   // slice can be pretty large. This is can be changed up above and is relevant
   // to only the way the Neotoma data is being processed.
-  var time = 1000;
+  //var time = 1000;
 
+// NOTE: need to adapt this for looking at a range of time.
 
   // for loop through each site in the data.
   for (var i = 0; i < data.length; i++){
@@ -530,7 +549,7 @@ function createPetalPlots(data){
 };
 
 ////////////////////////////////////////////////////////////////////////////////
-function createBarCharts(data){
+function createBarCharts(data, time){
 
   // #4F77BB dark blue
   // #A6CFE5 light blue
@@ -543,7 +562,7 @@ function createBarCharts(data){
   // the bins are 1000 years and thus the totalValue attribute of each time
   // slice can be pretty large. This is can be changed up above and is relevant
   // to only the way the Neotoma data is being processed.
-  var time = 1000;
+  // var time = 1000;
 
   // an array with colors to stylize the bar charts. Add more colors for more
   // variables.
@@ -564,9 +583,9 @@ function createBarCharts(data){
     // boilerplate options for each bar chart
     var options = {
     data: {},
-    chartOptions: {},
-    weight: 1,
-    color: '#000000'
+    chartOptions: {}
+    // weight: 1,
+    // color: '#000000'
   };
 
 
@@ -634,10 +653,10 @@ function vizChange(){
   var id = this.id;
   removeMarkers();
   if (id=='petal'){
-    createPetalPlots(formattedData);
+    createPetalPlots(formattedData, activeYear);
     changeActiveViz(id);
   } else if (id=='bar'){
-    createBarCharts(formattedData);
+    createBarCharts(formattedData, activeYear);
     changeActiveViz(id);
   };
 };
@@ -654,12 +673,54 @@ function changeActiveViz(viz){
 var nonActiveButtons = document.getElementsByClassName('control-icon');
 for (var i = 0; i < nonActiveButtons.length; i++) {
     var button = nonActiveButtons[i];
-    button.style = "box-shadow: 0px 1px 2px #a6a6a6; filter: brightness(110%) grayscale(60%);"
+    //button.style = "box-shadow: 0px 1px 2px #a6a6a6; filter: brightness(110%) grayscale(60%);"
+      button.style = "opacity: 0.6;"
 }
 var activeButton = document.getElementById(viz).children[0];
-activeButton.style = "box-shadow: 0px 2px 4px #262626;"
+activeButton.style = "box-shadow: 0px 2px 3px #262626; opacity: 1.0;"
+activeViz = viz;
+ //activeButton.style = "opacity: 1.0;"
 }
 
+////////////////////////////////////////////////////////////////////////////////
+
+function tempChange(ui){
+  var yearSlot = ui.value;
+
+  // these variables are arbitrary. Used strictly for parsing Neotoma data
+  var young = 0;
+  var old = 12000;
+  var step = 1000;
+
+  var classNum = (old-young)/step;
+
+  // variable for storing age bin values
+  var ageArray = [];
+  var ageCount = old;
+
+  for (var j = 0; j < classNum; j++){
+    ageArray.push(ageCount);
+    ageCount -= step;
+  }
+
+  var year = ageArray[yearSlot];
+  activeYear = year;
+
+  removeMarkers();
+  var id = activeViz;
+  if (id=='petal'){
+    createPetalPlots(formattedData, activeYear);
+    changeActiveViz(id);
+  } else if (id=='bar'){
+    createBarCharts(formattedData, activeYear);
+    changeActiveViz(id);
+  };
+
+  var legend = document.getElementById("legend-text");
+  var youngStep = year-step+1;
+  legend.innerHTML= youngStep+"-"+year+"<br>YBP"
+
+}
 ////////////////////////////////////////////////////////////////////////////////
 
 $(document).ready(createMap);

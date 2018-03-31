@@ -11,7 +11,8 @@ a {
 }
 
 a:hover .control-icon{
-  filter:  brightness(80%) grayscale(0) !important;
+  filter:  brightness(80%) !important;
+  opacity: 1.0 !important;
 
 }
 
@@ -71,7 +72,8 @@ label{
   height:auto;
   width: 50px;
   border-radius: 10px;
-  transition: filter 0.5s, box-shadow 0.5s;
+  transition: filter 0.3s, opacity 0.3s, box-shadow 0.3s;
+  /* transition: filter 0.3s, box-shadow 0.3s; */
   box-shadow: 0px 1px 2px #a6a6a6;
 }
 
@@ -122,58 +124,42 @@ select{
   z-index: 3000;
 }
 
-#mapid {
-    width: 100%;
-    min-width: 800px;
-    display: inline-block;
-    float: left;
-    padding: 0px;
-    margin: 0px;
+
+
+#slider-vertical{
+  z-index: 2000;
+  position:fixed;
+  right: 25px;
+  top: 280px;
 }
 
-.header{
+#slider-legend {
   height: 50px;
-  width: 100%;
-  text-align: left;
-  vertical-align: top;
-  line-height: 1.7;
-  background-color: #447BDC;
+  width: 100px;
+  position: fixed;
+  right: 60px;
+  top: 280px;
+  background-color:#e9e9e9;
+  box-shadow: 0px 2px 4px 0px #a6a6a6;
+  z-index: 2000;
+  border-radius: 3px;
 }
 
-#page-title{
-  display: inline-block;
-  position: fixed;
-  top: 0;
-  bottom: 50%;
-  left: 0;
-  right: 0;
-  font-size: 100px;
-  width: 400px;
-  height: 100px;
-  margin: auto;
+#legend-text {
   font-family: sans-serif;
-  color: #447BDC;
-  text-align:center;
-  font-weight: bold;
-
+  padding:0px;
+  text-align: center;
+  margin: 0 auto;
 }
 
-#loading{
-  display: inline-block;
-  position: fixed;
-  top: 0;
-  bottom: 30%;
-  left: 0;
-  right: 0;
-  font-size: 6vw;
-  width: 400px;
-  height: 100px;
-  margin: auto;
-  font-family: sans-serif;
-  color: #447BDC;
-  text-align:center;
-  font-weight: bold;
+.ui-slider-handle {
+	background: #447BDC !important;
+  border-radius: 30px;
+  outline: none;
+}
 
+.ui-widget-header {
+  /* background: #A6CFE5 !important; */
 }
 
 .leaflet-control{
@@ -184,7 +170,14 @@ select{
   transform:rotate(90);
 }
 
-
+#mapid {
+    width: 100%;
+    min-width: 800px;
+    display: inline-block;
+    float: left;
+    padding: 0px;
+    margin: 0px;
+}
 #default {
   color: #bebebe;
 }
