@@ -105,35 +105,22 @@ var myIcon = L.icon({
 
   }
 
-
-  function createMarker(coords, htmlElement, anchor){
-    var offset;
-    switch(anchor){
-      case 'bottom':{
-        offset = [];
-      };break;
-      case 'top':{
-
-      };break;
-      case 'right':{
-
-      };break;
-      case 'left':{
-
-      };break;
-    }
-    return new mapboxgl.Marker(htmlElement, { offset: offset })
+  //"offsetX" and "offsetY" are basically the "anchor" property in leaflet
+  function createMarker(coords, htmlElement, offsetX, offsetY){
+    return new mapboxgl.Marker(htmlElement, { offset: [offsetX, offsetY] })
         .setLngLat(coords);
   }
 
-  function creatHtmlIcon(imageUrl, width, height, rotateDegree){
+  function createHtmlIcon(imageUrl, width, height, rotateDegree){
+
+    console.log(width, height);
     var imgelem = document.createElement("img");
     var el = document.createElement('div');
-    
+    var innerEl = document.createElement('div');
 
-    imgelem.setAttribute("src", imageUrl);
-    imgelem.setAttribute("height", "100%");
-    imgelem.setAttribute("width", "100%");
+    // imgelem.setAttribute("src", imageUrl);
+    // imgelem.setAttribute("height", "100%");
+    // imgelem.setAttribute("width", "100%");
 
 
     // width = "10";
@@ -141,22 +128,26 @@ var myIcon = L.icon({
     // imgelem.style.width = width + 'px';
     // imgelem.style.height = height + 'px';
 
-    imgelem.style['transform-origin'] = "bottom center";
 
-    imgelem.style.webkitTransform = 'rotate('+rotateDegree+'deg)';
-    imgelem.style.mozTransform    = 'rotate('+rotateDegree+'deg)';
-    imgelem.style.msTransform     = 'rotate('+rotateDegree+'deg)';
-    imgelem.style.oTransform      = 'rotate('+rotateDegree+'deg)';
-    imgelem.style.transform       = 'rotate('+rotateDegree+'deg)';
+    innerEl.style['transform-origin'] = "center center";
+
+    innerEl.style.backgroundImage = 'url('+ imageUrl +')';
+    innerEl.style.backgroundRepeat = 'no-repeat';
+    innerEl.style.backgroundSize = '100% 100%';
+    innerEl.style.webkitTransform = 'rotate('+rotateDegree+'deg)';
+    innerEl.style.mozTransform    = 'rotate('+rotateDegree+'deg)';
+    innerEl.style.msTransform     = 'rotate('+rotateDegree+'deg)';
+    innerEl.style.oTransform      = 'rotate('+rotateDegree+'deg)';
+    innerEl.style.transform       = 'rotate('+rotateDegree+'deg)';
 
 
     // width = "10";
     // height = "20";
-    el.style.width = width + 'px';
-    el.style.height = height + 'px';
+    innerEl.style.width = width + 'px';
+    innerEl.style.height = height + 'px';
 
 
-    el.appendChild(imgelem);
+    el.appendChild(innerEl);
     return el;
   }
 /////////////////////////Taxa Dropdown Menu////////////////////////////////////
@@ -503,7 +494,6 @@ function createPetalPlots(data, time) {
           // the same. This ensures the icon is anchored to the correct lat lon
           // no matter the size.
 
-          console.log(value);
           // var myIcon_dkblu = L.icon({
           //   // #4F77BB dark blue
           //   iconUrl: "lib/leaflet/images/LeafIcon_dkblu_lg.png",
@@ -540,33 +530,43 @@ function createPetalPlots(data, time) {
           //   tooltipAnchor: [16, -28]
           // });
 
-          var myIcon;
+          var myIcon, degrees, offsetX, offsetY;
+          var width = 2 * value;
+          var height = 4 * value;
+
+
           if (variable == variableArray[0]) {
-            var degrees = 360;
-            var anchor = "bottom";
-            var variableID = "taxon1";
-            var myIcon = creatHtmlIcon("lib/leaflet/images/LeafIcon_dkblu_lg.png", 2 * value, 4 * value, degrees);
+            degrees = 0;
+            offsetX = 0;
+            offsetY = height/-2;
+            //variableID = "taxon1";
+            myIcon = createHtmlIcon("lib/leaflet/images/LeafIcon_dkblu_lg.png", width, height, degrees);
           } else if (variable == variableArray[1]) {
-            var degrees = 90;
-            var anchor = "left";
-            var variableID = "taxon2";
-            var myIcon = creatHtmlIcon("lib/leaflet/images/LeafIcon_ltblu_lg.png", 2 * value, 4 * value, degrees);
+            degrees = 90;
+            offsetX = height/2;
+            offsetY = 0;
+            //variableID = "taxon2";
+            myIcon = createHtmlIcon("lib/leaflet/images/LeafIcon_ltblu_lg.png", width, height, degrees);
           } else if (variable == variableArray[2]) {
-            var degrees = 180;
-            var anchor = "top";
-            var variableID = "taxon3";
-            var myIcon = creatHtmlIcon("lib/leaflet/images/LeafIcon_dkgrn_lg.png", 2 * value, 4 * value, degrees);
+            degrees = 180;
+            offsetX = 0;
+            offsetY = height/2;
+            //variableID = "taxon3";
+            myIcon = createHtmlIcon("lib/leaflet/images/LeafIcon_dkgrn_lg.png", width, height, degrees);
           } else if (variable == variableArray[3]) {
-            var degrees = 270;
-            var anchor = "right";
-            var variableID = "taxon4";
-            var myIcon = creatHtmlIcon("lib/leaflet/images/LeafIcon_ltgrn_lg.png", 2 * value, 4 * value, degrees);
+            degrees = 270;
+            offsetX = height/-2;
+            offsetY = 0;
+            //variableID = "taxon4";
+            myIcon = createHtmlIcon("lib/leaflet/images/LeafIcon_ltgrn_lg.png", width, height, degrees);
           }
           // marker is customized to display information from the
           // site object.
 
-          var marker = createMarker([site.longitude, site.latitude], myIcon, anchor);
+          var marker = createMarker([site.longitude, site.latitude], myIcon, offsetX, offsetY);
           marker.addTo(map);
+
+
           // var marker = L.marker([site.latitude, site.longitude], {
           //   rotationAngle: degrees,
           //   icon: myIcon,
