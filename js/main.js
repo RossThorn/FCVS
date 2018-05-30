@@ -144,13 +144,15 @@ $('#page').append(
 '<div id="slider-legend"><p id="legend-text">1-1000<br>YBP</p></div>'
 );
 
+// adding taxa to taxonIDs
 taxonIDs = [ "Picea", "Quercus", "Betula", "Pinus" ]
 
+// adding event listeners to the buttons to invoke vizChange when clicked
 document.getElementById ("petal").addEventListener ("click", vizChange, false);
 document.getElementById ("bar").addEventListener ("click", vizChange, false);
 changeActiveViz(activeViz);
 
-//code block creating temporal slider control
+//code block creating temporal slider control. Number ov steps based on years.
 $( function() {
     $( "#slider-vertical" ).slider({
       orientation: "vertical",
@@ -167,6 +169,7 @@ $( function() {
   } );
 
 
+// calls a local version of the formatted output from the getSites, formatData functions.
 $.ajax('Data/formattedData.json', {
   dataType: "json",
   success: function(response){
@@ -182,6 +185,8 @@ $.ajax('Data/formattedData.json', {
 ////////////////////////////////////////////////////////////////////////////////
 // function used to call the neotoma database and retrieve the proper data based on a preset bounding box (which will eventually be user defined)
 // and the preselected taxon names from boxArr
+// NOTE: this function is not currently called, but works. It takes a long time to
+//       retrieve the data so the data has been localized.
 function getSites(age, boxArr){
   // these variables are arbitrary. Used for parsing Neotoma data
   var young = 0;
@@ -402,18 +407,6 @@ function formatData(data,ageArray,step) {
 // Add initial symbols (petal plots) based on data
 function createPetalPlots(data, time){
 
-
-
-  // This section will look at the slider bar position to get the year it's set
-  // at. Has to match a bin value in the site json. For now, just visualizing
-  // the youngest data. Also, the compiled data is quite temporally granular -
-  // the bins are 1000 years and thus the totalValue attribute of each time
-  // slice can be pretty large. This is can be changed up above and is relevant
-  // to only the way the Neotoma data is being processed.
-  //var time = 1000;
-
-// NOTE: need to adapt this for looking at a range of time.
-
   // for loop through each site in the data.
   for (var i = 0; i < data.length; i++){
     var site = data[i];
@@ -551,19 +544,6 @@ function createPetalPlots(data, time){
 ////////////////////////////////////////////////////////////////////////////////
 function createBarCharts(data, time){
 
-  // #4F77BB dark blue
-  // #A6CFE5 light blue
-  // #31A148 dark green
-  // #B3D88A light green
-
-  // This section will look at the slider bar position to get the year it's set
-  // at. Has to match a bin value in the site json. For now, just visualizing
-  // the youngest data. Also, the compiled data is quite temporally granular -
-  // the bins are 1000 years and thus the totalValue attribute of each time
-  // slice can be pretty large. This is can be changed up above and is relevant
-  // to only the way the Neotoma data is being processed.
-  // var time = 1000;
-
   // an array with colors to stylize the bar charts. Add more colors for more
   // variables.
   // #4F77BB dark blue
@@ -643,12 +623,14 @@ function createBarCharts(data, time){
 };
 
 ////////////////////////////////////////////////////////////////////////////////
-
+// a simple function that rounds values.
 function round(value, precision) {
     var multiplier = Math.pow(10, precision || 0);
     return Math.round(value * multiplier) / multiplier;
 };
  ////////////////////////////////////////////////////////////////////////////////
+// function that changes the visualization based on what button was pressed. it first
+// removes all markers with the removeMarkers function then adds the new ones
 function vizChange(){
   var id = this.id;
   removeMarkers();
@@ -668,7 +650,8 @@ function removeMarkers(){
 };
 
 ////////////////////////////////////////////////////////////////////////////////
-
+// This function provides feedback to let the user know that the visualization has changed
+// and the button changes as well.
 function changeActiveViz(viz){
 var nonActiveButtons = document.getElementsByClassName('control-icon');
 for (var i = 0; i < nonActiveButtons.length; i++) {
@@ -683,7 +666,9 @@ activeViz = viz;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-
+// This function changes the visualization based on the time in the slider bar.
+// It is not as efficient as it could be, as it redraws the symbols for each
+// time slot. Ideally, this would just resize the symbols based on the values.
 function tempChange(ui){
   var yearSlot = ui.value;
 
