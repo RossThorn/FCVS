@@ -66,9 +66,3 @@ A **flagpole diagram** is a stacked area chart that is rotated 90 degrees, depic
 The samples in the database are not only spread across space, but as time as well. The data is binned by a defined time interval. The user can explore the timeline of the database through a slider bar. As the slider is shifted, the visualizations change according to the value of the preset taxa for that time period.
 
 The petal plots, stacked bar charts, and radar charts are not inherently temporal visualizations. Interactivity via the sliding bar control allows for these visualizations to display information over time. The flagpole diagram, as mentioned, is the only inherently temporal visualization in the suite, displaying data across time without interactivity.
-
-## Example
-
-The following gif shows a possible interaction with the FCVS.
-
-*GIF depicting possible interaction*
